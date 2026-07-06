@@ -1134,13 +1134,7 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
 /* Si une iframe est présente (décommentée), masque le placeholder-inner */
 .video-placeholder:has(.video-iframe[src]:not([src=""])) .video-placeholder-inner{ display: none; }
 
-/* ===================== PAGE MARIAGE — steps ===================== */
-.mariage-steps{
-  max-width: 900px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem;
-  padding: 0 1.5rem clamp(2rem,5vw,4rem);
-}
-.mariage-step{ position: relative; padding-left: 1.2rem; }
+/* ===================== step-num (réutilisé sur plusieurs pages : concept, etc.) ===================== */
 .step-num{
   font-family: var(--font-body);
   font-size: 2.5rem;
@@ -1150,9 +1144,6 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
   display: block;
   margin-bottom: 0.5rem;
 }
-.mariage-step h3{ font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
-.mariage-step p{ font-size: 0.9rem; color: var(--ink-soft); }
-@media (max-width: 640px){ .mariage-steps{ grid-template-columns: 1fr; gap: 1.5rem; } }
 
 /* ===================== PAGE SOUVENIR D'ÉTÉ ===================== */
 .ete-apercu{
@@ -1612,21 +1603,6 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
   margin-top: 1rem;
 }
 .commande-form-fallback a{ color: var(--accent); font-weight: 600; }
-
-/* ===================== FICHE PRODUIT (page simple, sans scroll) ===================== */
-.fiche-produit{
-  max-width: 900px;
-  margin: 0 auto;
-  padding: clamp(2.5rem,6vw,4rem) 1.5rem;
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.fiche-produit-grid{ margin-top: 1.2rem; }
-.fiche-produit-cta{ text-align: center; margin-top: 2rem; }
-.fiche-produit-note{ text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--ink-soft); }
-.fiche-produit-note a{ color: var(--accent); font-weight: 600; }
 
 /* ===================== COMMANDE — décorations latérales (étapes + formulaire) ===================== */
 .commande-body{ position: relative; }
