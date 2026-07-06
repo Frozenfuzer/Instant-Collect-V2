@@ -193,10 +193,23 @@ img[data-img]::before, img[data-img]::after{ content:none; }
   border-bottom: 1px solid rgba(46,38,32,0.08);
 }
 .nav-logo{ display:flex; align-items:center; font-family: 'Railey', var(--font-display); font-size: 1.9rem; font-weight: normal; font-style: normal; color: var(--ink); }
-/* Le fichier Railey (police perso) ne rend pas correctement le "é" — on force ce
-   caractère précis sur la police de secours (qui gère les accents sans problème),
-   sans changer le style du reste du logo. Réutilisé aussi par .footer-logo. */
-.logo-accent{ font-family: var(--font-display); }
+/* Le fichier Railey (police perso) ne dessine pas l'accent du "é" correctement.
+   Plutôt que de changer de police pour cette lettre (rendu incohérent), on garde
+   Railey pour le "e" et on dessine l'accent nous-mêmes en CSS : une petite barre
+   inclinée, en currentColor pour suivre automatiquement la couleur du texte
+   (ink en nav, rose poudré au footer). Réutilisé aussi par .footer-logo. */
+.e-accent{ position: relative; display: inline-block; }
+.e-accent::after{
+  content: "";
+  position: absolute;
+  width: 0.42em;
+  height: 0.11em;
+  background: currentColor;
+  border-radius: 2px;
+  top: -0.5em;
+  left: 0.22em;
+  transform: rotate(-35deg);
+}
 .nav-left{ display: flex; align-items: center; gap: 1.2rem; }
 .nav-phone{
   font-family: var(--font-ui);
