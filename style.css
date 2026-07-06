@@ -1613,6 +1613,21 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
 }
 .commande-form-fallback a{ color: var(--accent); font-weight: 600; }
 
+/* ===================== FICHE PRODUIT (page simple, sans scroll) ===================== */
+.fiche-produit{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(2.5rem,6vw,4rem) 1.5rem;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fiche-produit-grid{ margin-top: 1.2rem; }
+.fiche-produit-cta{ text-align: center; margin-top: 2rem; }
+.fiche-produit-note{ text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--ink-soft); }
+.fiche-produit-note a{ color: var(--accent); font-weight: 600; }
+
 /* ===================== COMMANDE — décorations latérales (étapes + formulaire) ===================== */
 .commande-body{ position: relative; }
 .commande-side-deco{
