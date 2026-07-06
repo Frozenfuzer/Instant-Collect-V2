@@ -202,13 +202,13 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .e-accent::after{
   content: "";
   position: absolute;
-  width: 0.42em;
-  height: 0.11em;
+  width: 0.34em;
+  height: 0.13em;
   background: currentColor;
-  border-radius: 2px;
-  top: -0.5em;
-  left: 0.22em;
-  transform: rotate(-35deg);
+  border-radius: 0.1em;
+  top: -0.42em;
+  left: 0.26em;
+  transform: rotate(-50deg);
 }
 .nav-left{ display: flex; align-items: center; gap: 1.2rem; }
 .nav-phone{
