@@ -243,7 +243,7 @@ const ROUTES = {
   "king-jouet":     { title: "Partenariat King Jouet — Instant Collecté", header: "minimal" },
   "fete-des-meres": { title: "Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
   "saint-valentin": { title: "Édition Histoire d'Amour — Instant Collecté", header: "full" },
-  "mariage":        { title: "Mariage — Instant Collecté",                       header: "full" },
+  "mariage":        { title: "Notre Mariage — Instant Collecté",                    header: "full" },
   "fete-des-peres": { title: "Édition Fête des Pères (bientôt) — Instant Collecté", header: "full" },
   "contact":        { title: "Nous contacter — Instant Collecté",                     header: "full" },
   "souvenir-ete":   { title: "Édition Souvenir d'été — Instant Collecté",            header: "full" },
