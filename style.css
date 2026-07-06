@@ -44,6 +44,7 @@ body[data-page="king-jouet"]{ --accent:#2F6FA3; --accent-soft:#CFE3F0; --accent-
 body[data-page="mariage"]{ --accent:#7A8B6F; --accent-soft:#E7E3D3; --accent-dark:#586049; }
 body[data-page="fete-des-peres"]{ --accent:#5B6B4F; --accent-soft:#D9D6BE; --accent-dark:#3F4A37; }
 body[data-page="souvenir-ete"]{ --accent:#4A8FA6; --accent-soft:#BDD8E4; --accent-dark:#2D6878; }
+body[data-page="jour-de-fete"]{ --accent:#1F3A56; --accent-soft:#C3D2DE; --accent-dark:#12253A; }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
@@ -955,16 +956,16 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 /* ===================== NAV — bouton contact ===================== */
 .nav-cta-contact{
   background: transparent;
-  border: 1.5px solid var(--terracotta);
-  color: var(--terracotta);
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
   padding: 0.55rem 1.1rem;
   border-radius: 2px;
   font-size: 0.88rem;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
 }
-.nav-cta-contact:hover{ background: var(--terracotta); color: #fff; }
+.nav-cta-contact:hover{ background: var(--accent); color: #fff; }
 @media (max-width: 760px){ .nav-cta-contact{ display:none; } }
 
 /* ===================== TAGS — nouvelles cartes ===================== */
@@ -1062,19 +1063,7 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
   transition: color 0.2s;
 }
 .nav-link-partenaires:hover{ color: var(--terracotta); }
-.nav-cta-contact{
-  background: transparent;
-  border: 1.5px solid var(--terracotta);
-  color: var(--terracotta);
-  padding: 0.55rem 1.1rem;
-  border-radius: 2px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  transition: background 0.2s, color 0.2s;
-  cursor: pointer;
-}
-.nav-cta-contact:hover{ background: var(--terracotta); color: #fff; }
-@media (max-width: 760px){ .nav-cta-contact, .nav-link-partenaires{ display:none; } }
+@media (max-width: 760px){ .nav-link-partenaires{ display:none; } }
 
 /* ===================== CARTES — double bouton ===================== */
 .card-actions{
