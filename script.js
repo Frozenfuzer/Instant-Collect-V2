@@ -129,9 +129,20 @@ const IMAGES = {
 
   // Mariage
   mariageHero: "",
+  mariagePoster: "",
+  mariageLivret: "",
 
   // Saint-Valentin
   valentinHero: "", valentinBooster: "", valentinLivret: "",
+  valentinPoster: "",
+
+  // Jour de Fête
+  jourFetePoster: "",
+  jourFeteLivret: "",
+
+  // Souvenir d'été
+  etePoster: "",
+  eteLivret: "",
 };
 
 // Clés à charger immédiatement (au-dessus de la ligne de flottaison)
@@ -232,13 +243,18 @@ const ROUTES = {
   "mariage":        { title: "Mariage — Instant Collecté",                       header: "full" },
   "fete-des-peres": { title: "Édition Fête des Pères (bientôt) — Instant Collecté", header: "full" },
   "contact":        { title: "Nous contacter — Instant Collecté",                     header: "full" },
-  "souvenir-ete":   { title: "Souvenir d'été (bientôt) — Instant Collecté",            header: "full" },
+  "souvenir-ete":   { title: "Édition Souvenir d'été — Instant Collecté",            header: "full" },
   "jour-de-fete":   { title: "Jour de Fête ! — Instant Collecté",                     header: "full" },
   "partenaires":    { title: "Nos Partenaires — Instant Collecté",                     header: "full" },
   "realisations":   { title: "Un autre projet ? — Réalisations sur-mesure — Instant Collecté", header: "full" },
   "mentions-legales": { title: "Mentions légales — Instant Collecté",                   header: "full" },
   "cgv":              { title: "Conditions Générales de Vente — Instant Collecté",       header: "full" },
   "commande":         { title: "Votre commande — Instant Collecté",                      header: "full" },
+  "produit-fete-des-meres": { title: "Le coffret — Édition Fête des Mères — Instant Collecté", header: "full" },
+  "produit-saint-valentin": { title: "Le coffret — Édition Saint-Valentin — Instant Collecté", header: "full" },
+  "produit-mariage":        { title: "Le coffret — Mariage — Instant Collecté",                header: "full" },
+  "produit-jour-de-fete":   { title: "Le coffret — Jour de Fête — Instant Collecté",           header: "full" },
+  "produit-souvenir-ete":   { title: "Le coffret — Souvenir d'été — Instant Collecté",          header: "full" },
 };
 const DEFAULT_ROUTE = "accueil";
 
