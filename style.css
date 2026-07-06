@@ -42,7 +42,6 @@ body[data-page="fete-des-meres"]{ --accent:#D4728A; --accent-soft:#F5D5DC; --acc
 body[data-page="saint-valentin"]{ --accent:#A8425A; --accent-soft:#F0D4D8; --accent-dark:#7E2F42; }
 body[data-page="king-jouet"]{ --accent:#2F6FA3; --accent-soft:#CFE3F0; --accent-dark:#234F75; }
 body[data-page="mariage"]{ --accent:#7A8B6F; --accent-soft:#E7E3D3; --accent-dark:#586049; }
-body[data-page="fete-des-peres"]{ --accent:#5B6B4F; --accent-soft:#D9D6BE; --accent-dark:#3F4A37; }
 body[data-page="souvenir-ete"]{ --accent:#4A8FA6; --accent-soft:#BDD8E4; --accent-dark:#2D6878; }
 body[data-page="jour-de-fete"]{ --accent:#1F3A56; --accent-soft:#C3D2DE; --accent-dark:#12253A; }
 
@@ -326,8 +325,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .hero-home .hero-content{ text-align:left; align-items:flex-start; }
 
 .hero-content{ position:relative; max-width: 640px; display:flex; flex-direction:column; gap: 0.3rem; }
-.hero-edition .hero-content,
-.hero-teaser .hero-content{ text-align:center; align-items:center; margin:0 auto; }
+.hero-edition .hero-content{ text-align:center; align-items:center; margin:0 auto; }
 
 .hero-eyebrow{ font-size: 0.85rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color: var(--accent); }
 .hero-logo{ font-family: var(--font-display); font-size: clamp(3.2rem, 9vw, 5.6rem); line-height: 1.05; color: var(--ink); font-weight:700; }
@@ -338,7 +336,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 
 .hero-actions{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem; }
 .hero-home .hero-actions{ justify-content:flex-start; }
-.hero-edition .hero-actions, .hero-teaser .hero-actions, .hero-actions-center{ justify-content:center; }
+.hero-edition .hero-actions, .hero-actions-center{ justify-content:center; }
 .hero-actions-center{ margin-top:1.6rem; }
 
 .hero-trust{ display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:1.2rem; margin-bottom: 2rem; }
@@ -553,13 +551,6 @@ img[data-img]::before, img[data-img]::after{ content:none; }
   .hero-split-text .hero-actions{ justify-content:center; }
   .hero-split-media{ max-width:380px; margin:0 auto; width:100%; }
 }
-
-.hero-teaser .hero-content{ gap: 1rem; }
-.teaser-notice{
-  background: var(--white); border: 1px dashed var(--accent);
-  padding: 1rem 1.3rem; border-radius: var(--radius-soft); max-width: 46ch; margin: 0.4rem 0;
-}
-.teaser-notice p{ color: var(--ink-soft); font-size: 0.92rem; }
 
 /* ===================== VITRINE BOOSTERS (accueil) — "une collection à découvrir" ===================== */
 .boosters-showcase{
