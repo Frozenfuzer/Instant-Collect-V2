@@ -133,7 +133,7 @@ const IMAGES = {
   mariageLivret: "",
 
   // Saint-Valentin
-  valentinHero: "", valentinBooster: "", valentinLivret: "",
+  valentinHero: "", valentinLivret: "",
   valentinPoster: "",
 
   // Jour de Fête
@@ -250,11 +250,6 @@ const ROUTES = {
   "mentions-legales": { title: "Mentions légales — Instant Collecté",                   header: "full" },
   "cgv":              { title: "Conditions Générales de Vente — Instant Collecté",       header: "full" },
   "commande":         { title: "Votre commande — Instant Collecté",                      header: "full" },
-  "produit-fete-des-meres": { title: "Le coffret — Édition Fête des Mères — Instant Collecté", header: "full" },
-  "produit-saint-valentin": { title: "Le coffret — Édition Saint-Valentin — Instant Collecté", header: "full" },
-  "produit-mariage":        { title: "Le coffret — Mariage — Instant Collecté",                header: "full" },
-  "produit-jour-de-fete":   { title: "Le coffret — Jour de Fête — Instant Collecté",           header: "full" },
-  "produit-souvenir-ete":   { title: "Le coffret — Souvenir d'été — Instant Collecté",          header: "full" },
 };
 const DEFAULT_ROUTE = "accueil";
 
