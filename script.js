@@ -120,7 +120,7 @@ const IMAGES = {
   kingBooster: "", kingShop: "",
 
   // Réalisations sur-mesure
-  realisationJoinzy: "", realisationEvg: "", realisationEntreprise: "",
+  realisationJoinzy: "", realisationEvg: "", realisationEntreprise: "", realisationCommunion: "",
 
   // Fête des Mères
   meresHero: "https://frozenfuzer.github.io/Instant-Collect-/assets/edition/livret%20maelle.JPG",
