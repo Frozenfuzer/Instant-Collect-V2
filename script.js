@@ -202,17 +202,20 @@ document.querySelectorAll("[data-order-link]").forEach((el) => {
 });
 
 // Boutons "Je commande" — redirigent vers le tunnel de commande #commande,
-// avec l'édition pré-remplie si data-edition est posé sur le bouton, sinon
-// déduite de la page actuellement affichée via EDITION_PREFILL.
+// avec l'édition pré-remplie. "data-edition" porte la CLÉ de route (ex.
+// "saint-valentin"), jamais le nom affiché : on la résout donc TOUJOURS via
+// EDITION_PREFILL pour obtenir le vrai nom envoyé à Tally (ex. "Histoire
+// d'Amour"). Sans data-edition explicite, on déduit la clé depuis la page
+// actuellement affichée.
 // Chaque clic force un formulaire Tally VIERGE (voir forceTallyReload et
 // renderRoute) : sans ça, un client qui a déjà validé une commande retombe
 // sur l'écran "merci" de Tally et ne peut plus en repasser une seconde,
 // que ce soit pour la même édition ou une autre.
 document.querySelectorAll("[data-order-cta]").forEach((el) => {
   el.addEventListener("click", () => {
-    const explicitEdition = el.dataset.edition || "";
     const currentRoute = document.body.getAttribute("data-page") || "";
-    const edition = explicitEdition || EDITION_PREFILL[currentRoute] || "";
+    const editionKey = el.dataset.edition || currentRoute;
+    const edition = EDITION_PREFILL[editionKey] || "";
     const query = edition ? ("?edition=" + encodeURIComponent(edition)) : "";
     const targetHash = "commande" + query;
 
@@ -238,8 +241,8 @@ const ROUTES = {
   "accueil":        { title: "Instant Collecté — Le souvenir qu'on déballe, qu'on offre", header: "full" },
   "concept":        { title: "Comment ça marche — Instant Collecté", header: "full" },
   "king-jouet":     { title: "Partenariat King Jouet — Instant Collecté", header: "minimal" },
-  "fete-des-meres": { title: "Édition Fête des Mères — Instant Collecté", header: "full" },
-  "saint-valentin": { title: "Édition Saint-Valentin — Instant Collecté", header: "full" },
+  "fete-des-meres": { title: "Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
+  "saint-valentin": { title: "Édition Histoire d'Amour — Instant Collecté", header: "full" },
   "mariage":        { title: "Mariage — Instant Collecté",                       header: "full" },
   "fete-des-peres": { title: "Édition Fête des Pères (bientôt) — Instant Collecté", header: "full" },
   "contact":        { title: "Nous contacter — Instant Collecté",                     header: "full" },
