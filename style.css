@@ -901,6 +901,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .edition-detail-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1.8rem; max-width: 920px; margin: 0 auto; }
 @media (max-width: 700px){ .edition-detail-grid{ grid-template-columns: 1fr; } }
 .edition-note{ max-width: 700px; margin: 2rem auto 0; text-align:center; font-size: 0.85rem; color: var(--ink-soft); font-style:italic; }
+.edition-note a{ color: var(--accent); font-weight: 600; font-style: normal; }
 .edition-tagline-end{ text-align:center; margin: 2.4rem auto 0; font-family: var(--font-display); font-size: 1.6rem; color: var(--accent-dark); }
 
 /* ===================== AMBIANCE / POLAROIDS ===================== */
