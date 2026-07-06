@@ -1164,29 +1164,9 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
 .ete-apercu-card p{ font-size: 0.88rem; color: var(--ink-soft); }
 @media (max-width: 640px){ .ete-apercu{ grid-template-columns: 1fr; } }
 
-/* ===================== PAGE JOUR DE FÊTE — occasions ===================== */
-.fete-occasions{
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
-  max-width: 1000px; margin: 0 auto;
-  padding: 0 1.5rem clamp(2rem,5vw,4rem);
-}
-.fete-occasion-card{
-  background: var(--white);
-  border: 1px solid rgba(46,38,32,0.08);
-  border-radius: 4px;
-  padding: 1.6rem 1.2rem;
-  text-align: center;
-  transition: box-shadow 0.25s, transform 0.25s;
-}
-.fete-occasion-card:hover{ box-shadow: 0 8px 24px rgba(46,38,32,0.1); transform: translateY(-3px); }
-.fete-occasion-icon{ font-size: 2rem; display: block; margin-bottom: 0.7rem; }
-.fete-occasion-card h3{ font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
-.fete-occasion-card p{ font-size: 0.82rem; color: var(--ink-soft); }
 .edition-detail-alt{ background: var(--cream-warm); }
 .produit-body-icon{ padding-top: 1.5rem; text-align: center; }
 .produit-icon{ font-size: 2.2rem; display: block; margin-bottom: 0.7rem; }
-@media (max-width: 720px){ .fete-occasions{ grid-template-columns: 1fr 1fr; } }
-@media (max-width: 420px){ .fete-occasions{ grid-template-columns: 1fr; } }
 
 /* ===================== PAGE PARTENAIRES ===================== */
 .hero-partenaires{ min-height: 52vh; }
