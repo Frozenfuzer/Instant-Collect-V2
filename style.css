@@ -972,6 +972,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .tag-event{ background: #f0d4d8; color: #7e2f42; }
 .tag-animation{ background: #e0d4f0; color: #4a2f7e; }
 .tag-surmesure{ background: var(--vert-feuillage); color: var(--white); }
+.tag-communion{ background: #D4E4ED; color: #2D5473; }
 .produit-card-event .produit-price{ font-size: 0.9rem; color: var(--ink-soft); font-style: italic; }
 
 /* dropdown — item désactivé (Souvenir d'été bientôt) */
@@ -1078,11 +1079,6 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
 .card-bientot-label{ color: var(--terracotta); font-weight: 600; }
 .produit-card-autre .card-actions{ margin-top: auto; }
 @media (max-width: 480px){ .card-actions{ flex-direction: column; } .card-actions .btn{ flex: none; width: 100%; } }
-
-/* ===================== TAGS — nouvelles cartes ===================== */
-.tag-event{ background: #f0d4d8; color: #7e2f42; }
-.tag-animation{ background: #e0d4f0; color: #4a2f7e; }
-.tag-surmesure{ background: var(--vert-feuillage); color: var(--white); }
 .produit-card-event .produit-price{ font-size: 0.9rem; color: var(--ink-soft); font-style: italic; }
 .ne-disabled{ opacity: 0.5; pointer-events: none; cursor: default; }
 
