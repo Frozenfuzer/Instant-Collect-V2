@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instant Collecté</title>
+
+  <!-- DNS prefetch GitHub Pages -->
+  <link rel="dns-prefetch" href="https://frozenfuzer.github.io">
+  <link rel="preconnect" href="https://frozenfuzer.github.io" crossorigin>
+
+  <!-- Préchargement des images critiques (visibles sans scroller) -->
+  <link rel="preload" as="image" href="https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%201%20modif.png">
+  <link rel="preload" as="image" href="https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Booster%20Ete%202026%20sans%20Fond.png">
+
+  <!-- Google Fonts avec display=swap pour ne pas bloquer le rendu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!--
+  INSTANT COLLECTÉ — site multi-pages (8 pages), routeur JS par hash, un seul fichier pour CodePen.
+  Pages : #accueil  #concept  #king-jouet  #fete-des-meres  #saint-valentin  #mariage  #fete-des-peres  #contact
+
+  IMAGES : toutes les images sont injectées via des constantes en haut de script.js (objet IMAGES).
+  Tant qu'une URL est vide (""), un cadre "image à venir" stylisé s'affiche à la place.
+  Pour mettre une vraie photo : héberger l'image (Assets CodePen, postimages, imgur...) et coller
+  l'URL https://... dans la bonne clé de l'objet IMAGES. Rien d'autre à toucher.
+
+  Cherchez [À REMPLACER] pour le texte/les prix à remplacer.
+  Pour le formulaire de contact : remplacer YOUR_FORMSPREE_ID dans action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+-->
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ============================================================ HEADER -->
+<header class="nav" id="siteHeader">
+  <div class="nav-left">
+    <a href="#accueil" class="nav-logo">Instant Collecté</a>
+    <a href="tel:+33783522771" class="nav-phone">07 83 52 27 71</a>
+  </div>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="#accueil" data-route-link="accueil">Accueil</a>
+    <a href="#concept" data-route-link="concept">Le concept</a>
+
+      <div class="nav-editions" id="navEditions">
+        <button class="nav-editions-trigger" id="navEditionsTrigger" aria-expanded="false" aria-haspopup="true">
+          Éditions <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-editions-menu" id="navEditionsMenu" role="menu">
+          <a href="#fete-des-meres" data-route-link="fete-des-meres" role="menuitem">
+            <span class="ne-emoji" aria-hidden="true">🌸</span>
+            <span class="ne-text"><strong>Pour toute la famille !</strong><small>Nos Plus Beaux Souvenirs</small></span>
+          </a>
+          <a href="#saint-valentin" data-route-link="saint-valentin" role="menuitem">
+            <span class="ne-emoji" aria-hidden="true">💌</span>
+            <span class="ne-text"><strong>Histoire d'Amour</strong><small>Revivez l'histoire de votre couple avec votre moitié !</small></span>
+          </a>
+          <a href="#souvenir-ete" data-route-link="souvenir-ete" role="menuitem">
+            <span class="ne-emoji" aria-hidden="true">☀️</span>
+            <span class="ne-text"><strong>Souvenir d'été <span class="tag tag-bientot">Bientôt</span></strong><small>Redécouvrez les meilleurs moments de votre voyage estival</small></span>
+          </a>
+          <a href="#mariage" data-route-link="mariage" role="menuitem">
+            <span class="ne-emoji" aria-hidden="true">💒</span>
+            <span class="ne-text"><strong>Notre Mariage</strong><small>Faites vivre à vos invités une expérience inédite de boosters mystères</small></span>
+          </a>
+          <a href="#jour-de-fete" data-route-link="jour-de-fete" role="menuitem">
+            <span class="ne-emoji" aria-hidden="true">🎉</span>
+            <span class="ne-text"><strong>Jour de fête&nbsp;!</strong><small>Quelque chose à fêter ? Et si on y ajoutait des surprises !</small></span>
+          </a>
+          <a href="#realisations" data-route-link="realisations" role="menuitem">
+            <span class="ne-emoji" aria-hidden="true">✨</span>
+            <span class="ne-text"><strong>Un autre projet ?</strong><small>On adore les défis</small></span>
+          </a>
+        </div>
+      </div>
+
+    <a href="#partenaires" data-route-link="partenaires" class="nav-link-partenaires">Partenaires</a>
+
+    <button class="nav-cta nav-cta-contact" onclick="window.location.hash='contact'">Nous contacter</button>
+    <button class="nav-cta" data-order-cta>Commander</button>
+  </nav>
+
+  <a href="#accueil" class="nav-back-home">← Retour à l'accueil</a>
+
+  <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="routerOutlet">
+
+<!-- ============================================================ PAGE 1 — ACCUEIL -->
+<section class="page" id="page-accueil" data-page-section="accueil">
+
+
+  <section class="hero hero-home">
+    <div class="hero-halo" aria-hidden="true"></div>
+
+    <div class="hero-home-grid">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Et si vos souvenirs devenaient une collection ?</p>
+        <h1 class="hero-logo"><img data-img="heroLogo" alt="Instant Collecté" class="hero-logo-img"></h1>
+        <p class="hero-tagline">
+          Vos souvenirs transformés en vignettes personnalisées à ouvrir dans des boosters,
+          puis à collectionner dans un album ou poster.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-order-cta>Je commande</button>
+          <a href="#concept" class="btn btn-outline">Découvrir le concept</a>
+        </div>
+        <div class="hero-trust">
+          <span class="hero-trust-item">✦ Créé à partir de vos photos</span>
+          <span class="hero-trust-item">✦ Édition personnalisée</span>
+          <span class="hero-trust-item">✦ Fabriqué en France</span>
+        </div>
+      </div>
+
+      <!-- ========== ZONE BOOSTER — effet d'ouverture façon Pokémon TCG ========== -->
+      <div class="booster-zone">
+        <div class="booster-stage" id="boosterStage">
+
+          <button class="booster-pack" id="boosterPack" aria-label="Cliquer pour ouvrir le booster mystère" aria-expanded="false">
+            <span class="booster-pack-shine" aria-hidden="true"></span>
+            <img class="booster-pack-art" data-img="boosterPackArt" alt="Booster mystère Instant Collecté, édition Été">
+            <span class="booster-pack-hint">touchez pour ouvrir</span>
+          </button>
+
+          <div class="booster-flash" id="boosterFlash" aria-hidden="true"></div>
+
+          <div class="booster-reveal" id="boosterReveal">
+            <figure class="booster-card booster-card-1">
+              <img data-img="boosterCard1" alt="Souvenir révélé 1">
+            </figure>
+            <figure class="booster-card booster-card-2">
+              <img data-img="boosterCard2" alt="Souvenir révélé 2">
+            </figure>
+            <figure class="booster-card booster-card-3">
+              <img data-img="boosterCard3" alt="Souvenir révélé 3">
+            </figure>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- ========== /ZONE BOOSTER ========== -->
+
+    </div>
+
+    <a href="#concept" class="scroll-cue" aria-hidden="true"><span></span></a>
+  </section>
+
+  <!-- vitrine des boosters : une collection, plusieurs éditions -->
+  <section class="boosters-showcase">
+    <div class="boosters-showcase-inner">
+      <h2 class="boosters-showcase-title">Une collection à <span class="boosters-showcase-title-script">découvrir</span></h2>
+      <div class="boosters-fan">
+        <div class="boosters-fan-item boosters-fan-item-1">
+          <img class="boosters-fan-art" data-img="boosterCollEte" alt="Booster mystère Instant Collecté, édition Été">
+        </div>
+        <div class="boosters-fan-item boosters-fan-item-2">
+          <img class="boosters-fan-art" data-img="boosterCollNormal" alt="Booster mystère Instant Collecté, édition classique">
+        </div>
+        <div class="boosters-fan-item boosters-fan-item-3">
+          <img class="boosters-fan-art" data-img="boosterCollFete" alt="Booster mystère Instant Collecté, édition Jour de Fête">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- bandeau valeurs -->
+  <section class="values">
+    <div class="value">
+      <div class="value-photo-wrap">
+        <div class="value-photo" data-img="valuePhoto1" data-img-label="L'effet découverte"></div>
+        <div class="value-photo-overlay"></div>
+      </div>
+      <div class="value-body">
+        <h3>L'effet découverte</h3>
+        <p>Ouvrez un booster et redécouvrez vos souvenirs autrement. Chaque photo devient une surprise à partager et à revivre.</p>
+      </div>
+    </div>
+    <div class="value">
+      <div class="value-photo-wrap">
+        <div class="value-photo" data-img="valuePhoto2" data-img-label="Une collection qui raconte votre histoire"></div>
+        <div class="value-photo-overlay"></div>
+      </div>
+      <div class="value-body">
+        <h3>Une collection qui raconte votre histoire</h3>
+        <p>Page après page, vos souvenirs prennent vie. Construisez une collection unique qui évolue au rythme de vos ouvertures.</p>
+      </div>
+    </div>
+    <div class="value">
+      <div class="value-photo-wrap">
+        <div class="value-photo" data-img="valuePhoto3" data-img-label="Des émotions à chaque photo"></div>
+        <div class="value-photo-overlay"></div>
+      </div>
+      <div class="value-body">
+        <h3>Des émotions à chaque photo</h3>
+        <p>Bien plus que des photos : vos instants que vous redécouvrez de manière aléatoire, suscitant à chaque fois une émotion différente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="concept-brief">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Le principe</p>
+      <h2 class="section-title section-title-flanked">
+        <span class="title-flank-art" data-img="titleBoostersArt" data-img-label="image 3 mini booster" aria-hidden="true"></span>
+        <span>Comment ça fonctionne ?</span>
+        <span class="title-flank-art" data-img="titleBoostersArt" data-img-label="image 3 mini booster" aria-hidden="true"></span>
+      </h2>
+      <p class="section-text">Pas un produit qu'on achète et qu'on range. Une mécanique à faire vivre, photo après photo.</p>
+    </div>
+    <div class="concept-steps-mini">
+      <div class="step-mini">
+        <span class="step-mini-icon"><span class="step-mini-icon-inner" data-img="stepIconCamera" data-img-label="Vignette 1 appareil photo" aria-hidden="true"></span></span>
+        <span class="step-mini-num">01</span>
+        <h3>Vous envoyez vos photos</h3>
+        <p>Quelques photos suffisent pour créer votre booster.</p>
+      </div>
+      <div class="step-mini">
+        <span class="step-mini-icon"><span class="step-mini-icon-inner" data-img="stepIconVignettes" data-img-label="Vignette 2 carte en désordre" aria-hidden="true"></span></span>
+        <span class="step-mini-num">02</span>
+        <h3>Je crée votre collection</h3>
+        <p>Vos photos sont transformées en vignettes personnalisées.</p>
+      </div>
+      <div class="step-mini">
+        <span class="step-mini-icon"><span class="step-mini-icon-inner" data-img="stepIconBoosters" data-img-label="Vignette 3 3 mini booster" aria-hidden="true"></span></span>
+        <span class="step-mini-num">03</span>
+        <h3>Vous recevez vos boosters</h3>
+        <p>Chaque booster contient une partie de votre histoire.</p>
+      </div>
+      <div class="step-mini">
+        <span class="step-mini-icon"><span class="step-mini-icon-inner" data-img="stepIconLivre" data-img-label="Vignette 4 livret" aria-hidden="true"></span></span>
+        <span class="step-mini-num">04</span>
+        <h3>Vous ouvrez et collectionnez</h3>
+        <p>Une façon originale de redécouvrir vos souvenirs.</p>
+      </div>
+    </div>
+    <a href="#concept" class="link-more">Voir le concept en détail →</a>
+  </section>
+
+  <section class="editions" id="editions">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Les éditions</p>
+      <h2 class="section-title">Une collection pour chaque histoire</h2>
+    </div>
+
+    <div class="editions-grid">
+
+      <!-- Carte 1 : Saint-Valentin / Histoire d'Amour -->
+      <article class="produit-card">
+        <div class="produit-visual" data-img="editionHistoireAmour" data-img-label="Édition Histoire d'Amour"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Édition Histoire d'Amour</h3>
+          <p class="produit-desc">Revivez votre histoire d'amour une deuxième fois : vos débuts, vos voyages, vos moments.</p>
+          <p class="produit-price">35,99€</p>
+          <div class="card-actions">
+            <a href="#saint-valentin" class="btn btn-outline">Découvrir</a>
+            <button class="btn btn-primary" data-order-cta data-edition="saint-valentin">Je commande</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Carte 2 : Fête des Mères / Nos Plus Beaux Souvenirs -->
+      <article class="produit-card">
+        <div class="produit-visual" data-img="editionSouvenirs" data-img-label="Édition Nos Plus Beaux Souvenirs"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Édition Nos Plus Beaux Souvenirs</h3>
+          <p class="produit-desc">En famille, redécouvrez les moments forts de votre histoire ! Les naissances, les moments forts… Complétez la collection de la famille&nbsp;!</p>
+          <p class="produit-price">35,99€</p>
+          <div class="card-actions">
+            <a href="#fete-des-meres" class="btn btn-outline">Découvrir</a>
+            <button class="btn btn-primary" data-order-cta data-edition="fete-des-meres">Je commande</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Carte 3 : Souvenir d'été (bientôt) -->
+      <article class="produit-card">
+        <span class="card-tag tag-bientot">Bientôt</span>
+        <div class="produit-visual" data-img="editionEte" data-img-label="Édition Souvenir d'été"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Souvenir d'été</h3>
+          <p class="produit-desc">Patience mon ami… ça arrive bientôt.</p>
+          <p class="produit-price card-bientot-label">Bientôt disponible</p>
+          <div class="card-actions">
+            <a href="#souvenir-ete" class="btn btn-outline">Découvrir</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Carte 4 : Mariage (événement) -->
+      <article class="produit-card produit-card-event">
+        <span class="card-tag tag-event">Événement</span>
+        <div class="produit-visual" data-img="editionMariage" data-img-label="Mariage — Instant Collecté"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Mariage</h3>
+          <p class="produit-desc">Faites vivre à vos invités l'expérience Instant Collecté ! Fini le diaporama classique, faites-leur découvrir votre histoire sous un angle nouveau !</p>
+          <p class="produit-price">Sur devis</p>
+          <div class="card-actions">
+            <a href="#mariage" class="btn btn-outline">Découvrir</a>
+            <a href="#contact" class="btn btn-primary">Demander votre devis</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Carte 5 : Jour de Fête (animation) -->
+      <article class="produit-card produit-card-event">
+        <span class="card-tag tag-animation">Animation</span>
+        <div class="produit-visual" data-img="editionKing" data-img-label="Jour de Fête — Animation"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Jour de Fête !</h3>
+          <p class="produit-desc">Et si des boosters mystères s'invitaient à votre événement ? Des photos, des gages, des réductions… Ajoutez une part de surprise à votre fête !</p>
+          <p class="produit-price">Sur devis</p>
+          <div class="card-actions">
+            <a href="#jour-de-fete" class="btn btn-outline">Découvrir</a>
+            <a href="#contact" class="btn btn-primary">Nous contacter</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Carte 6 : Un autre projet (bouton centré seul) -->
+      <article class="produit-card produit-card-event produit-card-autre">
+        <span class="card-tag tag-surmesure">Sur-mesure</span>
+        <div class="produit-visual" data-img="editionPeres" data-img-label="Un autre projet ?"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Un autre projet ?</h3>
+          <p class="produit-desc">Vous avez une idée et vous pensez qu'Instant Collecté pourrait y participer ? Contactez-nous et dites-nous en plus ! Nous adorons les nouveaux défis !</p>
+          <div class="card-actions card-actions-center">
+            <a href="#contact" class="btn btn-primary">Nous écrire</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- bandeau édition vedette : Nos Plus Beaux Souvenirs -->
+  <section class="feature-band">
+    <div class="feature-band-media" data-img="editionMeresHero" data-img-label="Visuel Nos Plus Beaux Souvenirs"></div>
+    <div class="feature-band-text">
+      <span class="badge badge-edition">À la une</span>
+      <h2 class="feature-band-title">Édition Nos Plus Beaux Souvenirs</h2>
+      <p>En famille, redécouvrez les moments forts de votre histoire ! Les naissances, les fous rires… Complétez la collection de la famille&nbsp;!</p>
+      <a href="#fete-des-meres" class="btn btn-primary">Découvrir l'édition</a>
+    </div>
+  </section>
+
+  <section id="ambiance" class="ambiance">
+    <div class="section-header section-header-light section-header-center">
+      <p class="section-eyebrow">L'expérience</p>
+      <h2 class="section-title">Des livrets qui se remplissent, des histoires qui se racontent</h2>
+    </div>
+
+    <div class="polaroid-scatter">
+      <figure class="polaroid polaroid-1">
+        <div class="polaroid-img" data-img="ambiance1" data-img-label="📷"></div>
+        <figcaption>le livret en cours de remplissage</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-2">
+        <div class="polaroid-img" data-img="ambiance2" data-img-label="📷"></div>
+        <figcaption>le moment du déballage</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-3">
+        <div class="polaroid-img" data-img="ambiance3" data-img-label="📷"></div>
+        <figcaption>le poster offert</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-4">
+        <div class="polaroid-img" data-img="ambiance4" data-img-label="📷"></div>
+        <figcaption>les photos qu'on colle ensemble</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ PREUVE SOCIALE ============ -->
+  <section class="social-proof">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Ils l'ont vécu</p>
+      <h2 class="section-title">Ils nous ont fait confiance,<br><span class="section-title-script">pourquoi pas vous ?</span></h2>
+    </div>
+
+    <div class="sp-carousel-wrap">
+      <!-- Décorations botaniques -->
+      <div class="sp-deco sp-leaf-1" aria-hidden="true">
+        <svg viewBox="0 0 80 120" fill="none"><path d="M40 112C40 112 8 82 8 50C8 18 40 5 40 5C40 5 72 18 72 50C72 82 40 112 40 112Z" fill="#B8C4A8" opacity="0.4"/><line x1="40" y1="112" x2="40" y2="5" stroke="#8FA882" stroke-width="1.5" opacity="0.5"/><line x1="40" y1="75" x2="18" y2="48" stroke="#8FA882" stroke-width="1" opacity="0.35"/><line x1="40" y1="75" x2="62" y2="48" stroke="#8FA882" stroke-width="1" opacity="0.35"/></svg>
+      </div>
+      <div class="sp-deco sp-flower-1" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="7" fill="#E8C4B8" opacity="0.8"/><ellipse cx="32" cy="13" rx="6" ry="11" fill="#E8C4B8" opacity="0.45" transform="rotate(0 32 32)"/><ellipse cx="32" cy="13" rx="6" ry="11" fill="#E8C4B8" opacity="0.45" transform="rotate(60 32 32)"/><ellipse cx="32" cy="13" rx="6" ry="11" fill="#E8C4B8" opacity="0.45" transform="rotate(120 32 32)"/><ellipse cx="32" cy="13" rx="6" ry="11" fill="#E8C4B8" opacity="0.45" transform="rotate(180 32 32)"/><ellipse cx="32" cy="13" rx="6" ry="11" fill="#E8C4B8" opacity="0.45" transform="rotate(240 32 32)"/><ellipse cx="32" cy="13" rx="6" ry="11" fill="#E8C4B8" opacity="0.45" transform="rotate(300 32 32)"/></svg>
+      </div>
+
+      <!-- Flèche gauche -->
+      <button class="sp-nav sp-prev" aria-label="Précédent">&#8249;</button>
+
+      <!-- Carousel -->
+      <div class="sp-carousel">
+        <div class="sp-track">
+          <div class="screenshot-card">
+            <div class="screenshot-img-wrap" data-img="screenshot1"></div>
+          </div>
+          <div class="screenshot-card">
+            <div class="screenshot-img-wrap" data-img="screenshot2"></div>
+          </div>
+          <div class="screenshot-card">
+            <div class="screenshot-img-wrap" data-img="screenshot3"></div>
+          </div>
+          <div class="screenshot-card">
+            <div class="screenshot-img-wrap" data-img="screenshot4"></div>
+          </div>
+          <div class="screenshot-card">
+            <div class="screenshot-img-wrap" data-img="screenshot5"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flèche droite -->
+      <button class="sp-nav sp-next" aria-label="Suivant">&#8250;</button>
+    </div>
+
+    <!-- Points de navigation -->
+    <div class="sp-dots" id="spDots"></div>
+
+    <p class="social-proof-cta-hint">Rejoignez-les et offrez un souvenir qui compte vraiment.</p>
+  </section>
+
+  <section class="cta-final">
+    <h2 class="cta-final-title">Commencez une histoire à offrir</h2>
+    <button class="btn btn-primary btn-large" data-order-cta>Je commande maintenant</button>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 2 — CONCEPT -->
+<section class="page" id="page-concept" data-page-section="concept">
+
+
+  <div class="concept-nostalgie">
+
+    <div class="concept-nostalgie-text reveal">
+      <h1 class="concept-nostalgie-title">Vous vous souvenez des<br>vignettes à collectionner&nbsp;?</h1>
+      <p class="concept-nostalgie-body">
+        On ouvrait des boosters, on découvrait les cartes et on les collait dans son album.
+      </p>
+      <p class="concept-nostalgie-subtitle">Aujourd'hui, faites la même chose…</p>
+      <p class="concept-nostalgie-body">
+        Avec vos amis, votre famille, votre couple, votre mariage ou n'importe quel autre
+        moment que vous souhaitez <strong>valoriser</strong> et <strong>revivre</strong>&nbsp;!
+      </p>
+    </div>
+
+    <!-- Flèche -->
+    <svg class="concept-nostalgie-arrow" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <polygon points="0 0, 10 4, 0 8" fill="#2E2620"/>
+        </marker>
+      </defs>
+      <path d="M14 110 C 70 200, 160 55, 260 155 C 360 240, 440 95, 472 46"
+            stroke="#2E2620" stroke-width="4" stroke-linecap="round"
+            marker-end="url(#arrowhead)"/>
+    </svg>
+
+    <!-- Ancre du fan : positionnée en absolute au centre de la moitié droite -->
+    <span class="concept-fan-anchor" aria-hidden="true">
+      <div class="nostalgie-photo nostalgie-photo-1" data-img="conceptPhoto1" data-img-label="Souvenir photo 1"></div>
+      <div class="nostalgie-photo nostalgie-photo-2" data-img="conceptPhoto2" data-img-label="Souvenir photo 2"></div>
+      <div class="nostalgie-photo nostalgie-photo-3" data-img="conceptPhoto3" data-img-label="Souvenir photo 3"></div>
+    </span>
+
+  </div>
+
+  <div class="concept-steps-full">
+
+    <article class="concept-step-row step-img-right">
+      <div class="concept-step-content">
+        <span class="step-num">01</span>
+        <h3>Créer le booster</h3>
+        <p>[À REMPLACER] On choisit les photos, les souvenirs et la personne à qui le livret final sera destiné. Chaque booster est composé sur mesure à partir de ces éléments.</p>
+      </div>
+      <div class="concept-step-media" data-img="step1" data-img-label="Créer le booster"></div>
+    </article>
+
+    <article class="concept-step-row step-img-left">
+      <div class="concept-step-media" data-img="step2" data-img-label="Ouvrir en surprise"></div>
+      <div class="concept-step-content">
+        <span class="step-num">02</span>
+        <h3>L'ouvrir en surprise</h3>
+        <p>[À REMPLACER] Comme un paquet de cartes à collectionner, le booster se découvre à l'ouverture : on ne sait pas exactement quelles photos et quels souvenirs vont en sortir.</p>
+      </div>
+    </article>
+
+    <article class="concept-step-row step-img-right">
+      <div class="concept-step-content">
+        <span class="step-num">03</span>
+        <h3>Remplir le livret</h3>
+        <p>[À REMPLACER] Les photos et souvenirs du booster viennent se coller ou s'insérer dans un livret-album, thème par thème, pour reconstituer une histoire complète.</p>
+      </div>
+      <div class="concept-step-media" data-img="step3" data-img-label="Remplir le livret"></div>
+    </article>
+
+    <article class="concept-step-row step-img-left">
+      <div class="concept-step-media" data-img="step4" data-img-label="Offrir"></div>
+      <div class="concept-step-content">
+        <span class="step-num">04</span>
+        <h3>Offrir</h3>
+        <p>[À REMPLACER] Le livret rempli devient l'objet cadeau : on l'offre à la personne concernée, qui (re)découvre l'histoire qu'on a construite pour elle.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="faq">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Questions fréquentes</p>
+      <h2 class="section-title">Avant de commander</h2>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-card faq-item reveal" data-faq-card>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-icon-wrap"><span class="faq-icon-sym">+</span></span>
+          <span>Qu'est-ce qu'un booster mystère, concrètement ?</span>
+        </button>
+        <div class="faq-body">
+          <p>[À REMPLACER] C'est un petit paquet scellé contenant des photos et éléments de souvenir, dans l'esprit d'un paquet de cartes à collectionner : on ne sait pas exactement ce qu'on va trouver à l'intérieur avant de l'ouvrir.</p>
+        </div>
+      </div>
+
+      <div class="faq-card faq-item reveal" data-faq-card>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-icon-wrap"><span class="faq-icon-sym">+</span></span>
+          <span>Je dois envoyer ou imprimer mes photos avant de commander ?</span>
+        </button>
+        <div class="faq-body">
+          <p><strong>ON S'OCCUPE DE TOUT !</strong> Vous sélectionnez juste les photos que vous souhaitez redécouvrir, nous on s'occupe de tout le processus qui suit (impression, mise en boosters, personnalisation…).</p>
+        </div>
+      </div>
+
+      <div class="faq-card faq-item reveal" data-faq-card>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-icon-wrap"><span class="faq-icon-sym">+</span></span>
+          <span>Le livret, je le remplis comment ?</span>
+        </button>
+        <div class="faq-body">
+          <p>Le livret est organisé par thème et raconte une histoire, <strong>LA VÔTRE</strong>. Vous nous envoyez vos photos que vous voulez dans chaque catégorie et dans l'ordre que vous souhaitez !</p>
+        </div>
+      </div>
+
+      <div class="faq-card faq-item reveal" data-faq-card>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-icon-wrap"><span class="faq-icon-sym">+</span></span>
+          <span>C'est pour qui ?</span>
+        </button>
+        <div class="faq-body">
+          <p>Pour littéralement <strong>TOUT LE MONDE</strong> : famille, ami, amour, évènement, client… et même à vous si vous le voulez. Choisissez à qui vous voulez faire vivre des émotions.</p>
+        </div>
+      </div>
+
+      <div class="faq-card faq-item reveal" data-faq-card>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-icon-wrap"><span class="faq-icon-sym">+</span></span>
+          <span>Combien de temps pour recevoir ma commande ?</span>
+        </button>
+        <div class="faq-body">
+          <p>Cela dépend le type de commande : pour un coffret classique vous pouvez espérer être <strong>LIVRÉ EN 1 À 2 SEMAINES</strong> seulement après envoi des photos !</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="cta-final">
+    <h2 class="cta-final-title">Commencez une histoire à offrir</h2>
+    <button class="btn btn-primary btn-large" data-order-cta>Je commande maintenant</button>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 3 — KING JOUET -->
+<section class="page" id="page-king-jouet" data-page-section="king-jouet">
+
+
+  <section class="hero hero-edition">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="badge badge-partenariat">Partenariat</span>
+      <p class="co-brand-lockup">Instant Collecté <span class="co-brand-x">×</span> King Jouet</p>
+      <h1 class="edition-title">Les souvenirs d'enfance, <span class="edition-title-script">à collectionner</span></h1>
+      <p class="hero-tagline">
+        [À REMPLACER — accroche exacte du partenariat] Une édition Instant Collecté pensée avec King Jouet,
+        pour transformer les souvenirs de jeu et d'enfance en un livret qu'on garde.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-order-link>Suivre l'actu du partenariat</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="edition-detail">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">L'édition</p>
+      <h2 class="section-title">Ce que contient cette édition</h2>
+    </div>
+    <div class="edition-detail-grid">
+      <article class="produit-card">
+        <div class="produit-visual" data-img="kingBooster" data-img-label="Booster King Jouet"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Booster King Jouet</h3>
+          <p class="produit-desc">[À REMPLACER — description précise du produit co-brandé : thème, contenu, format].</p>
+          <p class="produit-price">[À REMPLACER — prix]</p>
+          <button class="btn btn-primary" data-order-cta>Je commande</button>
+        </div>
+      </article>
+      <article class="produit-card">
+        <div class="produit-visual" data-img="kingShop" data-img-label="Où le trouver"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Où le trouver</h3>
+          <p class="produit-desc">[À REMPLACER — disponible en magasin King Jouet uniquement, en ligne, ou les deux ? Quels magasins, quelle période ?]</p>
+        </div>
+      </article>
+    </div>
+    <p class="edition-note">[À REMPLACER — mention contractuelle ou légale éventuellement imposée par King Jouet : durée de l'opération, conditions, etc.]</p>
+  </section>
+
+  <section class="cta-final cta-final-king-jouet">
+    <h2 class="cta-final-title">Suivez le partenariat King Jouet</h2>
+    <p class="cta-final-text">Les annonces et disponibilités sont publiées en premier sur Instagram.</p>
+    <button class="btn btn-primary btn-large" data-order-link>Suivre sur Instagram</button>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 4 — FÊTE DES MÈRES -->
+<section class="page" id="page-fete-des-meres" data-page-section="fete-des-meres">
+
+
+  <section class="hero hero-edition hero-split">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-split-text">
+      <span class="badge badge-edition">Édition Fête des Mères</span>
+      <h1 class="edition-title">Des souvenirs qui valent <span class="edition-title-script">plus que tout</span></h1>
+      <p class="hero-tagline">Vos photos. Vos moments. Votre histoire.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-order-cta>Je commande</button>
+      </div>
+    </div>
+    <div class="hero-split-media" data-img="meresHero" data-img-label="Coffret Fête des Mères"></div>
+  </section>
+
+  <section class="edition-detail">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Le coffret</p>
+      <h2 class="section-title">Un poster et un livret, à compléter ensemble</h2>
+    </div>
+    <div class="edition-detail-grid">
+      <article class="produit-card">
+        <div class="produit-visual" data-img="meresPoster" data-img-label="Le poster"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Le poster</h3>
+          <p class="produit-desc">À compléter avec les boosters souvenirs, puis à afficher et à revivre.</p>
+          <p class="produit-price">[À REMPLACER — prix]</p>
+        </div>
+      </article>
+      <article class="produit-card">
+        <div class="produit-visual" data-img="meresLivret" data-img-label="Le livret"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Le livret</h3>
+          <p class="produit-desc">Redécouvrez l'histoire de la famille : les naissances, les voyages, les moments forts… Emotions garanties à chaque ouverture !</p>
+          <p class="produit-price">À partir de <strong>35,99€</strong></p>
+        </div>
+      </article>
+    </div>
+    <p class="edition-tagline-end">À ouvrir, découvrir et revivre.</p>
+    <div class="hero-actions hero-actions-center">
+      <button class="btn btn-primary btn-large" data-order-cta>Je commande le coffret</button>
+    </div>
+  </section>
+
+  <section class="cta-final cta-final-meres">
+    <h2 class="cta-final-title">Redécouvrez une expérience unique : émotions garanties !</h2>
+    <button class="btn btn-primary btn-large" data-order-cta>Je commande le coffret</button>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 5 — SAINT-VALENTIN -->
+<section class="page" id="page-saint-valentin" data-page-section="saint-valentin">
+
+
+  <section class="hero hero-edition hero-split">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-split-text">
+      <span class="badge badge-edition">Édition Saint-Valentin</span>
+      <h1 class="edition-title">Votre histoire d'amour, <span class="edition-title-script">collée page après page</span></h1>
+      <p class="hero-tagline">[À REMPLACER — accroche exacte] Le premier rendez-vous, le premier voyage, les petites habitudes : tout ce qui vous appartient, à deux.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-order-cta>Je commande</button>
+      </div>
+    </div>
+    <div class="hero-split-media" data-img="valentinHero" data-img-label="Édition Saint-Valentin"></div>
+  </section>
+
+  <section class="edition-detail">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Le concept de cette édition</p>
+      <h2 class="section-title">Reconstituer une histoire de couple, à deux</h2>
+    </div>
+    <div class="edition-detail-grid">
+      <article class="produit-card">
+        <div class="produit-visual" data-img="valentinBooster" data-img-label="Booster Saint-Valentin"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Booster Saint-Valentin</h3>
+          <p class="produit-desc">[À REMPLACER — thèmes du booster : rencontre, voyages, petits riens du quotidien...]</p>
+          <p class="produit-price">[À REMPLACER — prix]</p>
+          <button class="btn btn-primary" data-order-cta>Je commande</button>
+        </div>
+      </article>
+      <article class="produit-card">
+        <div class="produit-visual" data-img="valentinLivret" data-img-label="Le livret du couple"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Le livret du couple</h3>
+          <p class="produit-desc">À remplir à deux, pour se souvenir — et à s'offrir l'un à l'autre, ou à offrir ensemble.</p>
+          <p class="produit-price">[À REMPLACER — prix]</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <h2 class="cta-final-title">Offrez une histoire, pas un objet</h2>
+    <button class="btn btn-primary btn-large" data-order-cta>Je commande maintenant</button>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 6 — MARIAGE (événement) -->
+<section class="page" id="page-mariage" data-page-section="mariage">
+
+
+  <section class="hero hero-edition hero-split">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-split-text">
+      <span class="badge badge-edition">Mariage</span>
+      <h1 class="edition-title">Votre mariage, <span class="edition-title-script">vécu deux fois</span></h1>
+      <p class="hero-tagline">Fini le diaporama classique. Faites vivre à vos invités l'expérience Instant Collecté — et offrez-vous une façon inédite de revivre ce jour.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Demander votre devis</a>
+        <button class="btn btn-outline" data-order-link>Suivre sur Instagram</button>
+      </div>
+    </div>
+    <div class="hero-split-media" data-img="mariageHero" data-img-label="Mariage Instant Collecté"></div>
+  </section>
+
+  <!-- Zone vidéo -->
+  <section class="edition-video">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Découvrez le concept</p>
+      <h2 class="section-title">L'expérience Mariage en vidéo</h2>
+    </div>
+    <div class="video-embed-wrap">
+      <div class="video-placeholder" id="mariageVideo">
+        <div class="video-placeholder-inner">
+          <span class="video-icon" aria-hidden="true">▶</span>
+          <p>Vidéo à venir</p>
+          <small>Remplacer le commentaire ci-dessous par l'iframe YouTube pour activer la vidéo.</small>
+        </div>
+        <!-- Pour activer : décommenter et remplacer YOUR_VIDEO_ID -->
+        <!-- <iframe class="video-iframe" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0" title="Instant Collecté — Mariage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="edition-detail">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Le déroulé</p>
+      <h2 class="section-title">Comment ça se passe ?</h2>
+    </div>
+    <div class="mariage-steps">
+      <div class="mariage-step reveal">
+        <span class="step-num">01</span>
+        <h3>Vous nous envoyez vos photos</h3>
+        <p>Avant le grand jour, vous nous transmettez les photos de votre histoire commune. Premiers rendez-vous, voyages, demande en mariage…</p>
+      </div>
+      <div class="mariage-step reveal reveal-delay-1">
+        <span class="step-num">02</span>
+        <h3>On crée les boosters</h3>
+        <p>Nous transformons vos photos en vignettes personnalisées et préparons des boosters mystères pour vos invités.</p>
+      </div>
+      <div class="mariage-step reveal reveal-delay-2">
+        <span class="step-num">03</span>
+        <h3>L'animation le jour J</h3>
+        <p>Vos invités ouvrent leurs boosters et découvrent votre histoire. Un moment de partage et d'émotion garanti.</p>
+      </div>
+      <div class="mariage-step reveal">
+        <span class="step-num">04</span>
+        <h3>Le livret souvenir</h3>
+        <p>Le livret complété devient un souvenir collectif à offrir aux mariés — unique et inoubliable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <h2 class="cta-final-title">Créons quelque chose d'unique pour votre jour J</h2>
+    <p class="cta-final-text">Chaque mariage est différent. Parlons de votre projet.</p>
+    <a href="#contact" class="btn btn-primary btn-large">Demander votre devis</a>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 7 — FÊTE DES PÈRES (teaser conservé) -->
+<section class="page" id="page-fete-des-peres" data-page-section="fete-des-peres">
+
+  <section class="hero hero-edition hero-teaser">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="badge badge-bientot">Bientôt disponible</span>
+      <h1 class="edition-title">Les souvenirs avec papa, <span class="edition-title-script">à rassembler</span></h1>
+      <p class="hero-tagline">Les bricolages, les sorties, les petites aventures du quotidien : une édition pour raconter une histoire avec lui.</p>
+      <div class="teaser-notice"><p>Cette édition est en cours de préparation. La meilleure façon d'être prévenu : suivre le compte Instagram.</p></div>
+      <div class="hero-actions"><button class="btn btn-primary" data-order-link>Être prévenu en avant-première</button></div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================================ PAGE 8 — SOUVENIR D'ÉTÉ (teaser) -->
+<section class="page" id="page-souvenir-ete" data-page-section="souvenir-ete">
+
+
+  <section class="hero hero-edition hero-split">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-split-text">
+      <span class="badge badge-bientot">Bientôt disponible</span>
+      <h1 class="edition-title">Les souvenirs d'été, <span class="edition-title-script">à collectionner</span></h1>
+      <p class="hero-tagline">Les vacances, les couchers de soleil, les moments simples et les fous rires. Une édition pour capturer l'essence de l'été et la revivre tout l'hiver.</p>
+      <div class="teaser-notice">
+        <p>Cette édition est en cours de préparation. La meilleure façon d'être prévenu dès son lancement : suivre le compte Instagram.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-order-link>Être prévenu en avant-première</button>
+      </div>
+    </div>
+    <div class="hero-split-media" data-img="editionEte" data-img-label="Souvenir d'été — Instant Collecté"></div>
+  </section>
+
+  <section class="edition-detail">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Ce qui arrive bientôt</p>
+      <h2 class="section-title">Une collection dédiée à l'été</h2>
+    </div>
+    <div class="ete-apercu">
+      <div class="ete-apercu-card reveal">
+        <span class="ete-apercu-icon" aria-hidden="true">🌅</span>
+        <h3>Vos vacances en vignettes</h3>
+        <p>Les photos de l'été transformées en boosters à ouvrir en surprise à la rentrée — pour retrouver l'été d'un coup.</p>
+      </div>
+      <div class="ete-apercu-card reveal reveal-delay-1">
+        <span class="ete-apercu-icon" aria-hidden="true">📖</span>
+        <h3>Un livret estival</h3>
+        <p>Un album aux couleurs de l'été pour rassembler et revivre tous vos moments de vacances, page après page.</p>
+      </div>
+      <div class="ete-apercu-card reveal reveal-delay-2">
+        <span class="ete-apercu-icon" aria-hidden="true">🎁</span>
+        <h3>Le cadeau de rentrée parfait</h3>
+        <p>Offrir un souvenir d'été à quelqu'un qu'on aime, c'est lui offrir un morceau du soleil pour les mois gris.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <h2 class="cta-final-title">Ne ratez pas le lancement</h2>
+    <p class="cta-final-text">Rejoignez la communauté sur Instagram pour être parmi les premiers informés.</p>
+    <button class="btn btn-primary btn-large" data-order-link>Suivre sur Instagram</button>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 9 — JOUR DE FÊTE -->
+<section class="page" id="page-jour-de-fete" data-page-section="jour-de-fete">
+
+
+  <section class="hero hero-edition hero-split">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-split-text">
+      <span class="badge badge-edition">Animation événementielle</span>
+      <h1 class="edition-title">Une animation <span class="edition-title-script">que personne n'oublie</span></h1>
+      <p class="hero-tagline">Et si des boosters mystères s'invitaient à votre événement ? Des photos, des gages, des réductions… Ajoutez une part de surprise à votre fête !</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Demander votre devis</a>
+        <button class="btn btn-outline" data-order-link>Suivre sur Instagram</button>
+      </div>
+    </div>
+    <div class="hero-split-media" data-img="editionKing" data-img-label="Jour de Fête — Animation Instant Collecté"></div>
+  </section>
+
+  <section class="edition-detail">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Pour quel événement ?</p>
+      <h2 class="section-title">Une animation sur mesure pour chaque occasion</h2>
+    </div>
+    <div class="fete-occasions">
+      <div class="fete-occasion-card reveal">
+        <span class="fete-occasion-icon" aria-hidden="true">🎂</span>
+        <h3>Anniversaire</h3>
+        <p>Des boosters souvenir avec les photos du fêté, à découvrir ensemble autour du gâteau.</p>
+      </div>
+      <div class="fete-occasion-card reveal reveal-delay-1">
+        <span class="fete-occasion-icon" aria-hidden="true">🏢</span>
+        <h3>Événement entreprise</h3>
+        <p>Team building, soirée de fin d'année… Une animation originale et mémorable pour vos équipes.</p>
+      </div>
+      <div class="fete-occasion-card reveal reveal-delay-2">
+        <span class="fete-occasion-icon" aria-hidden="true">🥂</span>
+        <h3>EVJF / Baby shower</h3>
+        <p>Des vignettes surprises pour célébrer un nouveau chapitre avec celles qu'on aime.</p>
+      </div>
+      <div class="fete-occasion-card reveal reveal-delay-3">
+        <span class="fete-occasion-icon" aria-hidden="true">🎉</span>
+        <h3>Soirée privée</h3>
+        <p>N'importe quelle occasion mérite un moment de surprise et de partage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="edition-detail edition-detail-alt">
+    <div class="section-header section-header-center">
+      <p class="section-eyebrow">Le contenu</p>
+      <h2 class="section-title">Ce qu'on peut glisser dans vos boosters</h2>
+    </div>
+    <div class="edition-detail-grid">
+      <article class="produit-card">
+        <div class="produit-body produit-body-icon">
+          <span class="produit-icon" aria-hidden="true">📸</span>
+          <h3 class="produit-title">Des photos</h3>
+          <p class="produit-desc">Vos souvenirs communs avec les invités, les moments forts de l'histoire qu'on célèbre.</p>
+        </div>
+      </article>
+      <article class="produit-card">
+        <div class="produit-body produit-body-icon">
+          <span class="produit-icon" aria-hidden="true">🎲</span>
+          <h3 class="produit-title">Des gages / défis</h3>
+          <p class="produit-desc">Pour dynamiser la soirée et créer des moments de complicité et de fou-rire collectif.</p>
+        </div>
+      </article>
+      <article class="produit-card">
+        <div class="produit-body produit-body-icon">
+          <span class="produit-icon" aria-hidden="true">🎫</span>
+          <h3 class="produit-title">Des surprises</h3>
+          <p class="produit-desc">Un cadeau, une réduction, un bon cadeau caché dans chaque booster — pour surprendre jusqu'au bout.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <h2 class="cta-final-title">Vous avez un événement en tête ?</h2>
+    <p class="cta-final-text">Parlons de votre projet et créons ensemble une animation qui vous ressemble.</p>
+    <a href="#contact" class="btn btn-primary btn-large">Nous contacter</a>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE 10 — NOS PARTENAIRES -->
+<section class="page" id="page-partenaires" data-page-section="partenaires">
+
+
+  <section class="hero hero-edition hero-partenaires">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="section-eyebrow">Ils nous font confiance</p>
+      <h1 class="edition-title">Nos <span class="edition-title-script">Partenaires</span></h1>
+      <p class="hero-tagline">Instant Collecté s'associe à des marques qui partagent notre vision : transformer les moments en objets à garder.</p>
+    </div>
+  </section>
+
+  <!-- ---- PARTENAIRE : KING JOUET ---- -->
+  <section class="partenaire-section">
+
+    <!-- Décorations botaniques SVG -->
+    <div class="partenaire-deco" aria-hidden="true">
+      <svg class="pdeco pdeco-leaf-1" viewBox="0 0 100 150" fill="none"><path d="M50 140 C50 140 10 100 10 60 C10 20 50 5 50 5 C50 5 90 20 90 60 C90 100 50 140 50 140Z" fill="var(--vert-feuillage)" opacity="0.15"/><line x1="50" y1="140" x2="50" y2="5" stroke="var(--vert-feuillage)" stroke-width="1.5" opacity="0.25"/></svg>
+      <svg class="pdeco pdeco-leaf-2" viewBox="0 0 70 110" fill="none"><path d="M35 105 C35 105 8 75 8 45 C8 15 35 4 35 4 C35 4 62 15 62 45 C62 75 35 105 35 105Z" fill="var(--rose-poudre)" opacity="0.18"/><line x1="35" y1="105" x2="35" y2="4" stroke="var(--rose-poudre)" stroke-width="1.2" opacity="0.3"/></svg>
+      <svg class="pdeco pdeco-circle-1" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" stroke="var(--terracotta)" stroke-width="1.5" opacity="0.12" stroke-dasharray="6 4"/></svg>
+      <svg class="pdeco pdeco-circle-2" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="58" stroke="var(--kraft)" stroke-width="2" opacity="0.1" stroke-dasharray="3 6"/></svg>
+      <svg class="pdeco pdeco-stamp" viewBox="0 0 60 60" fill="none"><rect x="4" y="4" width="52" height="52" rx="5" stroke="var(--terracotta)" stroke-width="2" opacity="0.2" fill="none" stroke-dasharray="4 3"/><text x="30" y="34" text-anchor="middle" font-family="Caveat,cursive" font-size="11" fill="var(--terracotta)" opacity="0.4">IC × KJ</text></svg>
+      <svg class="pdeco pdeco-flower" viewBox="0 0 70 70" fill="none"><circle cx="35" cy="35" r="9" fill="var(--rose-poudre)" opacity="0.5"/><ellipse cx="35" cy="16" rx="7" ry="12" fill="var(--rose-poudre)" opacity="0.3" transform="rotate(0 35 35)"/><ellipse cx="35" cy="16" rx="7" ry="12" fill="var(--rose-poudre)" opacity="0.3" transform="rotate(60 35 35)"/><ellipse cx="35" cy="16" rx="7" ry="12" fill="var(--rose-poudre)" opacity="0.3" transform="rotate(120 35 35)"/><ellipse cx="35" cy="16" rx="7" ry="12" fill="var(--rose-poudre)" opacity="0.3" transform="rotate(180 35 35)"/><ellipse cx="35" cy="16" rx="7" ry="12" fill="var(--rose-poudre)" opacity="0.3" transform="rotate(240 35 35)"/><ellipse cx="35" cy="16" rx="7" ry="12" fill="var(--rose-poudre)" opacity="0.3" transform="rotate(300 35 35)"/></svg>
+      <svg class="pdeco pdeco-dot-grid" viewBox="0 0 100 100" fill="none"><circle cx="10" cy="10" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="30" cy="10" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="50" cy="10" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="70" cy="10" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="10" cy="30" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="30" cy="30" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="50" cy="30" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="70" cy="30" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="10" cy="50" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="30" cy="50" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="50" cy="50" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="70" cy="50" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="10" cy="70" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="30" cy="70" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="50" cy="70" r="2" fill="var(--terracotta)" opacity="0.15"/><circle cx="70" cy="70" r="2" fill="var(--terracotta)" opacity="0.15"/></svg>
+    </div>
+
+    <div class="partenaire-header">
+      <p class="co-brand-lockup">Instant Collecté <span class="co-brand-x">×</span> King Jouet</p>
+      <span class="badge badge-partenariat">Partenariat actif</span>
+      <h2 class="section-title">Une édition née d'un partenariat <span class="edition-title-script">unique</span></h2>
+      <p class="section-text">[À REMPLACER — description du partenariat King Jouet. Ex : une édition Instant Collecté pensée avec King Jouet pour transformer les souvenirs de jeu et d'enfance en un livret qu'on garde.]</p>
+    </div>
+
+    <!-- Zone vidéo King Jouet -->
+    <div class="video-embed-wrap">
+      <div class="video-placeholder" id="kingJouetVideo">
+        <div class="video-placeholder-inner">
+          <span class="video-icon" aria-hidden="true">▶</span>
+          <p>Vidéo Instant Collecté × King Jouet</p>
+          <small>[À REMPLACER — décommentez l'iframe ci-dessous et remplacez YOUR_VIDEO_ID par l'ID de votre vidéo YouTube]</small>
+        </div>
+        <!-- Pour activer la vidéo : décommenter et remplacer YOUR_VIDEO_ID -->
+        <!-- <iframe class="video-iframe" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0" title="Instant Collecté × King Jouet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      </div>
+    </div>
+
+    <div class="edition-detail-grid partenaire-produits">
+      <article class="produit-card">
+        <div class="produit-visual" data-img="kingBooster" data-img-label="Booster Instant Collecté × King Jouet"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Le booster co-brandé</h3>
+          <p class="produit-desc">[À REMPLACER — description précise : thème, contenu, format, ce qui rend cette édition unique.]</p>
+          <p class="produit-price">[À REMPLACER — prix]</p>
+          <button class="btn btn-primary" data-order-cta>Je commande</button>
+        </div>
+      </article>
+      <article class="produit-card">
+        <div class="produit-visual" data-img="kingShop" data-img-label="Où trouver l'édition King Jouet"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Où le trouver</h3>
+          <p class="produit-desc">[À REMPLACER — disponible en magasin King Jouet, en ligne, ou les deux ? Quels points de vente, quelle période ?]</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="edition-note">[À REMPLACER — mention contractuelle ou légale éventuellement imposée par King Jouet : durée de l'opération, conditions, etc.]</p>
+
+  </section>
+
+  <section class="cta-final cta-final-partenaires">
+    <h2 class="cta-final-title">Vous souhaitez devenir partenaire ?</h2>
+    <p class="cta-final-text">Vous êtes une marque, une enseigne, un réseau ? On adore les nouvelles collaborations.</p>
+    <a href="#contact" class="btn btn-light btn-large">Nous contacter</a>
+  </section>
+
+
+</section>
+
+<!-- ============================================================ PAGE — RÉALISATIONS SUR-MESURE -->
+<section class="page" id="page-realisations" data-page-section="realisations">
+
+  <section class="hero hero-edition hero-realisations">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="section-eyebrow">Sur-mesure</p>
+      <h1 class="edition-title">Un autre <span class="edition-title-script">projet</span> ?</h1>
+      <p class="hero-tagline">On adore les défis. Voici quelques exemples de ce qu'on a déjà pu créer sur-mesure, en dehors de nos éditions classiques.</p>
+    </div>
+  </section>
+
+  <section class="edition-detail">
+    <div class="edition-detail-grid">
+
+      <article class="produit-card">
+        <span class="card-tag tag-event">Événement</span>
+        <div class="produit-visual" data-img="realisationJoinzy" data-img-label="Animation événement avec JOINZY"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Animation événement — JOINZY</h3>
+          <p class="produit-desc">[À REMPLACER — description de la collaboration avec JOINZY : type d'événement, format proposé, ce qui a été créé.]</p>
+          <a href="https://www.instagram.com/joinzy_/" target="_blank" rel="noopener" class="btn btn-outline">Voir sur Instagram</a>
+        </div>
+      </article>
+
+      <article class="produit-card">
+        <span class="card-tag tag-animation">EVG</span>
+        <div class="produit-visual" data-img="realisationEvg" data-img-label="Livret souvenir enterrement de vie de garçon"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Livret souvenir — Enterrement de vie de garçon</h3>
+          <p class="produit-desc">[À REMPLACER — description du livret EVG : contenu, ton, ce qui rend ce souvenir unique.]</p>
+        </div>
+      </article>
+
+      <article class="produit-card">
+        <span class="card-tag tag-surmesure">Entreprise</span>
+        <div class="produit-visual" data-img="realisationEntreprise" data-img-label="Poster d'équipe pour une entreprise"></div>
+        <div class="produit-body">
+          <h3 class="produit-title">Poster d'équipe — Projet entreprise</h3>
+          <p class="produit-desc">[À REMPLACER — description du projet entreprise : contexte, occasion, format du poster.]</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <h2 class="cta-final-title">Et si c'était votre projet ?</h2>
+    <p class="cta-final-text">Racontez-nous votre idée, on vous dit si (et comment) on peut la transformer en souvenir à garder.</p>
+    <a href="#contact" class="btn btn-light btn-large">Nous écrire</a>
+  </section>
+
+</section>
+
+<!-- ============================================================ PAGE 8 — NOUS CONTACTER -->
+<section class="page" id="page-contact" data-page-section="contact">
+
+
+  <section class="hero hero-edition hero-contact">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="contact-deco" aria-hidden="true">
+      <svg class="contact-leaf contact-leaf-1" viewBox="0 0 80 120" fill="none"><path d="M40 110 C40 110 10 80 10 50 C10 20 40 5 40 5 C40 5 70 20 70 50 C70 80 40 110 40 110Z" fill="var(--vert-feuillage)" opacity="0.25"/><line x1="40" y1="110" x2="40" y2="5" stroke="var(--vert-feuillage)" stroke-width="1.5" opacity="0.4"/></svg>
+      <svg class="contact-leaf contact-leaf-2" viewBox="0 0 60 90" fill="none"><path d="M30 85 C30 85 5 60 5 35 C5 10 30 3 30 3 C30 3 55 10 55 35 C55 60 30 85 30 85Z" fill="var(--kraft)" opacity="0.2"/><line x1="30" y1="85" x2="30" y2="3" stroke="var(--kraft)" stroke-width="1.2" opacity="0.35"/></svg>
+      <svg class="contact-flower" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="8" fill="var(--rose-poudre)" opacity="0.6"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(0 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(60 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(120 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(180 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(240 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(300 30 30)"/></svg>
+      <svg class="contact-stamp" viewBox="0 0 50 50" fill="none"><rect x="5" y="5" width="40" height="40" rx="4" stroke="var(--terracotta)" stroke-width="2" opacity="0.3" fill="none" stroke-dasharray="4 3"/><text x="25" y="29" text-anchor="middle" font-family="Caveat, cursive" font-size="10" fill="var(--terracotta)" opacity="0.5">IC</text></svg>
+    </div>
+    <div class="hero-content contact-hero-content">
+      <p class="section-eyebrow">On est là</p>
+      <h1 class="edition-title">Parlons de <span class="edition-title-script">votre projet</span></h1>
+      <p class="hero-tagline">Une question, une idée, un événement à imaginer ? On adore les nouveaux défis. Écrivez-nous.</p>
+    </div>
+  </section>
+
+  <section class="contact-body">
+    <div class="contact-grid">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <span class="contact-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 6.29 6.29l1.62-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <h3>Téléphone</h3>
+          <p><a href="tel:+33783522771"><strong>07 83 52 27 71</strong></a></p>
+          <small>Du lundi au vendredi, 9h–18h</small>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </span>
+          <h3>Email</h3>
+          <p><a href="mailto:instant.collecte@gmail.com"><strong>instant.collecte@gmail.com</strong></a></p>
+          <small>Réponse sous 24–48 h</small>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </span>
+          <h3>Instagram</h3>
+          <a href="https://www.instagram.com/instant_collecte/" target="_blank" rel="noopener" class="contact-insta-link">@instant_collecte</a>
+          <small>Messages directs ouverts</small>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Nouvelle demande — Instant Collecté">
+          <div class="form-row form-row-split">
+            <div class="form-field">
+              <label class="form-label" for="cf-firstname">Prénom <span aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="cf-firstname" name="firstname" placeholder="Prénom" required autocomplete="given-name">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="cf-lastname">Nom <span aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="cf-lastname" name="lastname" placeholder="Nom" required autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="cf-email">Email <span aria-hidden="true">*</span></label>
+            <input class="form-input" type="email" id="cf-email" name="email" placeholder="vous@email.com" required autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="cf-phone">Téléphone <span class="form-optional">(optionnel)</span></label>
+            <input class="form-input" type="tel" id="cf-phone" name="phone" placeholder="06 00 00 00 00" autocomplete="tel">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="cf-type">Type de projet <span aria-hidden="true">*</span></label>
+            <select class="form-input form-select" id="cf-type" name="type" required>
+              <option value="">— Choisissez —</option>
+              <option value="mariage">Mariage</option>
+              <option value="evenement">Événement / Jour de Fête</option>
+              <option value="anniversaire">Anniversaire</option>
+              <option value="cadeau">Cadeau personnalisé</option>
+              <option value="partenariat">Partenariat / B2B</option>
+              <option value="autre">Autre projet</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="cf-message">Votre message <span aria-hidden="true">*</span></label>
+            <textarea class="form-input form-textarea" id="cf-message" name="message" placeholder="Décrivez votre projet ou votre question…" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-large form-submit" id="cfSubmitBtn">
+            <span class="form-submit-label">Envoyer ma demande</span>
+            <span class="form-submit-sending" aria-hidden="true" hidden>Envoi…</span>
+          </button>
+          <div class="form-feedback form-success" id="cfSuccess" hidden role="alert">✦ Message envoyé ! On vous répond dans les meilleurs délais.</div>
+          <div class="form-feedback form-error" id="cfError" hidden role="alert">Une erreur est survenue. Vous pouvez aussi nous écrire à <a href="mailto:[À REMPLACER]">[À REMPLACER — email]</a>.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+</section>
+
+</main>
+
+<!-- ============================================================ PAGE — MENTIONS LÉGALES -->
+<section class="page" id="page-mentions-legales" data-page-section="mentions-legales">
+
+  <section class="hero hero-edition hero-mentions">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="section-eyebrow">Informations légales</p>
+      <h1 class="edition-title">Mentions <span class="edition-title-script">légales</span></h1>
+    </div>
+  </section>
+
+  <section class="mentions-wrap">
+    <div class="mentions-content">
+
+      <div class="mentions-block">
+        <h2>Éditeur du site</h2>
+        <p>Le site <strong>instant-collecte.fr</strong> (hébergé provisoirement sur <strong>frozenfuzer.github.io/Instant-Collect-</strong>) est édité par :</p>
+        <ul>
+          <li><strong>Nom et prénom :</strong> Julian Rothea</li>
+          <li><strong>Statut juridique :</strong> Entrepreneur individuel (micro-entrepreneur)</li>
+          <li><strong>Numéro SIRET :</strong> 104 661 269 00019</li>
+          <li><strong>Numéro d'immatriculation RCS / RNE :</strong> Registre National des Entreprises (RNE)</li>
+          <li><strong>Numéro de TVA intracommunautaire :</strong> TVA non applicable, art. 293 B du CGI</li>
+          <li><strong>Adresse :</strong> 23 chemin du Coulis, 01800 Pérouges, France</li>
+          <li><strong>Téléphone :</strong> 07 83 52 27 71</li>
+          <li><strong>Email :</strong> instant.collecte@gmail.com</li>
+        </ul>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Hébergeur</h2>
+        <p>Ce site est hébergé par :</p>
+        <ul>
+          <li><strong>Société :</strong> GitHub, Inc. (filiale de Microsoft Corporation)</li>
+          <li><strong>Adresse :</strong> 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</li>
+          <li><strong>Téléphone :</strong> +1 (877) 448-4820</li>
+          <li><strong>Site :</strong> <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
+        </ul>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Propriété intellectuelle</h2>
+        <p>L'ensemble des contenus présents sur ce site (textes, photos, visuels, logo, nom de marque) sont la propriété exclusive d'Instant Collecté. Toute reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite préalable est interdite.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Traitement des données personnelles</h2>
+        <p>Les données collectées via le formulaire de contact ou lors d'une commande (nom, email, téléphone, adresse, message) font l'objet d'un traitement informatique destiné exclusivement à répondre à vos demandes et à assurer le suivi de vos commandes.</p>
+        <ul>
+          <li><strong>Responsable du traitement :</strong> Julian Rothea — instant.collecte@gmail.com</li>
+          <li><strong>Finalité du traitement :</strong> gestion des demandes de contact, traitement et suivi des commandes</li>
+          <li><strong>Base légale :</strong> consentement de l'internaute et exécution du contrat de vente</li>
+          <li><strong>Caractère du recueil :</strong> facultatif pour le formulaire de contact, obligatoire pour la passation d'une commande</li>
+          <li><strong>Destinataires des données :</strong> Instant Collecté et ses sous-traitants techniques strictement nécessaires au fonctionnement du site (hébergement, formulaires de contact et de commande) — aucune transmission à des fins commerciales à des tiers</li>
+          <li><strong>Durée de conservation :</strong> [À REMPLACER — ex : 3 ans à compter du dernier contact]</li>
+          <li><strong>Transfert hors Union Européenne :</strong> oui — l'hébergement (GitHub, États-Unis), la messagerie (Gmail, Google), le formulaire de contact (Formspree) et le formulaire de commande (Tally) sont opérés par des prestataires américains</li>
+        </ul>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition concernant vos données. Pour exercer ce droit, contactez : <a href="mailto:instant.collecte@gmail.com">instant.collecte@gmail.com</a>.</p>
+        <p>Vous disposez également du droit d'introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">Commission Nationale de l'Informatique et des Libertés (CNIL)</a>.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Cookies</h2>
+        <p>Ce site n'utilise pas de cookies de tracking ou publicitaires. Aucune donnée de navigation n'est collectée à des fins commerciales ou statistiques.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Responsabilité</h2>
+        <p>Instant Collecté s'efforce de maintenir les informations de ce site à jour et exactes. Cependant, nous ne pouvons garantir l'exactitude, l'exhaustivité ou l'actualité des informations publiées. L'utilisation du site se fait sous la seule responsabilité de l'utilisateur.</p>
+        <p>La qualité du rendu final (netteté, cadrage, couleurs) dépend directement de la qualité des photos fournies par le client. Instant Collecté ne saurait être tenu responsable d'un résultat décevant lié à un fichier de basse résolution ou de mauvaise qualité transmis par le client.</p>
+        <p>La responsabilité d'Instant Collecté, si elle est engagée, est en tout état de cause limitée au montant de la commande concernée. Instant Collecté ne pourra être tenu responsable des retards ou inexécutions liés à un cas de force majeure (grève, incident technique, panne d'hébergement, catastrophe naturelle, etc.).</p>
+      </div>
+
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================================ PAGE — CGV -->
+<section class="page" id="page-cgv" data-page-section="cgv">
+
+  <section class="hero hero-edition hero-mentions">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="section-eyebrow">Conditions de vente</p>
+      <h1 class="edition-title">Conditions Générales <span class="edition-title-script">de Vente</span></h1>
+    </div>
+  </section>
+
+  <section class="mentions-wrap">
+    <div class="mentions-content">
+
+      <div class="mentions-block">
+        <h2>Article 1 — Vendeur</h2>
+        <ul>
+          <li><strong>Nom :</strong> Julian Rothea</li>
+          <li><strong>Enseigne :</strong> Instant Collecté</li>
+          <li><strong>Statut :</strong> Entrepreneur individuel (micro-entrepreneur)</li>
+          <li><strong>SIRET :</strong> 104 661 269 00019</li>
+          <li><strong>Numéro d'immatriculation RCS / RNE :</strong> Registre National des Entreprises (RNE)</li>
+          <li><strong>Numéro de TVA intracommunautaire :</strong> TVA non applicable, art. 293 B du CGI</li>
+          <li><strong>Adresse :</strong> 23 chemin du Coulis, 01800 Pérouges, France</li>
+          <li><strong>Email :</strong> instant.collecte@gmail.com</li>
+          <li><strong>Téléphone :</strong> 07 83 52 27 71</li>
+        </ul>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 2 — Objet</h2>
+        <p>Les présentes Conditions Générales de Vente régissent les relations contractuelles entre Instant Collecté et tout acheteur souhaitant acquérir un produit proposé par la marque : boosters photo personnalisés, livrets-albums, coffrets éditions spéciales (Fête des Mères, Saint-Valentin, Mariage, etc.).</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 3 — Produits</h2>
+        <p>Les produits sont des créations artisanales, fabriquées à partir de photos fournies par le client. Chaque commande est unique et personnalisée. Les visuels présentés sur le site sont donnés à titre indicatif.</p>
+        <p>La qualité du rendu final dépend directement de la qualité et de la résolution des fichiers transmis par le client. Les couleurs imprimées peuvent par ailleurs présenter de légères différences avec celles affichées à l'écran du client, en raison des écarts de calibrage entre les écrans et les procédés d'impression. Ces différences de colorimétrie ne peuvent donner lieu à aucune réclamation, retour ou remboursement.</p>
+        <p>Instant Collecté se réserve le droit de refuser toute photo dont le contenu serait illicite, offensant, contraire aux bonnes mœurs ou portant atteinte aux droits de tiers.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 4 — Commande</h2>
+        <p>La commande est passée directement depuis le site, via le formulaire de commande dédié (dépôt des coordonnées et des photographies). Elle est confirmée après réception du paiement et validation des photos par Instant Collecté.</p>
+        <p>Instant Collecté se réserve le droit de refuser ou d'annuler une commande dans les cas suivants : photos corrompues, de résolution insuffisante ou techniquement inexploitables ; contenu contraire à l'article 3 ; paiement non confirmé ; ou erreur manifeste de prix ou de description du produit. En cas de refus, le client en est informé et tout paiement déjà effectué lui est intégralement remboursé.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 5 — Prix</h2>
+        <p>Les prix sont indiqués en euros, toutes taxes comprises. Instant Collecté se réserve le droit de modifier ses tarifs à tout moment. Le prix applicable est celui en vigueur au moment de la confirmation de commande.</p>
+        <p>TVA non applicable, article 293 B du Code général des impôts (franchise en base de TVA).</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 6 — Paiement</h2>
+        <p>Le paiement intégral est exigé avant la fabrication. Les moyens de paiement acceptés sont précisés lors de la commande.</p>
+        <p>[À REMPLACER — lister les moyens de paiement acceptés : virement, PayPal, Lydia, etc.]</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 7 — Fabrication et délais</h2>
+        <p>Les produits étant entièrement personnalisés, leur fabrication débute après réception du paiement et des photos. Le délai de fabrication est de [À REMPLACER — ex : 5 à 10 jours ouvrés], auquel s'ajoute le délai de livraison.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 8 — Livraison</h2>
+        <p>Les commandes sont expédiées à l'adresse indiquée par l'acheteur. Les frais de livraison sont [À REMPLACER — ex : inclus / à la charge du client]. Tout retard de livraison lié au transporteur ne saurait engager la responsabilité d'Instant Collecté.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 9 — Droit de rétractation</h2>
+        <p>Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation <strong>ne s'applique pas</strong> aux biens confectionnés selon les spécifications du consommateur ou nettement personnalisés. Les produits Instant Collecté étant entièrement personnalisés, aucun retour ni remboursement ne sera accepté sauf défaut de fabrication constaté.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 10 — Garanties légales</h2>
+        <p>Tout produit livré bénéficie de la garantie légale de conformité (articles L217-3 et suivants du Code de la consommation) et de la garantie légale des vices cachés (articles 1641 et suivants du Code civil), indépendamment de toute garantie commerciale éventuelle.</p>
+        <p>La garantie légale de conformité oblige le vendeur à livrer un bien conforme au contrat et à répondre des défauts de conformité existant lors de la délivrance. La garantie des vices cachés couvre les défauts cachés rendant le produit impropre à l'usage auquel il est destiné.</p>
+        <p>Pour faire valoir ces garanties, le client doit contacter Instant Collecté à <a href="mailto:instant.collecte@gmail.com">instant.collecte@gmail.com</a> en décrivant le défaut constaté, accompagné de photos si possible.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 11 — Réclamations et médiation</h2>
+        <p>Toute réclamation doit être adressée dans un délai de 7 jours suivant la réception de la commande à : <a href="mailto:instant.collecte@gmail.com">instant.collecte@gmail.com</a>. En cas de défaut avéré de fabrication, Instant Collecté s'engage à refabriquer le produit à ses frais.</p>
+        <p>En cas de litige non résolu à l'amiable, le client consommateur a la possibilité de recourir gratuitement à un médiateur de la consommation. Médiateur compétent : [À REMPLACER]. Plus d'informations sur la <a href="https://www.economie.gouv.fr/mediation-conso" target="_blank" rel="noopener">médiation de la consommation</a>.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 12 — Engagements du client</h2>
+        <p>Le client garantit être titulaire des droits sur les photos transmises et autorise Instant Collecté à les utiliser uniquement dans le cadre de la fabrication de sa commande. Instant Collecté ne les partagera ni ne les réutilisera sans accord explicite du client.</p>
+        <p>Lorsque les photos représentent des personnes identifiables (famille, couple, invités, enfants, etc.), le client garantit avoir recueilli l'autorisation de ces personnes, ou de leurs représentants légaux pour les mineurs, au titre du droit à l'image. Le client est seul responsable du contenu qu'il transmet et garantit Instant Collecté contre toute réclamation d'un tiers à ce titre.</p>
+        <p>Le client garantit enfin que ses commandes sont réalisées à des fins privées et personnelles, à l'exclusion de tout usage commercial ou de revente.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 13 — Conservation des fichiers</h2>
+        <p>Instant Collecté n'assure aucun service de sauvegarde ou de stockage pérenne des photos transmises. Le client demeure responsable de la conservation de ses propres fichiers originaux. Instant Collecté ne saurait être tenu responsable de la perte, de la suppression ou de l'altération des fichiers transmis, quelle qu'en soit la cause.</p>
+      </div>
+
+      <div class="mentions-block">
+        <h2>Article 14 — Droit applicable et divisibilité</h2>
+        <p>Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité, notamment via la médiation prévue à l'article 11. À défaut d'accord amiable, conformément à l'article R.631-3 du Code de la consommation, le client consommateur peut saisir soit l'une des juridictions territorialement compétentes en vertu du Code de procédure civile, soit la juridiction du lieu où il demeurait au moment de la conclusion du contrat ou de la survenance du fait dommageable.</p>
+        <p>Si l'une des clauses des présentes CGV venait à être déclarée nulle ou inapplicable, les autres clauses conserveraient leur pleine valeur et continueraient de s'appliquer.</p>
+      </div>
+
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================================ PAGE — COMMANDE (dépôt photos) -->
+<section class="page" id="page-commande" data-page-section="commande">
+
+  <section class="hero hero-edition hero-commande">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="commande-deco" aria-hidden="true">
+      <svg class="commande-leaf commande-leaf-1" viewBox="0 0 80 120" fill="none"><path d="M40 110 C40 110 10 80 10 50 C10 20 40 5 40 5 C40 5 70 20 70 50 C70 80 40 110 40 110Z" fill="var(--vert-feuillage)" opacity="0.22"/><line x1="40" y1="110" x2="40" y2="5" stroke="var(--vert-feuillage)" stroke-width="1.5" opacity="0.35"/></svg>
+      <svg class="commande-leaf commande-leaf-2" viewBox="0 0 60 90" fill="none"><path d="M30 85 C30 85 5 60 5 35 C5 10 30 3 30 3 C30 3 55 10 55 35 C55 60 30 85 30 85Z" fill="var(--kraft)" opacity="0.2"/><line x1="30" y1="85" x2="30" y2="3" stroke="var(--kraft)" stroke-width="1.2" opacity="0.35"/></svg>
+      <svg class="commande-flower" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="8" fill="var(--rose-poudre)" opacity="0.6"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(60 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(120 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(180 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(240 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="10" fill="var(--rose-poudre)" opacity="0.4" transform="rotate(300 30 30)"/></svg>
+    </div>
+    <div class="hero-content commande-hero-content">
+      <p class="section-eyebrow">Dernière étape</p>
+      <h1 class="edition-title">Envoyez-nous <span class="edition-title-script">vos souvenirs</span></h1>
+      <p class="hero-tagline">Renseignez vos informations et déposez vos photos catégorie par catégorie. Comptez cinq minutes, on s'occupe du reste.</p>
+    </div>
+  </section>
+
+  <div class="commande-body">
+    <div class="commande-side-deco" aria-hidden="true">
+      <svg class="csd csd-tape-tl" viewBox="0 0 60 20" fill="none"><rect width="60" height="20" fill="var(--rose-poudre)" opacity="0.28"/><line x1="0" y1="20" x2="20" y2="0" stroke="var(--cream)" stroke-width="3" opacity="0.55"/><line x1="20" y1="20" x2="40" y2="0" stroke="var(--cream)" stroke-width="3" opacity="0.55"/><line x1="40" y1="20" x2="60" y2="0" stroke="var(--cream)" stroke-width="3" opacity="0.55"/></svg>
+      <svg class="csd csd-polaroid-ml" viewBox="0 0 24 28" fill="none"><rect x="2" y="2" width="20" height="24" rx="2" fill="var(--cream)" stroke="var(--kraft)" stroke-width="1.5"/><rect x="4.5" y="4.5" width="15" height="13" fill="var(--vert-feuillage)" opacity="0.3"/></svg>
+      <svg class="csd csd-dotgrid-bl" viewBox="0 0 100 100" fill="none"><circle cx="10" cy="10" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="30" cy="10" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="50" cy="10" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="10" cy="30" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="30" cy="30" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="50" cy="30" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="10" cy="50" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="30" cy="50" r="2" fill="var(--terracotta)" opacity="0.18"/><circle cx="50" cy="50" r="2" fill="var(--terracotta)" opacity="0.18"/></svg>
+      <svg class="csd csd-camera-bl" viewBox="0 0 24 24" fill="none" stroke="var(--vert-feuillage)" stroke-width="1.6" opacity="0.3"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+
+      <svg class="csd csd-heart-tr" viewBox="0 0 24 24" fill="var(--rose-poudre)" opacity="0.4"><path d="M12 20.9l-1.1-1C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.9 11.4l-1.1 1z"/></svg>
+      <svg class="csd csd-sparkle-mr" viewBox="0 0 24 24" fill="var(--terracotta)" opacity="0.35"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/></svg>
+      <svg class="csd csd-stamp-br" viewBox="0 0 60 60" fill="none"><rect x="4" y="4" width="52" height="52" rx="5" stroke="var(--terracotta)" stroke-width="2" opacity="0.25" fill="none" stroke-dasharray="4 3"/><text x="30" y="34" text-anchor="middle" font-family="Caveat,cursive" font-size="12" fill="var(--terracotta)" opacity="0.45">IC</text></svg>
+      <svg class="csd csd-ribbon-mr" viewBox="0 0 24 24" fill="var(--kraft)" opacity="0.32"><path d="M2 12 L10 6 L10 18 Z"/><path d="M22 12 L14 6 L14 18 Z"/><rect x="10" y="9" width="4" height="6" rx="1"/></svg>
+    </div>
+
+    <section class="commande-steps">
+      <div class="commande-step">
+        <span class="commande-step-num">01</span>
+        <p>Vos coordonnées et l'édition choisie</p>
+      </div>
+      <div class="commande-step">
+        <span class="commande-step-num">02</span>
+        <p>Vos photos, catégorie par catégorie</p>
+      </div>
+      <div class="commande-step">
+        <span class="commande-step-num">03</span>
+        <p>On confirme et on prépare votre commande</p>
+      </div>
+    </section>
+
+    <section class="commande-form-wrap">
+      <div class="commande-form-frame">
+        <iframe
+          id="tallyFrame"
+          title="Formulaire de commande Instant Collecté"
+          loading="lazy"
+          width="100%"
+          height="740"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+        ></iframe>
+      </div>
+      <p class="commande-form-fallback">Le formulaire ne s'affiche pas ? <a href="https://tally.so/r/RGgEb9" target="_blank" rel="noopener">Ouvrez-le dans un nouvel onglet</a>.</p>
+    </section>
+  </div>
+
+</section>
+
+<footer class="footer" id="siteFooter">
+  <div class="footer-content">
+    <a href="#accueil" class="footer-logo">Instant Collecté</a>
+
+    <nav class="footer-nav">
+      <a href="#accueil">Accueil</a>
+      <a href="#concept">Le concept</a>
+      <a href="#fete-des-meres">Fête des Mères</a>
+      <a href="#saint-valentin">Saint-Valentin</a>
+      <a href="#souvenir-ete">Souvenir d'été</a>
+      <a href="#mariage">Mariage</a>
+      <a href="#jour-de-fete">Jour de Fête</a>
+      <a href="#realisations">Un autre projet ?</a>
+      <a href="#partenaires">Nos Partenaires</a>
+      <a href="#contact">Nous contacter</a>
+    </nav>
+
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/instant_collecte/" target="_blank" rel="noopener" class="footer-social-link">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4.2"/>
+          <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/>
+        </svg>
+        @instant_collecte
+      </a>
+      <a href="https://www.tiktok.com/@instant_collecte?lang=fr" target="_blank" rel="noopener" class="footer-social-link">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+        </svg>
+        @instant_collecte
+      </a>
+    </div>
+
+    <p class="footer-mentions">© 2026 Instant Collecté — Tous droits réservés</p>
+    <nav class="footer-legal">
+      <a href="#mentions-legales" data-route-link="mentions-legales">Mentions légales</a>
+      <span class="footer-legal-sep">·</span>
+      <a href="#cgv" data-route-link="cgv">CGV</a>
+    </nav>
+  </div>
+</footer>
+
+
+<!-- Script d'embed Tally — redimensionne l'iframe à la hauteur réelle du formulaire -->
+<script async src="https://tally.so/widgets/embed.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

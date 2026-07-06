@@ -1,2 +1,2 @@
-# Instant-Collect-V2
-blabla
+# Instant-Collect-
+blablabla
