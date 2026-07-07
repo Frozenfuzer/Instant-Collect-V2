@@ -1107,9 +1107,11 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
    démesurément haute sur grand écran. */
 .video-placeholder-portrait{
   width: 100%;
-  max-width: 260px;
+  max-width: 380px;
   margin: 0 auto;
-  padding-bottom: 110%; /* cadre compact, la vidéo (9:16) reste visible en entier grâce à object-fit: contain ci-dessous */
+  padding-bottom: 115%; /* proche du 4:5 du cadre photo hero, un peu plus court */
+  background: var(--cream-warm); /* même couleur que la section .edition-video : les bandes de "object-fit: contain" se fondent dans le fond */
+  border: none;
 }
 .video-placeholder-portrait .video-iframe{ object-fit: contain; }
 .video-placeholder .video-iframe{
