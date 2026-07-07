@@ -202,11 +202,11 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .e-accent::after{
   content: "";
   position: absolute;
-  width: 0.24em;
-  height: 0.045em;
+  width: 0.22em;
+  height: 0.048em;
   background: currentColor;
   border-radius: 0.04em;
-  bottom: 0.58em;
+  bottom: 0.62em;
   left: 0.1em;
   transform: rotate(-45deg);
 }
