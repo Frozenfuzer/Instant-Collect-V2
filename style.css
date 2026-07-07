@@ -1129,6 +1129,8 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
    n'est jamais écrasée par la règle générale ci-dessus (même spécificité
    CSS, donc l'ordre dans le fichier compte). */
 .video-placeholder-portrait .video-iframe{ object-fit: contain; }
+/* Cadre vidéo cliquable (balise <a> au lieu de <div>) : forcer le comportement bloc */
+.video-placeholder-link{ display: block; cursor: pointer; text-decoration: none; }
 
 /* ===================== DÉCORATIONS VIDÉO — page Histoire d'Amour ===================== */
 .video-embed-wrap-valentin{ position: relative; }
