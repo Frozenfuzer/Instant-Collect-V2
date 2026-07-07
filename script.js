@@ -54,67 +54,67 @@ let previousRoute = null;
    -------------------------------------------------------------------------- */
 const IMAGES = {
   // Logo hero accueil
-  heroLogo: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%201%20modif.png",
+  heroLogo: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%201%20modif.png",
 
   // Accueil — titre "Comment ça fonctionne ?" flanqué des 3 mini boosters
-  titleBoostersArt: "https://frozenfuzer.github.io/Instant-Collect-/assets/icones/3%20mini%20booster.jpeg",
+  titleBoostersArt: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/icones/3%20mini%20booster.jpeg",
 
   // Accueil — icônes des 4 mini-étapes
-  stepIconCamera:    "https://frozenfuzer.github.io/Instant-Collect-/assets/icones/Vignette%201%20appareil%20photo.jpeg",
-  stepIconVignettes: "https://frozenfuzer.github.io/Instant-Collect-/assets/icones/Vignette%202%20carte%20en%20d%C3%A9sordre.jpeg",
-  stepIconBoosters:  "https://frozenfuzer.github.io/Instant-Collect-/assets/icones/Vignette%203%203%20mini%20booster.jpeg",
-  stepIconLivre:     "https://frozenfuzer.github.io/Instant-Collect-/assets/icones/Vignette%204%20livret.jpeg",
+  stepIconCamera:    "https://frozenfuzer.github.io/Instant-Collect-V2/assets/icones/Vignette%201%20appareil%20photo.jpeg",
+  stepIconVignettes: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/icones/Vignette%202%20carte%20en%20d%C3%A9sordre.jpeg",
+  stepIconBoosters:  "https://frozenfuzer.github.io/Instant-Collect-V2/assets/icones/Vignette%203%203%20mini%20booster.jpeg",
+  stepIconLivre:     "https://frozenfuzer.github.io/Instant-Collect-V2/assets/icones/Vignette%204%20livret.jpeg",
 
   // Accueil — booster mystère interactif
-  boosterPackArt: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Booster%20Ete%202026%20sans%20Fond.png",
-  boosterCard1:   "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Mini%20image%20booster%20mystere%20Famille.jpeg",
-  boosterCard2:   "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Mini%20image%20booster%20mystere%20Julian%20et%20mami.jpeg",
-  boosterCard3:   "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Mini%20image%20booster%20mystere%20mariage.jpeg",
+  boosterPackArt: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Booster%20Ete%202026%20sans%20Fond.png",
+  boosterCard1:   "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Mini%20image%20booster%20mystere%20Famille.jpeg",
+  boosterCard2:   "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Mini%20image%20booster%20mystere%20Julian%20et%20mami.jpeg",
+  boosterCard3:   "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Mini%20image%20booster%20mystere%20mariage.jpeg",
 
   // Vitrine "une collection à découvrir" (accueil, sous le booster interactif)
-  boosterCollEte:    "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Booster%20Ete%202026%20sans%20Fond.png",
-  boosterCollNormal: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/booster%20normal.png",
-  boosterCollFete:   "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Booster%20fete.png",
+  boosterCollEte:    "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Booster%20Ete%202026%20sans%20Fond.png",
+  boosterCollNormal: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/booster%20normal.png",
+  boosterCollFete:   "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Booster%20fete.png",
 
   // Accueil — cartes valeurs (photos)
-  valuePhoto1: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%202.png",
-  valuePhoto2: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%203%20.png",
-  valuePhoto3: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%204.jpg",
+  valuePhoto1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%202.png",
+  valuePhoto2: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%203%20.png",
+  valuePhoto3: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%204.jpg",
 
   // Accueil — grille éditions (à compléter)
-  editionHistoireAmour: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%204.jpg",
-  editionSouvenirs:     "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%205.png",
-  editionEte:           "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%206.png",
-  editionKing:          "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%208.png",
-  editionMariage:       "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%207.png",
-  editionPeres:         "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%209.png",
+  editionHistoireAmour: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%204.jpg",
+  editionSouvenirs:     "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%205.png",
+  editionEte:           "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%206.png",
+  editionKing:          "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%208.png",
+  editionMariage:       "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%207.png",
+  editionPeres:         "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%209.png",
 
   // Accueil — bandeau vedette
-  editionMeresHero: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%205.png",
+  editionMeresHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%205.png",
 
   // Accueil — ambiance (polaroids)
-  ambiance1: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%202.png",
-  ambiance2: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%2010.jpg",
-  ambiance3: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%209.png",
-  ambiance4: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/Photo%205.png",
+  ambiance1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%202.png",
+  ambiance2: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%2010.jpg",
+  ambiance3: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%209.png",
+  ambiance4: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%205.png",
 
   // Accueil — preuve sociale (screenshots)
-  screenshot1: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/PHOTO%2011.PNG",
-  screenshot2: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/PHOTO%2012.PNG",
-  screenshot3: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/PHOTO%2013.PNG",
-  screenshot4: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/PHOTO%2014.PNG",
-  screenshot5: "https://frozenfuzer.github.io/Instant-Collect-/assets/accueil/PHOTO%2015.jpg",
+  screenshot1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/PHOTO%2011.PNG",
+  screenshot2: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/PHOTO%2012.PNG",
+  screenshot3: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/PHOTO%2013.PNG",
+  screenshot4: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/PHOTO%2014.PNG",
+  screenshot5: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/PHOTO%2015.jpg",
 
   // Concept — intro nostalgie (collage photos, à remplir dès que les images sont dans assets/concept/)
-  conceptPhoto1: "https://frozenfuzer.github.io/Instant-Collect-/assets/concept/Photo%201%20carte%20concept.PNG",
-  conceptPhoto2: "https://frozenfuzer.github.io/Instant-Collect-/assets/concept/Photo%202%20carte%20concept.PNG",
-  conceptPhoto3: "https://frozenfuzer.github.io/Instant-Collect-/assets/concept/Photo%203%20carte%20concept.PNG",
+  conceptPhoto1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/Photo%201%20carte%20concept.PNG",
+  conceptPhoto2: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/Photo%202%20carte%20concept.PNG",
+  conceptPhoto3: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/Photo%203%20carte%20concept.PNG",
 
   // Concept — 4 étapes
-  step1: "https://frozenfuzer.github.io/Instant-Collect-/assets/concept/Groupement%20de%20photo%20sur%20table.JPG",
+  step1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/Groupement%20de%20photo%20sur%20table.JPG",
   step2: "",
-  step3: "https://frozenfuzer.github.io/Instant-Collect-/assets/concept/IMG_9295.PNG",
-  step4: "https://frozenfuzer.github.io/Instant-Collect-/assets/concept/IMG_9294.jpg",
+  step3: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/IMG_9295.PNG",
+  step4: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/IMG_9294.jpg",
 
   // King Jouet
   kingBooster: "", kingShop: "",
@@ -123,7 +123,7 @@ const IMAGES = {
   realisationJoinzy: "", realisationEvg: "", realisationEntreprise: "", realisationCommunion: "",
 
   // Fête des Mères
-  meresHero: "https://frozenfuzer.github.io/Instant-Collect-/assets/edition/livret%20maelle.JPG",
+  meresHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/livret%20maelle.JPG",
   meresPoster: "",
   meresLivret: "",
 
@@ -133,7 +133,8 @@ const IMAGES = {
   mariageLivret: "",
 
   // Saint-Valentin
-  valentinHero: "", valentinLivret: "",
+  valentinHero: "", valentinLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/editions/Photo%20HA%202.JPG",
+  valentinLivretHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/editions/IMG_9846.JPG",
   valentinPoster: "",
 
   // Jour de Fête
@@ -162,6 +163,17 @@ function setImage(el){
     el.style.backgroundImage = `url("${url}")`;
   }
   el.classList.add("has-image");
+
+  // Survol : si l'élément porte data-img-hover, on prépare une 2e image en
+  // variable CSS (--hover-bg), affichée au survol via la règle CSS
+  // [data-img-hover]:hover (voir style.css).
+  const hoverKey = el.dataset.imgHover;
+  if (hoverKey){
+    const hoverUrl = IMAGES[hoverKey];
+    if (hoverUrl && hoverUrl.trim() !== ""){
+      el.style.setProperty("--hover-bg", `url("${hoverUrl}")`);
+    }
+  }
 }
 
 function applyImages(){
