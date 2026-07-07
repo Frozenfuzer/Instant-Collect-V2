@@ -206,8 +206,8 @@ img[data-img]::before, img[data-img]::after{ content:none; }
   height: 0.07em;
   background: currentColor;
   border-radius: 0.06em;
-  bottom: 0.72em;
-  left: 0.24em;
+  bottom: 0.45em;
+  left: 0.1em;
   transform: rotate(-45deg);
 }
 .nav-left{ display: flex; align-items: center; gap: 1.2rem; }
