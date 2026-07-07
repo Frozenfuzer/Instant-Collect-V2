@@ -202,10 +202,10 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .e-accent::after{
   content: "";
   position: absolute;
-  width: 0.26em;
-  height: 0.07em;
+  width: 0.24em;
+  height: 0.045em;
   background: currentColor;
-  border-radius: 0.06em;
+  border-radius: 0.04em;
   bottom: 0.45em;
   left: 0.1em;
   transform: rotate(-45deg);
