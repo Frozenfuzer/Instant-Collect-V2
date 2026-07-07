@@ -1113,7 +1113,7 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
   width: 100%;
   max-width: 380px;
   margin: 0 auto;
-  padding-bottom: 115%; /* proche du 4:5 du cadre photo hero, un peu plus court */
+  padding-bottom: 75%; /* nettement plus court que le 4:5 du cadre photo hero */
   background: var(--cream-warm); /* même couleur que la section .edition-video : les bandes de "object-fit: contain" se fondent dans le fond */
   border: none;
 }
