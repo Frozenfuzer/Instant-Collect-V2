@@ -205,8 +205,8 @@ img[data-img]::before, img[data-img]::after{ content:none; }
   width: 0.20em;
   height: 0.075em;
   background: currentColor;
-  border-radius: 0.21em;
-  bottom: 0.95em;
+  border-radius: 0.35em;
+  bottom: 0.99em;
   left: 0.1em;
   transform: rotate(-45deg);
 }
