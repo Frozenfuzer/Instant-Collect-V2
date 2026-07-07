@@ -1102,6 +1102,15 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
   border-radius: 4px;
   overflow: hidden;
 }
+/* Variante pour vidéo verticale (portrait, ex. format Instagram/TikTok 9:16) :
+   remplace le ratio 16:9 par 9:16, et limite la largeur pour ne pas devenir
+   démesurément haute sur grand écran. */
+.video-placeholder-portrait{
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding-bottom: 177.78%; /* 9:16 */
+}
 .video-placeholder .video-iframe{
   position: absolute; inset: 0;
   width: 100%; height: 100%;
