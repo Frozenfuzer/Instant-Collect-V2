@@ -203,7 +203,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
   content: "";
   position: absolute;
   width: 0.20em;
-  height: 0.07em;
+  height: 0.075em;
   background: currentColor;
   border-radius: 0.21em;
   bottom: 0.95em;
