@@ -1107,6 +1107,7 @@ body[data-page="contact"]{ --accent: var(--terracotta); }
   width: 100%; height: 100%;
   border: none;
   display: block;
+  object-fit: cover;
 }
 .video-placeholder-inner{
   position: absolute; inset: 0;
