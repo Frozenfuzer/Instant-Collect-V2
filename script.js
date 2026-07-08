@@ -84,7 +84,7 @@ const IMAGES = {
   // Accueil — grille éditions (à compléter)
   editionHistoireAmour: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%204.jpg",
   editionSouvenirs:     "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%205.png",
-  editionEte:           "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%206.png",
+  editionEte:           "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9725.jpg",
   editionKing:          "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%208.png",
   editionMariage:       "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%207.png",
   editionPeres:         "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%209.png",
@@ -143,7 +143,8 @@ const IMAGES = {
 
   // Souvenir d'été
   etePoster: "",
-  eteLivret: "",
+  eteLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9853.JPG",
+  eteLivretHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9854.JPG",
 };
 
 // Clés à charger immédiatement (au-dessus de la ligne de flottaison)
