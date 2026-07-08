@@ -664,7 +664,7 @@ function initPdpGallery(){
       window.setTimeout(() => {
         target.style.backgroundImage = `url("${url}")`;
         target.style.opacity = "1";
-      }, 500);
+      }, 250);
     }
 
     thumbs.forEach((thumb, i) => {
