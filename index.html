@@ -1552,7 +1552,7 @@
       </div>
     </section>
 
-    <section class="commande-form-wrap">
+    <section class="commande-form-wrap" id="commandeFormWrap">
       <div class="commande-form-frame">
         <iframe
           id="tallyFrame"
@@ -1566,6 +1566,18 @@
         ></iframe>
       </div>
       <p class="commande-form-fallback">Le formulaire ne s'affiche pas ? <a href="https://tally.so/r/RGgEb9" target="_blank" rel="noopener">Ouvrez-le dans un nouvel onglet</a>.</p>
+    </section>
+
+    <section class="commande-payment-step" id="commandePaymentStep" hidden>
+      <div class="commande-payment-card">
+        <span class="commande-payment-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+        <h2>Merci ! Il ne reste plus qu'à régler votre commande</h2>
+        <p class="commande-payment-recap" id="commandePaymentRecap"></p>
+        <a class="btn btn-primary btn-large" id="commandePaymentBtn" href="#" target="_blank" rel="noopener">Procéder au paiement</a>
+        <p class="commande-payment-note">Vous allez être redirigé·e vers notre page de paiement sécurisé.</p>
+      </div>
     </section>
   </div>
 
