@@ -757,12 +757,29 @@ function setupReveal(){
 /* --------------------------------------------------------------------------
    8bis) Fiche produit (PDP) — paliers de prix + galerie de vignettes
    -------------------------------------------------------------------------- */
+// Détermine le prix unitaire applicable pour une quantité donnée, à partir
+// des mêmes paliers que ceux affichés dans .pdp-tiers-grid (1 / 4 / 7 / 10).
+// Le palier applicable est le plus grand dont le seuil (data-qty) est
+// atteint par la quantité tapée (ex. 5 exemplaires → palier "à partir de 4").
+function tierForQty(tiers, qty){
+  let applicable = tiers[0];
+  tiers.forEach((tier) => {
+    if (qty >= parseInt(tier.dataset.qty, 10)) applicable = tier;
+  });
+  return applicable;
+}
+
 function initPdpTiers(){
   document.querySelectorAll(".pdp-tiers-grid").forEach((grid) => {
     const basePrice = parseFloat(grid.dataset.basePrice);
-    const tiers = grid.querySelectorAll(".pdp-tier");
+    const tiers = Array.from(grid.querySelectorAll(".pdp-tier"));
     const pdpSection = grid.closest(".pdp");
     const ctaBtn = pdpSection ? pdpSection.querySelector(".pdp-cta") : null;
+    const qtyPicker = pdpSection ? pdpSection.querySelector(".pdp-qty-picker") : null;
+    const qtyInput = qtyPicker ? qtyPicker.querySelector(".pdp-qty-input") : null;
+    const qtyMinus = qtyPicker ? qtyPicker.querySelector(".pdp-qty-minus") : null;
+    const qtyPlus = qtyPicker ? qtyPicker.querySelector(".pdp-qty-plus") : null;
+    const qtyTotal = qtyPicker ? qtyPicker.querySelector(".pdp-qty-total") : null;
 
     // Calcule et affiche le "Économisez X%" à partir des vrais prix, plutôt
     // que d'écrire un pourcentage en dur : garantit que l'affichage reste
@@ -776,16 +793,48 @@ function initPdpTiers(){
       }
     });
 
+    // Met à jour le CTA + le total affiché à partir de la quantité tapée
+    // dans le champ : détermine automatiquement le bon palier de prix,
+    // synchronise le bouton de palier visuellement actif, et recalcule
+    // le total (qty × prix unitaire du palier applicable).
+    function applyQty(qty){
+      qty = Math.max(1, parseInt(qty, 10) || 1);
+      if (qtyInput) qtyInput.value = qty;
+
+      const activeTier = tierForQty(tiers, qty);
+      const unitPrice = parseFloat(activeTier.dataset.unitPrice);
+
+      tiers.forEach((tier) => tier.classList.toggle("is-active", tier === activeTier));
+
+      if (ctaBtn){
+        ctaBtn.dataset.qty = String(qty);
+        ctaBtn.dataset.unitPrice = String(unitPrice);
+      }
+      if (qtyTotal){
+        const total = (unitPrice * qty).toFixed(2).replace(".", ",");
+        qtyTotal.textContent = "Total : " + total + "€ (" + qty + " exemplaire" + (qty > 1 ? "s" : "") + ")";
+      }
+    }
+
     tiers.forEach((tier) => {
       tier.addEventListener("click", () => {
-        tiers.forEach((t) => t.classList.remove("is-active"));
-        tier.classList.add("is-active");
-        if (ctaBtn){
-          ctaBtn.dataset.qty = tier.dataset.qty;
-          ctaBtn.dataset.unitPrice = tier.dataset.unitPrice;
-        }
+        applyQty(parseInt(tier.dataset.qty, 10));
       });
     });
+
+    if (qtyInput){
+      qtyInput.addEventListener("input", () => applyQty(qtyInput.value));
+      qtyInput.addEventListener("change", () => applyQty(qtyInput.value));
+    }
+    if (qtyMinus){
+      qtyMinus.addEventListener("click", () => applyQty((parseInt(qtyInput.value, 10) || 1) - 1));
+    }
+    if (qtyPlus){
+      qtyPlus.addEventListener("click", () => applyQty((parseInt(qtyInput.value, 10) || 1) + 1));
+    }
+
+    // État initial (quantité 1, palier "À l'unité") sans attendre d'action.
+    applyQty(1);
   });
 }
 
