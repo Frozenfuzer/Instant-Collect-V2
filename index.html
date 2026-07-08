@@ -910,7 +910,7 @@
         </div>
       </article>
       <article class="produit-card">
-        <div class="produit-visual" data-img="eteLivret" data-img-label="Le livret"></div>
+        <div class="produit-visual" data-img="eteLivret" data-img-hover="eteLivretHover" data-img-label="Le livret"></div>
         <div class="produit-body">
           <h3 class="produit-title">Le livret</h3>
           <p class="produit-desc">Un album estival qui rassemble vos plus beaux moments de vacances, booster après booster : les paysages, les visages, les instants qu'on croyait éphémères. À feuilleter dès les premiers frimas pour retrouver la chaleur de l'été.</p>
@@ -2147,7 +2147,13 @@
   <section class="pdp">
     <div class="pdp-gallery">
       <span class="pdp-badge-new">Nouveauté <span aria-hidden="true">♥</span></span>
-      <div class="pdp-media-main" data-img="eteLivret" data-img-label="Le livret — Souvenir d'été"></div>
+      <div class="pdp-media-main" data-img="eteLivret" data-img-label="Le livret — Souvenir d'été" id="pdpMainImage-eteLivret"></div>
+      <button class="pdp-arrow pdp-arrow-prev" aria-label="Photo précédente">‹</button>
+      <button class="pdp-arrow pdp-arrow-next" aria-label="Photo suivante">›</button>
+      <div class="pdp-thumbs">
+        <button class="pdp-thumb is-active" data-img="eteLivret" data-thumb-target="pdpMainImage-eteLivret" aria-label="Voir la couverture"></button>
+        <button class="pdp-thumb" data-img="eteLivretHover" data-thumb-target="pdpMainImage-eteLivret" aria-label="Voir le livret ouvert"></button>
+      </div>
     </div>
 
     <div class="pdp-info">
