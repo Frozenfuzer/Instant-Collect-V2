@@ -23,7 +23,7 @@
 
   <!--
   INSTANT COLLECTÉ — site multi-pages (8 pages), routeur JS par hash, un seul fichier pour CodePen.
-  Pages : #accueil  #concept  #king-jouet  #fete-des-meres  #saint-valentin  #mariage  #contact
+  Pages : #accueil  #concept  #king-jouet  #pour-toute-la-famille  #histoire-d-amour  #mariage  #contact
 
   IMAGES : toutes les images sont injectées via des constantes en haut de script.js (objet IMAGES).
   Tant qu'une URL est vide (""), un cadre "image à venir" stylisé s'affiche à la place.
@@ -52,11 +52,11 @@
           Éditions <span class="chev" aria-hidden="true">▾</span>
         </button>
         <div class="nav-editions-menu" id="navEditionsMenu" role="menu">
-          <a href="#fete-des-meres" data-route-link="fete-des-meres" role="menuitem">
+          <a href="#pour-toute-la-famille" data-route-link="pour-toute-la-famille" role="menuitem">
             <span class="ne-emoji" aria-hidden="true">🌸</span>
             <span class="ne-text"><strong>Pour toute la famille !</strong><small>Les naissances, les fous rires, à revivre ensemble</small></span>
           </a>
-          <a href="#saint-valentin" data-route-link="saint-valentin" role="menuitem">
+          <a href="#histoire-d-amour" data-route-link="histoire-d-amour" role="menuitem">
             <span class="ne-emoji" aria-hidden="true">💌</span>
             <span class="ne-text"><strong>Histoire d'Amour</strong><small>Revivez l'histoire de votre couple avec votre moitié !</small></span>
           </a>
@@ -253,28 +253,28 @@
 
     <div class="editions-grid">
 
-      <!-- Carte 1 : Saint-Valentin / Histoire d'Amour -->
+      <!-- Carte 1 : Histoire d'Amour -->
       <article class="produit-card">
         <div class="produit-visual" data-img="editionHistoireAmour" data-img-label="Édition Histoire d'Amour"></div>
         <div class="produit-body">
           <h3 class="produit-title">Édition Histoire d'Amour</h3>
           <p class="produit-desc">Revivez votre histoire d'amour une deuxième fois : vos débuts, vos voyages, vos moments.</p>
           <div class="card-actions">
-            <a href="#saint-valentin" class="btn btn-outline">Découvrir</a>
-            <button class="btn btn-primary" data-order-cta data-edition="saint-valentin">Je commande</button>
+            <a href="#histoire-d-amour" class="btn btn-outline">Découvrir</a>
+            <button class="btn btn-primary" data-order-cta data-edition="histoire-d-amour">Je commande</button>
           </div>
         </div>
       </article>
 
-      <!-- Carte 2 : Pour toute la Famille ! (Fête des Mères) -->
+      <!-- Carte 2 : Pour toute la Famille ! -->
       <article class="produit-card">
         <div class="produit-visual" data-img="editionSouvenirs" data-img-label="Édition Pour toute la Famille !"></div>
         <div class="produit-body">
           <h3 class="produit-title">Édition Pour toute la Famille !</h3>
           <p class="produit-desc">En famille, redécouvrez les moments forts de votre histoire ! Les naissances, les moments forts… Complétez la collection de la famille&nbsp;!</p>
           <div class="card-actions">
-            <a href="#fete-des-meres" class="btn btn-outline">Découvrir</a>
-            <button class="btn btn-primary" data-order-cta data-edition="fete-des-meres">Je commande</button>
+            <a href="#pour-toute-la-famille" class="btn btn-outline">Découvrir</a>
+            <button class="btn btn-primary" data-order-cta data-edition="pour-toute-la-famille">Je commande</button>
           </div>
         </div>
       </article>
@@ -645,7 +645,7 @@
 </section>
 
 <!-- ============================================================ PAGE 4 — FÊTE DES MÈRES -->
-<section class="page" id="page-fete-des-meres" data-page-section="fete-des-meres">
+<section class="page" id="page-pour-toute-la-famille" data-page-section="pour-toute-la-famille">
 
 
   <section class="hero hero-edition hero-split">
@@ -655,7 +655,7 @@
       <h1 class="edition-title">Des souvenirs qui valent <span class="edition-title-script">plus que tout</span></h1>
       <p class="hero-tagline">Vos photos. Vos moments. Votre histoire.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary" data-order-cta data-edition="fete-des-meres">Je commande</button>
+        <button class="btn btn-primary" data-order-cta data-edition="pour-toute-la-famille">Je commande</button>
       </div>
     </div>
     <div class="hero-split-media" data-img="meresHero" data-img-label="Pour toute la Famille !"></div>
@@ -673,7 +673,7 @@
           <h3 class="produit-title">Le poster</h3>
           <p class="produit-desc">Un poster canevas à remplir au fil des boosters : chaque photo vient s'ajouter à la fresque familiale, jusqu'à former un portrait complet à accrocher et à admirer chaque jour.</p>
           <p class="produit-price">19,99€</p>
-          <a href="#produit-fete-des-meres-poster" class="btn btn-primary">Je commande</a>
+          <a href="#produit-pour-toute-la-famille-poster" class="btn btn-primary">Je commande</a>
         </div>
       </article>
       <article class="produit-card">
@@ -682,7 +682,7 @@
           <h3 class="produit-title">Le livret</h3>
           <p class="produit-desc">Un album relié qui raconte l'histoire de la famille page après page : les naissances, les fous rires, les repas du dimanche. Chaque booster ouvert vient enrichir une nouvelle page, jusqu'à devenir un vrai livre de souvenirs à feuilleter ensemble.</p>
           <p class="produit-price">35,99€</p>
-          <a href="#produit-fete-des-meres-livret" class="btn btn-primary">Je commande</a>
+          <a href="#produit-pour-toute-la-famille-livret" class="btn btn-primary">Je commande</a>
         </div>
       </article>
     </div>
@@ -691,14 +691,14 @@
 
   <section class="cta-final cta-final-meres">
     <h2 class="cta-final-title">Redécouvrez une expérience unique : émotions garanties !</h2>
-    <button class="btn btn-primary btn-large" data-order-cta data-edition="fete-des-meres">Je commande</button>
+    <button class="btn btn-primary btn-large" data-order-cta data-edition="pour-toute-la-famille">Je commande</button>
   </section>
 
 
 </section>
 
-<!-- ============================================================ PAGE 5 — SAINT-VALENTIN -->
-<section class="page" id="page-saint-valentin" data-page-section="saint-valentin">
+<!-- ============================================================ PAGE 5 — HISTOIRE D'AMOUR -->
+<section class="page" id="page-histoire-d-amour" data-page-section="histoire-d-amour">
 
 
   <section class="hero hero-edition hero-split">
@@ -708,7 +708,7 @@
       <h1 class="edition-title">Votre histoire d'amour, <span class="edition-title-script">collée page après page</span></h1>
       <p class="hero-tagline">Le premier rendez-vous, le premier voyage, les petites habitudes : tout ce qui vous appartient, à deux.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary" data-order-cta data-edition="saint-valentin">Je commande</button>
+        <button class="btn btn-primary" data-order-cta data-edition="histoire-d-amour">Je commande</button>
       </div>
     </div>
     <div class="hero-split-media" data-img="valentinHero" data-img-label="Édition Histoire d'Amour"></div>
@@ -761,7 +761,7 @@
           <h3 class="produit-title">Le poster</h3>
           <p class="produit-desc">Un poster à compléter à deux, booster après booster : votre rencontre, vos voyages, vos petites habitudes prennent forme au fil des ouvertures, jusqu'à devenir une fresque affichée chez vous.</p>
           <p class="produit-price">19,99€</p>
-          <a href="#produit-saint-valentin-poster" class="btn btn-primary">Je commande</a>
+          <a href="#produit-histoire-d-amour-poster" class="btn btn-primary">Je commande</a>
         </div>
       </article>
       <article class="produit-card">
@@ -770,7 +770,7 @@
           <h3 class="produit-title">Le livret</h3>
           <p class="produit-desc">Un livret à remplir en duo qui retrace votre histoire depuis le premier regard : les rendez-vous, les voyages, les moments du quotidien. À s'offrir l'un à l'autre ou à construire ensemble, page après page.</p>
           <p class="produit-price">35,99€</p>
-          <a href="#produit-saint-valentin-livret" class="btn btn-primary">Je commande</a>
+          <a href="#produit-histoire-d-amour-livret" class="btn btn-primary">Je commande</a>
         </div>
       </article>
     </div>
@@ -779,7 +779,7 @@
 
   <section class="cta-final">
     <h2 class="cta-final-title">Offrez une histoire, pas un objet</h2>
-    <button class="btn btn-primary btn-large" data-order-cta data-edition="saint-valentin">Je commande maintenant</button>
+    <button class="btn btn-primary btn-large" data-order-cta data-edition="histoire-d-amour">Je commande maintenant</button>
   </section>
 
 
@@ -1375,7 +1375,7 @@
 
       <div class="mentions-block">
         <h2>Article 2 — Objet</h2>
-        <p>Les présentes Conditions Générales de Vente régissent les relations contractuelles entre Instant Collecté et tout acheteur souhaitant acquérir un produit proposé par la marque : boosters photo personnalisés, livrets-albums, posters et éditions spéciales (Fête des Mères, Saint-Valentin, Mariage, etc.).</p>
+        <p>Les présentes Conditions Générales de Vente régissent les relations contractuelles entre Instant Collecté et tout acheteur souhaitant acquérir un produit proposé par la marque : boosters photo personnalisés, livrets-albums, posters et éditions spéciales (Pour toute la Famille, Histoire d'Amour, Mariage, etc.).</p>
       </div>
 
       <div class="mentions-block">
@@ -1519,7 +1519,7 @@
 </section>
 
 <!-- ============================================================ FICHE PRODUIT — LIVRET HISTOIRE D'AMOUR -->
-<section class="page" id="page-produit-saint-valentin-livret" data-page-section="produit-saint-valentin-livret">
+<section class="page" id="page-produit-histoire-d-amour-livret" data-page-section="produit-histoire-d-amour-livret">
 
   <section class="pdp">
     <div class="pdp-gallery">
@@ -1565,7 +1565,7 @@
         <p class="pdp-tiers-shipping">Livraison offerte à partir de 4 livrets</p>
       </div>
 
-      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="saint-valentin" data-qty="1" data-unit-price="35.99">Je commande</button>
+      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="histoire-d-amour" data-qty="1" data-unit-price="35.99">Je commande</button>
 
       <div class="pdp-trust">
         <div class="pdp-trust-item">
@@ -1613,7 +1613,7 @@
 </section>
 
 <!-- ============================================================ FICHE PRODUIT — POSTER POUR TOUTE LA FAMILLE ! -->
-<section class="page" id="page-produit-fete-des-meres-poster" data-page-section="produit-fete-des-meres-poster">
+<section class="page" id="page-produit-pour-toute-la-famille-poster" data-page-section="produit-pour-toute-la-famille-poster">
 
   <section class="pdp">
     <div class="pdp-gallery">
@@ -1653,7 +1653,7 @@
         <p class="pdp-tiers-shipping">Livraison offerte à partir de 4 posters</p>
       </div>
 
-      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="fete-des-meres" data-qty="1" data-unit-price="19.99">Je commande</button>
+      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="pour-toute-la-famille" data-qty="1" data-unit-price="19.99">Je commande</button>
 
       <div class="pdp-trust">
         <div class="pdp-trust-item">
@@ -1701,7 +1701,7 @@
 </section>
 
 <!-- ============================================================ FICHE PRODUIT — LIVRET POUR TOUTE LA FAMILLE ! -->
-<section class="page" id="page-produit-fete-des-meres-livret" data-page-section="produit-fete-des-meres-livret">
+<section class="page" id="page-produit-pour-toute-la-famille-livret" data-page-section="produit-pour-toute-la-famille-livret">
 
   <section class="pdp">
     <div class="pdp-gallery">
@@ -1741,7 +1741,7 @@
         <p class="pdp-tiers-shipping">Livraison offerte à partir de 4 livrets</p>
       </div>
 
-      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="fete-des-meres" data-qty="1" data-unit-price="35.99">Je commande</button>
+      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="pour-toute-la-famille" data-qty="1" data-unit-price="35.99">Je commande</button>
 
       <div class="pdp-trust">
         <div class="pdp-trust-item">
@@ -1789,7 +1789,7 @@
 </section>
 
 <!-- ============================================================ FICHE PRODUIT — POSTER HISTOIRE D'AMOUR -->
-<section class="page" id="page-produit-saint-valentin-poster" data-page-section="produit-saint-valentin-poster">
+<section class="page" id="page-produit-histoire-d-amour-poster" data-page-section="produit-histoire-d-amour-poster">
 
   <section class="pdp">
     <div class="pdp-gallery">
@@ -1829,7 +1829,7 @@
         <p class="pdp-tiers-shipping">Livraison offerte à partir de 4 posters</p>
       </div>
 
-      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="saint-valentin" data-qty="1" data-unit-price="19.99">Je commande</button>
+      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="histoire-d-amour" data-qty="1" data-unit-price="19.99">Je commande</button>
 
       <div class="pdp-trust">
         <div class="pdp-trust-item">
@@ -2413,8 +2413,8 @@
     <nav class="footer-nav">
       <a href="#accueil">Accueil</a>
       <a href="#concept">Le concept</a>
-      <a href="#fete-des-meres">Pour toute la Famille !</a>
-      <a href="#saint-valentin">Histoire d'Amour</a>
+      <a href="#pour-toute-la-famille">Pour toute la Famille !</a>
+      <a href="#histoire-d-amour">Histoire d'Amour</a>
       <a href="#souvenir-ete">Souvenir d'été</a>
       <a href="#mariage">Notre Mariage</a>
       <a href="#jour-de-fete">Jour de Fête</a>
