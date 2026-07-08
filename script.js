@@ -25,8 +25,8 @@ const TALLY_EMBED_BASE = TALLY_FORM_URL.replace("/r/", "/embed/")
 // texte de l'option choisie dans Tally (Pre-populate fields), sinon le champ
 // ne se pré-coche pas (le formulaire reste fonctionnel, juste pas pré-rempli).
 const EDITION_PREFILL = {
-  "fete-des-meres": "Pour toute la Famille !",
-  "saint-valentin": "Histoire d'Amour",
+  "pour-toute-la-famille": "Pour toute la Famille !",
+  "histoire-d-amour": "Histoire d'Amour",
   "souvenir-ete":   "Souvenir d'été",
   "mariage":        "Notre Mariage",
   "jour-de-fete":   "Jour de fête !",
@@ -44,7 +44,7 @@ let previousRoute = null;
       Laisse "" pour afficher un cadre "image à venir" stylisé à la place.
       La clé correspond à l'attribut data-img="..." dans le HTML.
 
-      Exemple : editionMeresHero: "https://i.postimg.cc/xxxx/fete-des-meres.png",
+      Exemple : editionMeresHero: "https://i.postimg.cc/xxxx/pour-toute-la-famille.png",
 
       boosterPackArt / boosterCard1-3 : visuel du pack fermé et des 3 photos
       révélées à l'ouverture (booster mystère, page d'accueil). Embarquées en
@@ -122,7 +122,7 @@ const IMAGES = {
   // Réalisations sur-mesure
   realisationJoinzy: "", realisationEvg: "", realisationEntreprise: "", realisationCommunion: "",
 
-  // Fête des Mères
+  // Pour toute la Famille
   meresHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/livret%20maelle.JPG",
   meresPoster: "",
   meresLivret: "",
@@ -132,7 +132,7 @@ const IMAGES = {
   mariagePoster: "",
   mariageLivret: "",
 
-  // Saint-Valentin
+  // Histoire d'Amour
   valentinHero: "", valentinLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9846.JPG",
   valentinLivretHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20HA%202.JPG",
   valentinPoster: "",
@@ -223,7 +223,7 @@ document.querySelectorAll("[data-order-link]").forEach((el) => {
 
 // Boutons "Je commande" — redirigent vers le tunnel de commande #commande,
 // avec l'édition pré-remplie. "data-edition" porte la CLÉ de route (ex.
-// "saint-valentin"), jamais le nom affiché : on la résout donc TOUJOURS via
+// "histoire-d-amour"), jamais le nom affiché : on la résout donc TOUJOURS via
 // EDITION_PREFILL pour obtenir le vrai nom envoyé à Tally (ex. "Histoire
 // d'Amour"). Sans data-edition explicite, on déduit la clé depuis la page
 // actuellement affichée.
@@ -272,8 +272,8 @@ const ROUTES = {
   "accueil":        { title: "Instant Collecté — Le souvenir qu'on déballe, qu'on offre", header: "full" },
   "concept":        { title: "Comment ça marche — Instant Collecté", header: "full" },
   "king-jouet":     { title: "Partenariat King Jouet — Instant Collecté", header: "minimal" },
-  "fete-des-meres": { title: "Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
-  "saint-valentin": { title: "Édition Histoire d'Amour — Instant Collecté", header: "full" },
+  "pour-toute-la-famille": { title: "Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
+  "histoire-d-amour": { title: "Édition Histoire d'Amour — Instant Collecté", header: "full" },
   "mariage":        { title: "Notre Mariage — Instant Collecté",                    header: "full" },
   "contact":        { title: "Nous contacter — Instant Collecté",                     header: "full" },
   "souvenir-ete":   { title: "Édition Souvenir d'été — Instant Collecté",            header: "full" },
@@ -283,10 +283,10 @@ const ROUTES = {
   "mentions-legales": { title: "Mentions légales — Instant Collecté",                   header: "full" },
   "cgv":              { title: "Conditions Générales de Vente — Instant Collecté",       header: "full" },
   "commande":         { title: "Votre commande — Instant Collecté",                      header: "full" },
-  "produit-saint-valentin-livret": { title: "Le livret — Édition Histoire d'Amour — Instant Collecté", header: "full" },
-  "produit-fete-des-meres-poster": { title: "Le Poster — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
-  "produit-fete-des-meres-livret": { title: "Le Livret — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
-  "produit-saint-valentin-poster": { title: "Le Poster — Édition Histoire d'Amour — Instant Collecté", header: "full" },
+  "produit-histoire-d-amour-livret": { title: "Le livret — Édition Histoire d'Amour — Instant Collecté", header: "full" },
+  "produit-pour-toute-la-famille-poster": { title: "Le Poster — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
+  "produit-pour-toute-la-famille-livret": { title: "Le Livret — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
+  "produit-histoire-d-amour-poster": { title: "Le Poster — Édition Histoire d'Amour — Instant Collecté", header: "full" },
   "produit-mariage-poster": { title: "Le Poster — Édition Notre Mariage — Instant Collecté", header: "full" },
   "produit-mariage-livret": { title: "Le Livret — Édition Notre Mariage — Instant Collecté", header: "full" },
   "produit-souvenir-ete-poster": { title: "Le Poster — Édition Souvenir d'été — Instant Collecté", header: "full" },
