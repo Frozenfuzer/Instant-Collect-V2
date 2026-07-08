@@ -133,7 +133,7 @@ const IMAGES = {
   mariageLivret: "",
 
   // Histoire d'Amour
-  valentinHero: "", valentinLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9846.JPG",
+  valentinHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20HA%201%20(1).JPG", valentinLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9846.JPG",
   valentinLivretHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20HA%202.JPG",
   valentinPoster: "",
 
