@@ -1854,6 +1854,35 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
 }
 .pdp-tiers-shipping{ font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.8rem; text-align: center; }
 
+.pdp-qty-picker{ margin-bottom: 1.4rem; }
+.pdp-qty-label{
+  display: block; font-weight: 700; font-size: 0.85rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink); margin-bottom: 0.7rem;
+}
+.pdp-qty-stepper{
+  display: inline-flex; align-items: center; gap: 0;
+  border: 1.5px solid var(--kraft); border-radius: 8px; overflow: hidden;
+}
+.pdp-qty-btn{
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--cream-warm); border: none; cursor: pointer;
+  font-size: 1.1rem; color: var(--ink); line-height: 1;
+  transition: background 0.2s ease;
+}
+.pdp-qty-btn:hover{ background: var(--kraft); color: var(--white); }
+.pdp-qty-input{
+  width: 56px; height: 40px; text-align: center;
+  border: none; border-left: 1.5px solid var(--kraft); border-right: 1.5px solid var(--kraft);
+  font-family: inherit; font-size: 0.95rem; color: var(--ink); background: var(--white);
+  -moz-appearance: textfield;
+}
+.pdp-qty-input::-webkit-outer-spin-button, .pdp-qty-input::-webkit-inner-spin-button{
+  -webkit-appearance: none; margin: 0;
+}
+.pdp-qty-total{ font-size: 0.85rem; font-weight: 600; color: var(--ink); margin: 0.6rem 0 0; }
+
 .pdp-cta{ width: 100%; margin-bottom: 1.4rem; }
 
 /* -- Réassurance -- */
