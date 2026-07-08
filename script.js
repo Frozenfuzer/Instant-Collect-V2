@@ -284,6 +284,15 @@ const ROUTES = {
   "cgv":              { title: "Conditions Générales de Vente — Instant Collecté",       header: "full" },
   "commande":         { title: "Votre commande — Instant Collecté",                      header: "full" },
   "produit-saint-valentin-livret": { title: "Le livret — Édition Histoire d'Amour — Instant Collecté", header: "full" },
+  "produit-fete-des-meres-poster": { title: "Le Poster — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
+  "produit-fete-des-meres-livret": { title: "Le Livret — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
+  "produit-saint-valentin-poster": { title: "Le Poster — Édition Histoire d'Amour — Instant Collecté", header: "full" },
+  "produit-mariage-poster": { title: "Le Poster — Édition Notre Mariage — Instant Collecté", header: "full" },
+  "produit-mariage-livret": { title: "Le Livret — Édition Notre Mariage — Instant Collecté", header: "full" },
+  "produit-souvenir-ete-poster": { title: "Le Poster — Édition Souvenir d'été — Instant Collecté", header: "full" },
+  "produit-souvenir-ete-livret": { title: "Le Livret — Édition Souvenir d'été — Instant Collecté", header: "full" },
+  "produit-jour-de-fete-poster": { title: "Le Poster — Édition Jour de Fête — Instant Collecté", header: "full" },
+  "produit-jour-de-fete-livret": { title: "Le Livret — Édition Jour de Fête — Instant Collecté", header: "full" },
 };
 const DEFAULT_ROUTE = "accueil";
 
