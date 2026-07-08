@@ -32,6 +32,100 @@ const EDITION_PREFILL = {
   "jour-de-fete":   "Jour de fête !",
 };
 
+/* --------------------------------------------------------------------------
+   1ter) LIENS DE PAIEMENT — étape affichée juste après l'envoi du formulaire
+   Tally (voir listener "Tally.FormSubmitted" plus bas).
+   Un lien par édition + format ("livret" ou "poster"). Laisse "" tant que le
+   lien n'existe pas encore : PAYMENT_LINK_FALLBACK prend le relais pour ne
+   jamais laisser le client sans solution.
+   Clé = "<clé-édition>-<format>", ex. "histoire-d-amour-livret".
+   Dès que Stripe (Payment Link) ou Shopify (lien produit / cart permalink)
+   est choisi : colle les URLs ici, rien d'autre à modifier.
+   -------------------------------------------------------------------------- */
+const PAYMENT_LINKS = {
+  "pour-toute-la-famille-livret": "",
+  "pour-toute-la-famille-poster": "",
+  "histoire-d-amour-livret": "",
+  "histoire-d-amour-poster": "",
+  "souvenir-ete-livret": "",
+  "souvenir-ete-poster": "",
+  "mariage-livret": "",
+  "mariage-poster": "",
+  "jour-de-fete-livret": "",
+  "jour-de-fete-poster": "",
+};
+// Utilisé tant qu'aucun lien spécifique n'est renseigné ci-dessus pour la
+// commande en cours. Remplace par un Payment Link générique dès qu'il existe
+// (en attendant, pointe vers l'Instagram — mieux qu'un bouton mort).
+const PAYMENT_LINK_FALLBACK = ORDER_LINK;
+
+// Renseigné à chaque entrée dans #commande à partir des paramètres d'URL
+// (edition_cle, format, quantite, prix_unitaire) — relu par showPaymentStep()
+// une fois le formulaire Tally soumis.
+let currentCommandeParams = {};
+
+function parseCommandeParams(rawHash){
+  const queryIndex = (rawHash || "").indexOf("?");
+  if (queryIndex === -1) return {};
+  const out = {};
+  new URLSearchParams(rawHash.slice(queryIndex + 1)).forEach((value, key) => {
+    out[key] = value;
+  });
+  return out;
+}
+
+// Affiche l'étape paiement à la place du formulaire une fois que Tally
+// confirme l'envoi (voir listener "message" plus bas). Résout le lien de
+// paiement à partir de l'édition + du format mémorisés à l'entrée dans le
+// tunnel, avec repli sur PAYMENT_LINK_FALLBACK si rien n'est configuré.
+function showPaymentStep(){
+  const formWrap = document.getElementById("commandeFormWrap");
+  const paymentStep = document.getElementById("commandePaymentStep");
+  const paymentBtn = document.getElementById("commandePaymentBtn");
+  const recapEl = document.getElementById("commandePaymentRecap");
+  if (!paymentStep || !paymentBtn) return;
+
+  const { edition_cle, format, quantite, prix_unitaire } = currentCommandeParams;
+  const linkKey = edition_cle && format ? (edition_cle + "-" + format) : "";
+  const link = (linkKey && PAYMENT_LINKS[linkKey]) || PAYMENT_LINK_FALLBACK;
+
+  if (recapEl) {
+    const qty = parseInt(quantite, 10) || 1;
+    const unit = parseFloat(prix_unitaire);
+    if (!isNaN(unit)) {
+      const total = (unit * qty).toFixed(2).replace(".", ",");
+      recapEl.textContent = "Total à régler : " + total + "€ (" + qty + " exemplaire" + (qty > 1 ? "s" : "") + ")";
+    } else {
+      recapEl.textContent = "";
+    }
+  }
+
+  if (link) {
+    paymentBtn.href = link;
+    paymentBtn.classList.remove("is-disabled");
+  } else {
+    paymentBtn.removeAttribute("href");
+    paymentBtn.classList.add("is-disabled");
+  }
+
+  if (formWrap) formWrap.hidden = true;
+  paymentStep.hidden = false;
+  paymentStep.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+}
+
+// Tally envoie un postMessage à la soumission du formulaire. Selon les
+// versions du widget, event.data est soit déjà un objet, soit une chaîne
+// JSON à parser — on gère les deux cas.
+window.addEventListener("message", (event) => {
+  let payload = event.data;
+  if (typeof payload === "string") {
+    try { payload = JSON.parse(payload); } catch (e) { return; }
+  }
+  if (payload && payload.event === "Tally.FormSubmitted") {
+    showPaymentStep();
+  }
+});
+
 // État du tunnel de commande : sert à forcer un formulaire Tally VIERGE à
 // chaque nouvelle entrée dans le tunnel (clic sur "Je commande", retour sur
 // la page après une commande envoyée, etc.). Sans ça, l'iframe reste figée
@@ -243,11 +337,20 @@ document.querySelectorAll("[data-order-cta]").forEach((el) => {
     const currentRoute = document.body.getAttribute("data-page") || "";
     const editionKey = el.dataset.edition || currentRoute;
     const edition = EDITION_PREFILL[editionKey] || "";
+    // Le format se déduit du suffixe de la route PDP (ex.
+    // "produit-histoire-d-amour-livret" → "livret") : c'est ce qui permet à
+    // showPaymentStep() de retrouver le bon lien de paiement dans
+    // PAYMENT_LINKS une fois le formulaire Tally soumis.
+    const format = currentRoute.endsWith("-livret") ? "livret"
+      : currentRoute.endsWith("-poster") ? "poster"
+      : "";
 
     const params = [];
     if (edition) params.push("edition=" + encodeURIComponent(edition));
     if (el.dataset.qty) params.push("quantite=" + encodeURIComponent(el.dataset.qty));
     if (el.dataset.unitPrice) params.push("prix_unitaire=" + encodeURIComponent(el.dataset.unitPrice));
+    if (editionKey) params.push("edition_cle=" + encodeURIComponent(editionKey));
+    if (format) params.push("format=" + encodeURIComponent(format));
 
     const query = params.length ? ("?" + params.join("&")) : "";
     const targetHash = "commande" + query;
@@ -363,6 +466,7 @@ function renderRoute(){
   if (route === "commande") {
     const queryIndex = rawHash.indexOf("?");
     const query = queryIndex !== -1 ? "&" + rawHash.slice(queryIndex + 1) : "";
+    currentCommandeParams = parseCommandeParams(rawHash);
     const frame = document.getElementById("tallyFrame");
     if (frame && (forceTallyReload || !frame.dataset.tallySrc)) {
       const url = TALLY_EMBED_BASE + query + "&_r=" + Date.now();
@@ -373,6 +477,13 @@ function renderRoute(){
         frame.src = url;                     // fallback si embed.js pas chargé
       }
       forceTallyReload = false;
+
+      // Nouveau passage dans le tunnel : on réaffiche le formulaire et on
+      // masque l'étape paiement d'une éventuelle commande précédente.
+      const formWrap = document.getElementById("commandeFormWrap");
+      const paymentStep = document.getElementById("commandePaymentStep");
+      if (formWrap) formWrap.hidden = false;
+      if (paymentStep) paymentStep.hidden = true;
     }
   }
 }
