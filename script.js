@@ -635,17 +635,43 @@ function initPdpTiers(){
 }
 
 function initPdpGallery(){
-  document.querySelectorAll(".pdp-thumb").forEach((thumb) => {
-    thumb.addEventListener("click", () => {
+  document.querySelectorAll(".pdp-gallery").forEach((gallery) => {
+    const thumbs = Array.from(gallery.querySelectorAll(".pdp-thumb"));
+    const prevBtn = gallery.querySelector(".pdp-arrow-prev");
+    const nextBtn = gallery.querySelector(".pdp-arrow-next");
+
+    // Pas de vignette (une seule photo, ou aucune) : pas de navigation à afficher.
+    if (thumbs.length <= 1){
+      if (prevBtn) prevBtn.hidden = true;
+      if (nextBtn) nextBtn.hidden = true;
+      return;
+    }
+
+    function activate(index){
+      thumbs.forEach((t, i) => t.classList.toggle("is-active", i === index));
+      const thumb = thumbs[index];
       const targetId = thumb.dataset.thumbTarget;
       const target = document.getElementById(targetId);
-      const key = thumb.dataset.img;
-      const url = IMAGES[key];
-      if (!target || !url) return;
-      target.style.backgroundImage = `url("${url}")`;
-      thumb.parentElement.querySelectorAll(".pdp-thumb").forEach((t) => t.classList.remove("is-active"));
-      thumb.classList.add("is-active");
+      const url = IMAGES[thumb.dataset.img];
+      if (target && url) target.style.backgroundImage = `url("${url}")`;
+    }
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener("click", () => activate(i));
     });
+
+    if (prevBtn){
+      prevBtn.addEventListener("click", () => {
+        const current = thumbs.findIndex((t) => t.classList.contains("is-active"));
+        activate((current - 1 + thumbs.length) % thumbs.length);
+      });
+    }
+    if (nextBtn){
+      nextBtn.addEventListener("click", () => {
+        const current = thumbs.findIndex((t) => t.classList.contains("is-active"));
+        activate((current + 1) % thumbs.length);
+      });
+    }
   });
 }
 
