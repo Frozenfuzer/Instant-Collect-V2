@@ -9,21 +9,39 @@ const ORDER_LINK = "https://www.instagram.com/instant_collecte/";
 
 /* --------------------------------------------------------------------------
    1bis) FORMULAIRE DE COMMANDE (Tally) — dépôt photos + infos client
+   Un formulaire Tally PAR FORMAT (livret / poster) : le format et la
+   quantité sont désormais choisis UNIQUEMENT sur le site (paliers de prix
+   sur les fiches produit), jamais redemandés dans Tally. Chaque formulaire
+   ne sert plus qu'à collecter les chapitres et les photos. Comme le client
+   n'atterrit que sur le formulaire correspondant à son choix, il ne peut
+   structurellement plus se tromper de formule en cours de route.
    -------------------------------------------------------------------------- */
-// URL du formulaire Tally publié
-const TALLY_FORM_URL = "https://tally.so/r/RGgEb9";
+const TALLY_FORM_URLS = {
+  livret: "https://tally.so/r/D4yOX5",
+  poster: "https://tally.so/r/RGgEb9",
+};
 
 // URL d'embed dérivée + options d'intégration : hideTitle (le hero de la page
 // affiche déjà le titre), transparentBackground (l'écrin kraft du site se voit
 // à travers), dynamicHeight (l'iframe suit la hauteur réelle du formulaire,
 // nécessite le script tally.so/widgets/embed.js chargé dans index.html).
-const TALLY_EMBED_BASE = TALLY_FORM_URL.replace("/r/", "/embed/")
-  + "?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+// Tant que TALLY_FORM_URLS.poster est vide, on retombe sur le formulaire
+// livret pour ne jamais laisser un client sans formulaire — à retirer dès
+// que le formulaire poster existe.
+function getTallyFormUrl(format){
+  return TALLY_FORM_URLS[format] || TALLY_FORM_URLS.livret;
+}
+function getTallyEmbedBase(format){
+  return getTallyFormUrl(format).replace("/r/", "/embed/")
+    + "?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+}
 
 // Correspondance route du site → libellé exact de l'option "Quelle édition ?"
-// dans Tally. ATTENTION : la valeur doit correspondre AU CARACTÈRE PRÈS au
-// texte de l'option choisie dans Tally (Pre-populate fields), sinon le champ
-// ne se pré-coche pas (le formulaire reste fonctionnel, juste pas pré-rempli).
+// dans Tally (si cette question existe encore côté Tally — sinon utile pour
+// rien, aucune conséquence). ATTENTION : la valeur doit correspondre AU
+// CARACTÈRE PRÈS au texte de l'option choisie dans Tally (Pre-populate
+// fields), sinon le champ ne se pré-coche pas (le formulaire reste
+// fonctionnel, juste pas pré-rempli).
 const EDITION_PREFILL = {
   "pour-toute-la-famille": "Pour toute la Famille !",
   "histoire-d-amour": "Histoire d'Amour",
@@ -31,6 +49,7 @@ const EDITION_PREFILL = {
   "mariage":        "Notre Mariage",
   "jour-de-fete":   "Jour de fête !",
 };
+
 
 /* --------------------------------------------------------------------------
    1ter) LIENS DE PAIEMENT — étape affichée juste après l'envoi du formulaire
@@ -41,6 +60,21 @@ const EDITION_PREFILL = {
    Clé = "<clé-édition>-<format>", ex. "histoire-d-amour-livret".
    Dès que Stripe (Payment Link) ou Shopify (lien produit / cart permalink)
    est choisi : colle les URLs ici, rien d'autre à modifier.
+
+   ⚠️ CONDITION INDISPENSABLE côté Tally pour que ce système reste fiable :
+   les champs "édition", "format" et "quantité" doivent être des HIDDEN
+   FIELDS Tally (pré-remplis automatiquement depuis l'URL, invisibles et NON
+   modifiables par le client) — PAS des questions visibles du formulaire.
+   Le site a déjà déterminé édition/format/quantité/prix AVANT que Tally ne
+   s'ouvre (clic sur un palier de prix puis "Je commande") ; si Tally repose
+   la question de façon modifiable, le client peut changer d'avis dans le
+   formulaire sans que le site ne le sache jamais (Tally ne renvoie pas les
+   réponses via son événement de soumission, seulement des métadonnées) —
+   c'est exactement ce qui a causé le bug "3 posters facturés au prix
+   livret". Convertir ces champs en Hidden Fields dans l'éditeur Tally
+   (Content → ce champ → Hidden Field) supprime le problème à la racine :
+   le client ne les voit plus, ne peut plus les changer, et la valeur
+   affichée ici reste donc garantie exacte.
    -------------------------------------------------------------------------- */
 const PAYMENT_LINKS = {
   "pour-toute-la-famille-livret": "",
@@ -61,7 +95,9 @@ const PAYMENT_LINK_FALLBACK = ORDER_LINK;
 
 // Renseigné à chaque entrée dans #commande à partir des paramètres d'URL
 // (edition_cle, format, quantite, prix_unitaire) — relu par showPaymentStep()
-// une fois le formulaire Tally soumis.
+// une fois le formulaire Tally soumis. Fiable à condition que les champs
+// correspondants soient bien des Hidden Fields côté Tally (voir avertissement
+// ci-dessus).
 let currentCommandeParams = {};
 
 function parseCommandeParams(rawHash){
@@ -469,7 +505,8 @@ function renderRoute(){
     currentCommandeParams = parseCommandeParams(rawHash);
     const frame = document.getElementById("tallyFrame");
     if (frame && (forceTallyReload || !frame.dataset.tallySrc)) {
-      const url = TALLY_EMBED_BASE + query + "&_r=" + Date.now();
+      const embedBase = getTallyEmbedBase(currentCommandeParams.format);
+      const url = embedBase + query + "&_r=" + Date.now();
       frame.dataset.tallySrc = url;
       if (window.Tally && typeof window.Tally.loadEmbeds === "function") {
         window.Tally.loadEmbeds();          // active dynamicHeight & co
@@ -477,6 +514,11 @@ function renderRoute(){
         frame.src = url;                     // fallback si embed.js pas chargé
       }
       forceTallyReload = false;
+
+      // Lien de secours ("le formulaire ne s'affiche pas ?") : doit pointer
+      // vers le MÊME formulaire que celui chargé dans l'iframe.
+      const fallbackLink = document.getElementById("tallyFallbackLink");
+      if (fallbackLink) fallbackLink.href = getTallyFormUrl(currentCommandeParams.format);
 
       // Nouveau passage dans le tunnel : on réaffiche le formulaire et on
       // masque l'étape paiement d'une éventuelle commande précédente.
