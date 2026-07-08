@@ -164,14 +164,22 @@ function setImage(el){
   }
   el.classList.add("has-image");
 
-  // Survol : si l'élément porte data-img-hover, on prépare une 2e image en
-  // variable CSS (--hover-bg), affichée au survol via la règle CSS
-  // [data-img-hover]:hover (voir style.css).
+  // Survol : si l'élément porte data-img-hover, on crée un vrai calque enfant
+  // (pas un ::after — déjà utilisé par le système de placeholder "image à
+  // venir" ci-dessus, un élément ne peut en avoir qu'un seul) avec la 2e
+  // image, affiché en fondu au survol via .hover-overlay (voir style.css).
   const hoverKey = el.dataset.imgHover;
   if (hoverKey){
     const hoverUrl = IMAGES[hoverKey];
     if (hoverUrl && hoverUrl.trim() !== ""){
-      el.style.setProperty("--hover-bg", `url("${hoverUrl}")`);
+      let overlay = el.querySelector(":scope > .hover-overlay");
+      if (!overlay){
+        overlay = document.createElement("span");
+        overlay.className = "hover-overlay";
+        overlay.setAttribute("aria-hidden", "true");
+        el.appendChild(overlay);
+      }
+      overlay.style.backgroundImage = `url("${hoverUrl}")`;
     }
   }
 }
