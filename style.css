@@ -126,6 +126,8 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 }
 .section-text{ margin-top: 0.8rem; color: var(--ink-soft); max-width: 52ch; }
 
+.pdp-info .section-eyebrow{ font-weight: 800; }
+
 .section-header{ max-width: 760px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); padding: 0 1.5rem; text-align:left; }
 .section-header-center{ text-align:center; }
 .section-header-center .section-title,
@@ -890,7 +892,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .hover-overlay{
   position: absolute;
   inset: 0;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--cream-warm);
