@@ -38,8 +38,8 @@
   --radius-soft: 2px;
 }
 
-body[data-page="fete-des-meres"], body[data-page="produit-fete-des-meres-poster"], body[data-page="produit-fete-des-meres-livret"]{ --accent:#D4728A; --accent-soft:#F5D5DC; --accent-dark:#B85A72; }
-body[data-page="saint-valentin"], body[data-page="produit-saint-valentin-poster"], body[data-page="produit-saint-valentin-livret"]{ --accent:#A8425A; --accent-soft:#F0D4D8; --accent-dark:#7E2F42; }
+body[data-page="pour-toute-la-famille"], body[data-page="produit-pour-toute-la-famille-poster"], body[data-page="produit-pour-toute-la-famille-livret"]{ --accent:#D4728A; --accent-soft:#F5D5DC; --accent-dark:#B85A72; }
+body[data-page="histoire-d-amour"], body[data-page="produit-histoire-d-amour-poster"], body[data-page="produit-histoire-d-amour-livret"]{ --accent:#A8425A; --accent-soft:#F0D4D8; --accent-dark:#7E2F42; }
 body[data-page="king-jouet"]{ --accent:#2F6FA3; --accent-soft:#CFE3F0; --accent-dark:#234F75; }
 body[data-page="mariage"], body[data-page="produit-mariage-poster"], body[data-page="produit-mariage-livret"]{ --accent:#7A8B6F; --accent-soft:#E7E3D3; --accent-dark:#586049; }
 body[data-page="souvenir-ete"], body[data-page="produit-souvenir-ete-poster"], body[data-page="produit-souvenir-ete-livret"]{ --accent:#4A8FA6; --accent-soft:#BDD8E4; --accent-dark:#2D6878; }
@@ -554,7 +554,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .co-brand-lockup{ font-family: var(--font-display); font-size: 1.6rem; font-weight:700; color: var(--ink); }
 .co-brand-x{ color: var(--accent); margin: 0 0.2rem; }
 
-/* hero "split" : texte + média côte à côte (Fête des Mères, Saint-Valentin) */
+/* hero "split" : texte + média côte à côte (Pour toute la Famille, Histoire d'Amour) */
 .hero-split{ padding-bottom: clamp(1.5rem,3vw,2.2rem); }
 .hero-split{ display:grid; }
 .hero-split .hero-halo{ z-index:0; }
@@ -890,9 +890,10 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .hover-overlay{
   position: absolute;
   inset: 0;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: var(--cream-warm);
   opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none;
