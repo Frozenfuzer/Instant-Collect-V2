@@ -883,23 +883,21 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 /* Survol : bascule sur une 2e photo (ex. livret ouvert) quand data-img-hover
    est présent. --hover-bg est posée par le JS (voir setImage dans script.js). */
 /* Survol : fondu enchaîné vers une 2e photo (ex. livret ouvert) quand data-img-hover
-   est présent. --hover-bg est posée par le JS (voir setImage dans script.js).
-   background-image ne peut pas être animé en CSS (bascule instantanée quelle
-   que soit la transition déclarée) : on utilise donc un ::after superposé,
-   dont on anime l'opacité — ça, ça s'anime correctement. */
+   est présent. Le calque .hover-overlay est un vrai <span> créé en JS (voir
+   setImage dans script.js) — pas un ::after, déjà utilisé par le système de
+   placeholder "image à venir" plus haut dans ce fichier. */
 [data-img-hover]{ position: relative; }
-[data-img-hover]::after{
-  content: "";
+.hover-overlay{
   position: absolute;
   inset: 0;
-  background-image: var(--hover-bg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 0.6s ease;
+  pointer-events: none;
 }
-[data-img-hover]:hover::after{ opacity: 1; }
+[data-img-hover]:hover .hover-overlay{ opacity: 1; }
 .produit-card:hover .produit-visual{ transform: scale(1.042); }
 .produit-body{ padding: 1.5rem; display:flex; flex-direction:column; gap:0.6rem; flex:1; position:relative; z-index:1; background:var(--white); }
 .produit-title{ font-size: 1.2rem; font-weight:700; }
