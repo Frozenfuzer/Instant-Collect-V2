@@ -1741,7 +1741,7 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--cream-warm);
-  transition: opacity 0.5s ease;
+  transition: opacity 0.25s ease;
 }
 .pdp-thumbs{ display: flex; gap: 0.6rem; margin-top: 0.8rem; }
 .pdp-thumb{
