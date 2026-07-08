@@ -38,12 +38,12 @@
   --radius-soft: 2px;
 }
 
-body[data-page="fete-des-meres"]{ --accent:#D4728A; --accent-soft:#F5D5DC; --accent-dark:#B85A72; }
-body[data-page="saint-valentin"]{ --accent:#A8425A; --accent-soft:#F0D4D8; --accent-dark:#7E2F42; }
+body[data-page="fete-des-meres"], body[data-page="produit-fete-des-meres-poster"], body[data-page="produit-fete-des-meres-livret"]{ --accent:#D4728A; --accent-soft:#F5D5DC; --accent-dark:#B85A72; }
+body[data-page="saint-valentin"], body[data-page="produit-saint-valentin-poster"], body[data-page="produit-saint-valentin-livret"]{ --accent:#A8425A; --accent-soft:#F0D4D8; --accent-dark:#7E2F42; }
 body[data-page="king-jouet"]{ --accent:#2F6FA3; --accent-soft:#CFE3F0; --accent-dark:#234F75; }
-body[data-page="mariage"]{ --accent:#7A8B6F; --accent-soft:#E7E3D3; --accent-dark:#586049; }
-body[data-page="souvenir-ete"]{ --accent:#4A8FA6; --accent-soft:#BDD8E4; --accent-dark:#2D6878; }
-body[data-page="jour-de-fete"]{ --accent:#1F3A56; --accent-soft:#C3D2DE; --accent-dark:#12253A; }
+body[data-page="mariage"], body[data-page="produit-mariage-poster"], body[data-page="produit-mariage-livret"]{ --accent:#7A8B6F; --accent-soft:#E7E3D3; --accent-dark:#586049; }
+body[data-page="souvenir-ete"], body[data-page="produit-souvenir-ete-poster"], body[data-page="produit-souvenir-ete-livret"]{ --accent:#4A8FA6; --accent-soft:#BDD8E4; --accent-dark:#2D6878; }
+body[data-page="jour-de-fete"], body[data-page="produit-jour-de-fete-poster"], body[data-page="produit-jour-de-fete-livret"]{ --accent:#1F3A56; --accent-soft:#C3D2DE; --accent-dark:#12253A; }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
@@ -1693,6 +1693,30 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
 }
 .pdp-thumb:hover{ opacity: 1; }
 .pdp-thumb.is-active{ opacity: 1; border-color: var(--accent); }
+
+.pdp-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  color: var(--ink);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(46,38,32,0.15);
+  transition: background 0.2s ease;
+  z-index: 2;
+}
+.pdp-arrow:hover{ background: var(--white); }
+.pdp-arrow-prev{ left: 0.6rem; }
+.pdp-arrow-next{ right: 0.6rem; }
+.pdp-arrow[hidden]{ display: none; }
 
 /* -- Informations -- */
 .pdp-info{ display: flex; flex-direction: column; }
