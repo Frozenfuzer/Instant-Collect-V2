@@ -227,6 +227,11 @@ document.querySelectorAll("[data-order-link]").forEach((el) => {
 // EDITION_PREFILL pour obtenir le vrai nom envoyé à Tally (ex. "Histoire
 // d'Amour"). Sans data-edition explicite, on déduit la clé depuis la page
 // actuellement affichée.
+// Sur les fiches produit (PDP) à paliers de prix, le bouton porte aussi
+// data-qty / data-unit-price (mis à jour par initPdpTiers au clic sur un
+// palier) : on les transmet en paramètres d'URL (&quantite=, &prix_unitaire=)
+// — ENCORE FAUT-IL que Tally ait des champs configurés pour les recevoir,
+// exactement comme pour "edition" (voir avertissement déjà donné à ce sujet).
 // Chaque clic force un formulaire Tally VIERGE (voir forceTallyReload et
 // renderRoute) : sans ça, un client qui a déjà validé une commande retombe
 // sur l'écran "merci" de Tally et ne peut plus en repasser une seconde,
@@ -236,7 +241,13 @@ document.querySelectorAll("[data-order-cta]").forEach((el) => {
     const currentRoute = document.body.getAttribute("data-page") || "";
     const editionKey = el.dataset.edition || currentRoute;
     const edition = EDITION_PREFILL[editionKey] || "";
-    const query = edition ? ("?edition=" + encodeURIComponent(edition)) : "";
+
+    const params = [];
+    if (edition) params.push("edition=" + encodeURIComponent(edition));
+    if (el.dataset.qty) params.push("quantite=" + encodeURIComponent(el.dataset.qty));
+    if (el.dataset.unitPrice) params.push("prix_unitaire=" + encodeURIComponent(el.dataset.unitPrice));
+
+    const query = params.length ? ("?" + params.join("&")) : "";
     const targetHash = "commande" + query;
 
     forceTallyReload = true;
@@ -272,6 +283,7 @@ const ROUTES = {
   "mentions-legales": { title: "Mentions légales — Instant Collecté",                   header: "full" },
   "cgv":              { title: "Conditions Générales de Vente — Instant Collecté",       header: "full" },
   "commande":         { title: "Votre commande — Instant Collecté",                      header: "full" },
+  "produit-saint-valentin-livret": { title: "Le livret — Édition Histoire d'Amour — Instant Collecté", header: "full" },
 };
 const DEFAULT_ROUTE = "accueil";
 
@@ -579,10 +591,62 @@ function setupReveal(){
 }
 
 /* --------------------------------------------------------------------------
+   8bis) Fiche produit (PDP) — paliers de prix + galerie de vignettes
+   -------------------------------------------------------------------------- */
+function initPdpTiers(){
+  document.querySelectorAll(".pdp-tiers-grid").forEach((grid) => {
+    const basePrice = parseFloat(grid.dataset.basePrice);
+    const tiers = grid.querySelectorAll(".pdp-tier");
+    const pdpSection = grid.closest(".pdp");
+    const ctaBtn = pdpSection ? pdpSection.querySelector(".pdp-cta") : null;
+
+    // Calcule et affiche le "Économisez X%" à partir des vrais prix, plutôt
+    // que d'écrire un pourcentage en dur : garantit que l'affichage reste
+    // exact si un prix change un jour.
+    tiers.forEach((tier) => {
+      const unitPrice = parseFloat(tier.dataset.unitPrice);
+      const noteEl = tier.querySelector(".pdp-tier-note");
+      if (noteEl && unitPrice < basePrice){
+        const pct = Math.round((1 - unitPrice / basePrice) * 100);
+        noteEl.textContent = `Économisez ${pct}%`;
+      }
+    });
+
+    tiers.forEach((tier) => {
+      tier.addEventListener("click", () => {
+        tiers.forEach((t) => t.classList.remove("is-active"));
+        tier.classList.add("is-active");
+        if (ctaBtn){
+          ctaBtn.dataset.qty = tier.dataset.qty;
+          ctaBtn.dataset.unitPrice = tier.dataset.unitPrice;
+        }
+      });
+    });
+  });
+}
+
+function initPdpGallery(){
+  document.querySelectorAll(".pdp-thumb").forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      const targetId = thumb.dataset.thumbTarget;
+      const target = document.getElementById(targetId);
+      const key = thumb.dataset.img;
+      const url = IMAGES[key];
+      if (!target || !url) return;
+      target.style.backgroundImage = `url("${url}")`;
+      thumb.parentElement.querySelectorAll(".pdp-thumb").forEach((t) => t.classList.remove("is-active"));
+      thumb.classList.add("is-active");
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
    9) Init
    -------------------------------------------------------------------------- */
 applyImages();
 renderRoute();
+initPdpTiers();
+initPdpGallery();
 
 /* --------------------------------------------------------------------------
    10) Formulaire de contact — Formspree + fallback mailto
