@@ -653,7 +653,16 @@ function initPdpGallery(){
       const targetId = thumb.dataset.thumbTarget;
       const target = document.getElementById(targetId);
       const url = IMAGES[thumb.dataset.img];
-      if (target && url) target.style.backgroundImage = `url("${url}")`;
+      if (!target || !url) return;
+      // Fondu enchaîné : on masque d'abord l'image actuelle, on ne change
+      // l'image de fond qu'une fois invisible, puis on la refait apparaître.
+      // Un simple changement de background-image ne s'anime jamais tout
+      // seul en CSS — c'est cette étape par étape qui donne l'effet de fondu.
+      target.style.opacity = "0";
+      window.setTimeout(() => {
+        target.style.backgroundImage = `url("${url}")`;
+        target.style.opacity = "1";
+      }, 500);
     }
 
     thumbs.forEach((thumb, i) => {
