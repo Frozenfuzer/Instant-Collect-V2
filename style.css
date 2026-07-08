@@ -1676,7 +1676,7 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--cream-warm);
-  transition: opacity 0.2s ease;
+  transition: opacity 0.5s ease;
 }
 .pdp-thumbs{ display: flex; gap: 0.6rem; margin-top: 0.8rem; }
 .pdp-thumb{
@@ -1719,7 +1719,15 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
 .pdp-arrow[hidden]{ display: none; }
 
 /* -- Informations -- */
-.pdp-info{ display: flex; flex-direction: column; }
+.pdp-info{
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid rgba(46,38,32,0.08);
+  border-radius: 8px;
+  padding: clamp(1.5rem,3vw,2.2rem);
+  box-shadow: 0 4px 20px rgba(46,38,32,0.06);
+}
 .pdp-tagline{
   font-family: var(--font-display);
   font-size: 1.3rem;
