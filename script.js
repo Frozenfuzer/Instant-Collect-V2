@@ -935,7 +935,7 @@ initPdpGallery();
       const ph=(form.querySelector("#cf-phone")||{value:""}).value, tp=(form.querySelector("#cf-type")||{value:""}).value;
       const ms=(form.querySelector("#cf-message")||{value:""}).value;
       const body=`Nom : ${fn} ${ln}\nEmail : ${em}\nTéléphone : ${ph||"–"}\nType : ${tp}\n\nMessage :\n${ms}`;
-      window.location.href=`mailto:[À REMPLACER]?subject=Nouvelle demande — Instant Collecté&body=${encodeURIComponent(body)}`;
+      window.location.href=`mailto:instant.collecte@gmail.com?subject=Nouvelle demande — Instant Collecté&body=${encodeURIComponent(body)}`;
       if (successBox) successBox.hidden = false;
     }
     if (submitBtn) submitBtn.disabled = false;
