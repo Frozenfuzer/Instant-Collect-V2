@@ -271,6 +271,7 @@ const IMAGES = {
   eteLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9853.JPG",
   eteLivretHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9854.JPG",
   eteLivretExtra: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9743.jpg",
+  eteLivretExtra2: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9625.jpg",
 };
 
 // Clés à charger immédiatement (au-dessus de la ligne de flottaison)
