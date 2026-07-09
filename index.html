@@ -23,7 +23,7 @@
 
   <!--
   INSTANT COLLECTÉ — site multi-pages (8 pages), routeur JS par hash, un seul fichier pour CodePen.
-  Pages : #accueil  #concept  #king-jouet  #pour-toute-la-famille  #histoire-d-amour  #mariage  #contact
+  Pages : #accueil  #concept  #king-jouet  #pour-toute-la-famille  #histoire-d-amour  #souvenir-ete  #jour-de-fete  #realisations  #contact
 
   IMAGES : toutes les images sont injectées via des constantes en haut de script.js (objet IMAGES).
   Tant qu'une URL est vide (""), un cadre "image à venir" stylisé s'affiche à la place.
@@ -63,10 +63,6 @@
           <a href="#souvenir-ete" data-route-link="souvenir-ete" role="menuitem">
             <span class="ne-emoji" aria-hidden="true">☀️</span>
             <span class="ne-text"><strong>Souvenir d'été</strong><small>Redécouvrez les meilleurs moments de votre voyage estival</small></span>
-          </a>
-          <a href="#mariage" data-route-link="mariage" role="menuitem">
-            <span class="ne-emoji" aria-hidden="true">💒</span>
-            <span class="ne-text"><strong>Notre Mariage</strong><small>Faites vivre à vos invités une expérience inédite de boosters mystères</small></span>
           </a>
           <a href="#jour-de-fete" data-route-link="jour-de-fete" role="menuitem">
             <span class="ne-emoji" aria-hidden="true">🎉</span>
@@ -292,7 +288,7 @@
         </div>
       </article>
 
-      <!-- Carte 4 : Mariage (événement) -->
+      <!-- Carte 4 : Mariage (événement, sur-mesure — voir page Un autre projet) -->
       <article class="produit-card produit-card-event">
         <span class="card-tag tag-event">Événement</span>
         <div class="produit-visual" data-img="editionMariage" data-img-label="Notre Mariage — Instant Collecté"></div>
@@ -301,7 +297,7 @@
           <p class="produit-desc">Faites vivre à vos invités l'expérience Instant Collecté ! Fini le diaporama classique, faites-leur découvrir votre histoire sous un angle nouveau !</p>
           <p class="produit-price">Sur devis</p>
           <div class="card-actions">
-            <a href="#mariage" class="btn btn-outline">Découvrir</a>
+            <a href="#realisations" class="btn btn-outline">Découvrir</a>
             <a href="#contact" class="btn btn-primary">Demander votre devis</a>
           </div>
         </div>
@@ -785,114 +781,6 @@
 
 </section>
 
-<!-- ============================================================ PAGE 6 — MARIAGE (événement) -->
-<section class="page" id="page-mariage" data-page-section="mariage">
-
-
-  <section class="hero hero-edition hero-split">
-    <div class="hero-halo" aria-hidden="true"></div>
-    <div class="hero-split-text">
-      <span class="badge badge-edition">Notre Mariage</span>
-      <h1 class="edition-title">Votre mariage, <span class="edition-title-script">vécu deux fois</span></h1>
-      <p class="hero-tagline">Fini le diaporama classique. Faites vivre à vos invités l'expérience Instant Collecté — et offrez-vous une façon inédite de revivre ce jour.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Demander votre devis</a>
-      </div>
-    </div>
-    <div class="hero-split-media" data-img="mariageHero" data-img-label="Mariage Instant Collecté"></div>
-  </section>
-
-  <!-- Zone vidéo -->
-  <section class="edition-video">
-    <div class="section-header section-header-center">
-      <p class="section-eyebrow">Découvrez le concept</p>
-      <h2 class="section-title">L'expérience Mariage en vidéo</h2>
-    </div>
-    <div class="video-embed-wrap video-embed-wrap-mariage">
-      <div class="mariage-video-deco" aria-hidden="true">
-        <svg class="mvd mvd-ring" viewBox="0 0 60 40" fill="none" stroke="var(--accent)" stroke-width="2.6" opacity="0.5">
-          <circle cx="22" cy="20" r="14"/>
-          <circle cx="38" cy="20" r="14"/>
-        </svg>
-        <svg class="mvd mvd-sprig-1" viewBox="0 0 60 100" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" opacity="0.5">
-          <path d="M30 96V20"/>
-          <path d="M30 40c-10-4-16-14-14-24 10 2 17 12 14 24z"/>
-          <path d="M30 58c10-4 16-14 14-24-10 2-17 12-14 24z"/>
-          <path d="M30 76c-10-4-16-14-14-24 10 2 17 12 14 24z"/>
-        </svg>
-        <svg class="mvd mvd-sprig-2" viewBox="0 0 60 100" fill="none" stroke="var(--accent-soft)" stroke-width="2.2" stroke-linecap="round" opacity="0.6">
-          <path d="M30 96V20"/>
-          <path d="M30 40c-10-4-16-14-14-24 10 2 17 12 14 24z"/>
-          <path d="M30 58c10-4 16-14 14-24-10 2-17 12-14 24z"/>
-        </svg>
-        <svg class="mvd mvd-bow" viewBox="0 0 60 40" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-          <path d="M30 20C30 8 18 4 10 10 4 14 6 24 16 24c6 0 12-2 14-4Z"/>
-          <path d="M30 20C30 8 42 4 50 10c6 4 4 14-6 14-6 0-12-2-14-4Z"/>
-          <line x1="30" y1="20" x2="30" y2="38"/>
-          <path d="M30 38L24 34"/>
-          <path d="M30 38L36 34"/>
-        </svg>
-        <svg class="mvd mvd-heart" viewBox="0 0 40 36" fill="var(--accent-soft)" opacity="0.55">
-          <path d="M20 34C8 25 2 17 2 10.5 2 5 6 1 11 1c3.2 0 6 1.7 9 5 3-3.3 5.8-5 9-5 5 0 9 4 9 9.5C38 17 32 25 20 34z"/>
-        </svg>
-        <svg class="mvd mvd-toast" viewBox="0 0 80 60" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-          <path d="M14 6L30 6 24 26 20 26Z"/>
-          <line x1="22" y1="26" x2="22" y2="42"/>
-          <line x1="14" y1="42" x2="30" y2="42"/>
-          <path d="M50 10L66 10 60 30 56 30Z"/>
-          <line x1="58" y1="30" x2="58" y2="46"/>
-          <line x1="50" y1="46" x2="66" y2="46"/>
-        </svg>
-      </div>
-      <div class="video-placeholder video-placeholder-portrait" id="mariageVideo">
-        <div class="video-placeholder-inner">
-          <span class="video-icon" aria-hidden="true">▶</span>
-          <p>Vidéo à venir</p>
-          <small>Remplacer le commentaire ci-dessous par l'iframe YouTube pour activer la vidéo.</small>
-        </div>
-        <!-- Pour activer : décommenter et remplacer YOUR_VIDEO_ID -->
-        <!-- <iframe class="video-iframe" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0" title="Instant Collecté — Mariage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-      </div>
-    </div>
-  </section>
-
-  <section class="edition-detail">
-    <div class="section-header section-header-center">
-      <p class="section-eyebrow">Nos offres</p>
-      <h2 class="section-title">Un poster et un livret, à compléter ensemble</h2>
-    </div>
-    <div class="edition-detail-grid">
-      <article class="produit-card">
-        <div class="produit-visual" data-img="mariagePoster" data-img-label="Le poster"></div>
-        <div class="produit-body">
-          <h3 class="produit-title">Le poster</h3>
-          <p class="produit-desc">Un poster collectif à compléter par vos invités pendant la réception : chaque booster ouvert révèle un souvenir du jour J à venir coller, jusqu'à former une fresque unique du mariage.</p>
-          <p class="produit-price">19,99€</p>
-          <a href="#produit-mariage-poster" class="btn btn-primary">Je commande</a>
-        </div>
-      </article>
-      <article class="produit-card">
-        <div class="produit-visual" data-img="mariageLivret" data-img-label="Le livret"></div>
-        <div class="produit-body">
-          <h3 class="produit-title">Le livret</h3>
-          <p class="produit-desc">Un livret souvenir rempli par vos proches le jour J : les photos, les mots, les instants volés pendant la fête. Un cadeau collectif que vous garderez toute votre vie, à offrir aux mariés en fin de soirée.</p>
-          <p class="produit-price">35,99€</p>
-          <a href="#produit-mariage-livret" class="btn btn-primary">Je commande</a>
-        </div>
-      </article>
-    </div>
-    <p class="edition-note">Un projet plus spécifique en tête ? <a href="#contact">Demandez votre devis sur-mesure</a>.</p>
-  </section>
-
-  <section class="cta-final">
-    <h2 class="cta-final-title">Créons quelque chose d'unique pour votre jour J</h2>
-    <p class="cta-final-text">Chaque mariage est différent. Parlons de votre projet.</p>
-    <a href="#contact" class="btn btn-primary btn-large">Demander votre devis</a>
-  </section>
-
-
-</section>
-
 <!-- ============================================================ PAGE 8 — SOUVENIR D'ÉTÉ -->
 <section class="page" id="page-souvenir-ete" data-page-section="souvenir-ete">
 
@@ -1209,11 +1097,11 @@
       </article>
 
       <article class="produit-card">
-        <span class="card-tag tag-communion">Communion</span>
-        <div class="produit-visual" data-img="realisationCommunion" data-img-label="Livret souvenir communion"></div>
+        <span class="card-tag tag-mariage">Mariage</span>
+        <div class="produit-visual" data-img="realisationMariage" data-img-label="Livret souvenir mariage"></div>
         <div class="produit-body">
-          <h3 class="produit-title">Livret souvenir — Communion</h3>
-          <p class="produit-desc">[À REMPLACER — description du projet communion : contenu, occasion, ce qui rend ce souvenir unique.]</p>
+          <h3 class="produit-title">Livret souvenir — Mariage</h3>
+          <p class="produit-desc">[À REMPLACER — description du projet mariage : contenu, occasion, ce qui rend ce souvenir unique.]</p>
         </div>
       </article>
 
@@ -1446,7 +1334,7 @@
 
       <div class="mentions-block">
         <h2>Article 2 — Objet</h2>
-        <p>Les présentes Conditions Générales de Vente régissent les relations contractuelles entre Instant Collecté et tout acheteur souhaitant acquérir un produit proposé par la marque : boosters photo personnalisés, livrets-albums, posters et éditions spéciales (Pour toute la Famille, Histoire d'Amour, Mariage, etc.).</p>
+        <p>Les présentes Conditions Générales de Vente régissent les relations contractuelles entre Instant Collecté et tout acheteur souhaitant acquérir un produit proposé par la marque : boosters photo personnalisés, livrets-albums, posters et éditions spéciales (Pour toute la Famille, Histoire d'Amour, Souvenir d'été, etc.), ainsi que les réalisations sur-mesure (mariage, EVG, événements d'entreprise, etc.).</p>
       </div>
 
       <div class="mentions-block">
@@ -1998,202 +1886,6 @@
 
 </section>
 
-<!-- ============================================================ FICHE PRODUIT — POSTER NOTRE MARIAGE -->
-<section class="page" id="page-produit-mariage-poster" data-page-section="produit-mariage-poster">
-
-  <section class="pdp">
-    <div class="pdp-gallery">
-      <div class="pdp-media-main" data-img="mariagePoster" data-img-label="Le poster — Notre Mariage"></div>
-      <div class="pdp-gallery-details">
-        <h2>Détails produit</h2>
-        <p>Un poster collectif à compléter par vos invités pendant la réception : chaque booster ouvert révèle un souvenir du jour J à venir coller, jusqu'à former une fresque unique du mariage.</p>
-        <p class="pdp-details-signature">Votre histoire, votre façon.</p>
-      </div>
-    </div>
-
-    <div class="pdp-info">
-      <p class="section-eyebrow">Édition Notre Mariage : Poster</p>
-      <p class="pdp-tagline">Le jour J, raconté par vos invités.</p>
-      <p class="pdp-desc">Un poster collectif à compléter par vos invités pendant la réception&nbsp;: chaque booster ouvert révèle un souvenir du jour J à venir coller, jusqu'à former une fresque unique du mariage.</p>
-
-      <div class="pdp-tiers">
-        <p class="pdp-tiers-label">Choisissez votre offre</p>
-        <div class="pdp-tiers-grid" data-base-price="19.99">
-          <button class="pdp-tier is-active" data-qty="1" data-unit-price="19.99">
-            <span class="pdp-tier-qty">À l'unité</span>
-            <span class="pdp-tier-price">19,99€</span>
-            <span class="pdp-tier-note">Prix standard</span>
-          </button>
-          <button class="pdp-tier" data-qty="4" data-unit-price="17.99">
-            <span class="pdp-tier-badge">Livraison offerte</span>
-            <span class="pdp-tier-qty">À partir de 4</span>
-            <span class="pdp-tier-price">17,99€ / unité</span>
-            <span class="pdp-tier-note"></span>
-          </button>
-          <button class="pdp-tier" data-qty="7" data-unit-price="16.99">
-            <span class="pdp-tier-qty">À partir de 7</span>
-            <span class="pdp-tier-price">16,99€ / unité</span>
-            <span class="pdp-tier-note"></span>
-          </button>
-          <button class="pdp-tier" data-qty="10" data-unit-price="14.99">
-            <span class="pdp-tier-qty">À partir de 10</span>
-            <span class="pdp-tier-price">14,99€ / unité</span>
-            <span class="pdp-tier-note"></span>
-          </button>
-        </div>
-        <p class="pdp-tiers-shipping">Livraison offerte à partir de 4 posters</p>
-      </div>
-
-      <div class="pdp-qty-picker">
-        <label class="pdp-qty-label">Quantité exacte</label>
-        <div class="pdp-qty-stepper">
-          <button type="button" class="pdp-qty-btn pdp-qty-minus" aria-label="Diminuer la quantité">−</button>
-          <input type="number" class="pdp-qty-input" min="1" max="99" value="1" inputmode="numeric" aria-label="Quantité">
-          <button type="button" class="pdp-qty-btn pdp-qty-plus" aria-label="Augmenter la quantité">+</button>
-        </div>
-        <p class="pdp-qty-total"></p>
-      </div>
-
-      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="mariage" data-qty="1" data-unit-price="19.99">Je commande</button>
-
-      <div class="pdp-trust">
-        <div class="pdp-trust-item">
-          <span class="pdp-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
-          <span>Délai de création : 10 jours ouvrés</span>
-        </div>
-        <div class="pdp-trust-item">
-          <span class="pdp-trust-icon pdp-trust-icon-flag" aria-hidden="true"><svg viewBox="0 0 24 16"><rect width="8" height="16" fill="#002654"/><rect x="8" width="8" height="16" fill="#FFFFFF"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>
-          <span>Fabrication française avec soin</span>
-        </div>
-        <div class="pdp-trust-item pdp-trust-soon">
-          <span class="pdp-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <span>Paiement sécurisé — bientôt disponible</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pdp-details">
-    <div class="pdp-details-col">
-      <h2>Ce poster contient</h2>
-      <ul>
-        <li>1 poster collectif à compléter pendant la réception</li>
-        <li>Emplacements pour les vignettes photo révélées par les boosters</li>
-        <li>Compatible avec l'animation boosters mystères Instant Collecté</li>
-        <li>Un souvenir à encadrer après la fête</li>
-      </ul>
-    </div>
-    <div class="pdp-details-col">
-      <h2>Caractéristiques</h2>
-      <ul>
-        <li>Format du poster : [À REMPLACER]</li>
-        <li>Papier : [À REMPLACER — grammage et finition]</li>
-        <li>Personnalisation : [À REMPLACER]</li>
-        <li>Imprimé et assemblé en France</li>
-      </ul>
-    </div>
-  </section>
-
-</section>
-
-<!-- ============================================================ FICHE PRODUIT — LIVRET NOTRE MARIAGE -->
-<section class="page" id="page-produit-mariage-livret" data-page-section="produit-mariage-livret">
-
-  <section class="pdp">
-    <div class="pdp-gallery">
-      <div class="pdp-media-main" data-img="mariageLivret" data-img-label="Le livret — Notre Mariage"></div>
-      <div class="pdp-gallery-details">
-        <h2>Détails produit</h2>
-        <p>Un livret souvenir rempli par vos proches le jour J : les photos, les mots, les instants volés pendant la fête. Un cadeau collectif que vous garderez toute votre vie, à offrir aux mariés en fin de soirée.</p>
-        <p class="pdp-details-signature">Votre histoire, votre façon.</p>
-      </div>
-    </div>
-
-    <div class="pdp-info">
-      <p class="section-eyebrow">Édition Notre Mariage : Livret</p>
-      <p class="pdp-tagline">Le souvenir collectif de votre mariage.</p>
-      <p class="pdp-desc">Un livret souvenir rempli par vos proches le jour J&nbsp;: les photos, les mots, les instants volés pendant la fête. Un cadeau collectif que vous garderez toute votre vie, à offrir aux mariés en fin de soirée.</p>
-
-      <div class="pdp-tiers">
-        <p class="pdp-tiers-label">Choisissez votre offre</p>
-        <div class="pdp-tiers-grid" data-base-price="35.99">
-          <button class="pdp-tier is-active" data-qty="1" data-unit-price="35.99">
-            <span class="pdp-tier-qty">À l'unité</span>
-            <span class="pdp-tier-price">35,99€</span>
-            <span class="pdp-tier-note">Prix standard</span>
-          </button>
-          <button class="pdp-tier" data-qty="4" data-unit-price="32.39">
-            <span class="pdp-tier-badge">Livraison offerte</span>
-            <span class="pdp-tier-qty">À partir de 4</span>
-            <span class="pdp-tier-price">32,39€ / unité</span>
-            <span class="pdp-tier-note"></span>
-          </button>
-          <button class="pdp-tier" data-qty="7" data-unit-price="30.59">
-            <span class="pdp-tier-qty">À partir de 7</span>
-            <span class="pdp-tier-price">30,59€ / unité</span>
-            <span class="pdp-tier-note"></span>
-          </button>
-          <button class="pdp-tier" data-qty="10" data-unit-price="26.99">
-            <span class="pdp-tier-qty">À partir de 10</span>
-            <span class="pdp-tier-price">26,99€ / unité</span>
-            <span class="pdp-tier-note"></span>
-          </button>
-        </div>
-        <p class="pdp-tiers-shipping">Livraison offerte à partir de 4 livrets</p>
-      </div>
-
-      <div class="pdp-qty-picker">
-        <label class="pdp-qty-label">Quantité exacte</label>
-        <div class="pdp-qty-stepper">
-          <button type="button" class="pdp-qty-btn pdp-qty-minus" aria-label="Diminuer la quantité">−</button>
-          <input type="number" class="pdp-qty-input" min="1" max="99" value="1" inputmode="numeric" aria-label="Quantité">
-          <button type="button" class="pdp-qty-btn pdp-qty-plus" aria-label="Augmenter la quantité">+</button>
-        </div>
-        <p class="pdp-qty-total"></p>
-      </div>
-
-      <button class="btn btn-primary btn-large pdp-cta" data-order-cta data-edition="mariage" data-qty="1" data-unit-price="35.99">Je commande</button>
-
-      <div class="pdp-trust">
-        <div class="pdp-trust-item">
-          <span class="pdp-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
-          <span>Délai de création : 10 jours ouvrés</span>
-        </div>
-        <div class="pdp-trust-item">
-          <span class="pdp-trust-icon pdp-trust-icon-flag" aria-hidden="true"><svg viewBox="0 0 24 16"><rect width="8" height="16" fill="#002654"/><rect x="8" width="8" height="16" fill="#FFFFFF"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>
-          <span>Fabrication française avec soin</span>
-        </div>
-        <div class="pdp-trust-item pdp-trust-soon">
-          <span class="pdp-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <span>Paiement sécurisé — bientôt disponible</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pdp-details">
-    <div class="pdp-details-col">
-      <h2>Le coffret comprend</h2>
-        <li>1 album personnalisé à compléter de <strong>16 pages</strong> retraçant votre mariage, réparti en <strong>5 chapitres</strong> à personnaliser selon vos envies (préparatifs, cérémonie, réception, moments du quotidien, etc.)</li>
-        <li><strong>5 à 6 boosters mystères scellés</strong> contenant vos souvenirs répartis de manière aléatoire pour retrouver toute l'émotion de la découverte à chaque ouverture</li>
-        <li><strong>Jusqu'à 40 vignettes</strong> à collectionner (<strong>6,2 × 8,7 cm</strong>) imprimées à partir de vos photos, avec un système de décollage facile pour compléter votre album</li>
-        <li>Un cadeau collectif à offrir aux mariés en fin de soirée</li>
-      </ul>
-    </div>
-    <div class="pdp-details-col">
-      <h2>Informations complémentaires</h2>
-      <ul>
-        <li>Pages : <strong>16 pages</strong>, réparties en <strong>5 chapitres</strong></li>
-        <li>Vignettes : <strong>jusqu'à 40</strong>, format <strong>6,2 × 8,7 cm</strong></li>
-        <li>Délai de création : <strong>10 jours ouvrés</strong></li>
-        <li>L'album standard est conçu pour accueillir jusqu'à <strong>40 vignettes</strong>, réparties sur <strong>5 chapitres</strong> (une double page par chapitre), soit un maximum de <strong>8 photos par chapitre</strong>, afin de préserver un rendu harmonieux</li>
-        <li>Le prix indiqué correspond au coffret standard. Pour toute demande comportant davantage de pages ou de vignettes, <strong>un devis personnalisé vous sera proposé</strong></li>
-      </ul>
-    </div>
-  </section>
-
-</section>
-
 <!-- ============================================================ FICHE PRODUIT — POSTER SOUVENIR D'ÉTÉ -->
 <section class="page" id="page-produit-souvenir-ete-poster" data-page-section="produit-souvenir-ete-poster">
 
@@ -2609,7 +2301,6 @@
       <a href="#pour-toute-la-famille">Pour toute la Famille !</a>
       <a href="#histoire-d-amour">Histoire d'Amour</a>
       <a href="#souvenir-ete">Souvenir d'été</a>
-      <a href="#mariage">Notre Mariage</a>
       <a href="#jour-de-fete">Jour de Fête</a>
       <a href="#realisations">Un autre projet ?</a>
       <a href="#partenaires">Nos Partenaires</a>
