@@ -46,7 +46,6 @@ const EDITION_PREFILL = {
   "pour-toute-la-famille": "Pour toute la Famille !",
   "histoire-d-amour": "Histoire d'Amour",
   "souvenir-ete":   "Souvenir d'été",
-  "mariage":        "Notre Mariage",
   "jour-de-fete":   "Jour de fête !",
 };
 
@@ -83,8 +82,6 @@ const PAYMENT_LINKS = {
   "histoire-d-amour-poster": "",
   "souvenir-ete-livret": "",
   "souvenir-ete-poster": "",
-  "mariage-livret": "",
-  "mariage-poster": "",
   "jour-de-fete-livret": "",
   "jour-de-fete-poster": "",
 };
@@ -250,17 +247,12 @@ const IMAGES = {
   kingBooster: "", kingShop: "",
 
   // Réalisations sur-mesure
-  realisationJoinzy: "", realisationEvg: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_8874.jpg", realisationEntreprise: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Marina.png", realisationCommunion: "",
+  realisationJoinzy: "", realisationEvg: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_8874.jpg", realisationEntreprise: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Marina.png", realisationMariage: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%207.png",
 
   // Pour toute la Famille
   meresHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/livret%20maelle.JPG",
   meresPoster: "",
   meresLivret: "",
-
-  // Mariage
-  mariageHero: "",
-  mariagePoster: "",
-  mariageLivret: "",
 
   // Histoire d'Amour
   valentinHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20HA%201%20(1).JPG", valentinLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9846.JPG",
@@ -415,7 +407,6 @@ const ROUTES = {
   "king-jouet":     { title: "Partenariat King Jouet — Instant Collecté", header: "minimal" },
   "pour-toute-la-famille": { title: "Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
   "histoire-d-amour": { title: "Édition Histoire d'Amour — Instant Collecté", header: "full" },
-  "mariage":        { title: "Notre Mariage — Instant Collecté",                    header: "full" },
   "contact":        { title: "Nous contacter — Instant Collecté",                     header: "full" },
   "souvenir-ete":   { title: "Édition Souvenir d'été — Instant Collecté",            header: "full" },
   "jour-de-fete":   { title: "Jour de Fête ! — Instant Collecté",                     header: "full" },
@@ -428,8 +419,6 @@ const ROUTES = {
   "produit-pour-toute-la-famille-poster": { title: "Le Poster — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
   "produit-pour-toute-la-famille-livret": { title: "Le Livret — Édition Pour toute la Famille ! — Instant Collecté", header: "full" },
   "produit-histoire-d-amour-poster": { title: "Le Poster — Édition Histoire d'Amour — Instant Collecté", header: "full" },
-  "produit-mariage-poster": { title: "Le Poster — Édition Notre Mariage — Instant Collecté", header: "full" },
-  "produit-mariage-livret": { title: "Le Livret — Édition Notre Mariage — Instant Collecté", header: "full" },
   "produit-souvenir-ete-poster": { title: "Le Poster — Édition Souvenir d'été — Instant Collecté", header: "full" },
   "produit-souvenir-ete-livret": { title: "Le Livret — Édition Souvenir d'été — Instant Collecté", header: "full" },
   "produit-jour-de-fete-poster": { title: "Le Poster — Édition Jour de Fête — Instant Collecté", header: "full" },
