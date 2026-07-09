@@ -35,7 +35,7 @@
   --font-body: 'Work Sans', sans-serif;
 
   --section-pad: clamp(4rem, 8vw, 7rem);
-  --radius-soft: 2px;
+  --radius-soft: 8px;
 }
 
 body[data-page="pour-toute-la-famille"], body[data-page="produit-pour-toute-la-famille-poster"], body[data-page="produit-pour-toute-la-famille-livret"]{ --accent:#D4728A; --accent-soft:#F5D5DC; --accent-dark:#B85A72; }
