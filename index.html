@@ -752,7 +752,7 @@
     </div>
     <div class="edition-detail-grid">
       <article class="produit-card">
-        <div class="produit-visual" data-img="valentinPoster" data-img-label="Le poster"></div>
+        <div class="produit-visual" data-img="valentinPoster" data-img-hover="valentinPosterHover" data-img-label="Le poster"></div>
         <div class="produit-body">
           <h3 class="produit-title">Le poster</h3>
           <p class="produit-desc">Un poster à compléter à deux, booster après booster&nbsp;: votre rencontre, vos voyages, vos moments… Choisissez les instants emblématiques de votre couple et revivez votre histoire à travers cette ouverture&nbsp;! À afficher fièrement ensuite chez vous.</p>
@@ -1793,7 +1793,13 @@
 
   <section class="pdp">
     <div class="pdp-gallery">
-      <div class="pdp-media-main" data-img="valentinPoster" data-img-label="Le poster — Histoire d'Amour"></div>
+      <div class="pdp-media-main" data-img="valentinPoster" data-img-label="Le poster — Histoire d'Amour" id="pdpMainImage-valentinPoster"></div>
+      <button class="pdp-arrow pdp-arrow-prev" aria-label="Photo précédente">‹</button>
+      <button class="pdp-arrow pdp-arrow-next" aria-label="Photo suivante">›</button>
+      <div class="pdp-thumbs">
+        <button class="pdp-thumb is-active" data-img="valentinPoster" data-thumb-target="pdpMainImage-valentinPoster" aria-label="Voir le poster"></button>
+        <button class="pdp-thumb" data-img="valentinPosterHover" data-thumb-target="pdpMainImage-valentinPoster" aria-label="Voir une autre vue"></button>
+      </div>
       <div class="pdp-gallery-details">
         <h2>Détails produit</h2>
         <p>Un poster à compléter à deux, booster après booster : votre rencontre, vos voyages, vos petites habitudes prennent forme au fil des ouvertures, jusqu'à devenir une fresque affichée chez vous.</p>
