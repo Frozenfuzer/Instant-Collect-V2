@@ -1768,6 +1768,9 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
   transition: opacity 0.25s ease;
 }
 .pdp-thumbs{ display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+.pdp-gallery-details{ margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid rgba(46,38,32,0.1); }
+.pdp-gallery-details h2{ font-family: var(--font-display); font-size: 1.4rem; color: var(--ink); margin-bottom: 0.8rem; }
+.pdp-gallery-details p{ color: var(--ink-soft); font-size: 0.92rem; line-height: 1.6; margin-bottom: 0.6rem; }
 .pdp-thumb{
   width: 60px; height: 60px;
   border-radius: 6px;
@@ -1925,3 +1928,12 @@ body[data-page="commande"]{ --accent: var(--terracotta); }
 .pdp-details-signature{ font-family: var(--font-display); font-size: 1.1rem; color: var(--accent-dark); }
 .pdp-details-col ul{ padding-left: 1.2rem; }
 .pdp-details-col ul li{ color: var(--ink-soft); font-size: 0.92rem; line-height: 1.6; margin-bottom: 0.55rem; }
+
+/* Page Souvenir d'été (livret) : le bloc "Détails produit" est passé sous
+   les vignettes de la galerie (voir .pdp-gallery-details) — il ne reste que
+   2 colonnes ici, qu'on centre et qu'on élargit pour réduire le nombre de
+   lignes, sans toucher au texte. */
+body[data-page="produit-souvenir-ete-livret"] .pdp-details{
+  grid-template-columns: 1fr 1fr;
+  max-width: 950px;
+}
