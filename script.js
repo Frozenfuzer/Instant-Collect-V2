@@ -617,13 +617,23 @@ if (navBurger && navLinksPanel){
   navBurger.addEventListener("click", () => {
     const isOpen = navLinksPanel.classList.toggle("is-open");
     navBurger.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("nav-open", isOpen);
   });
   navLinksPanel.querySelectorAll("a, .nav-cta").forEach((el) => {
     el.addEventListener("click", () => {
       navLinksPanel.classList.remove("is-open");
       navBurger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("nav-open");
     });
   });
+  const navBackdrop = document.getElementById("navBackdrop");
+  if (navBackdrop){
+    navBackdrop.addEventListener("click", () => {
+      navLinksPanel.classList.remove("is-open");
+      navBurger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("nav-open");
+    });
+  }
 }
 
 /* --------------------------------------------------------------------------
