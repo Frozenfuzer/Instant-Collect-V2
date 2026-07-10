@@ -605,6 +605,7 @@ img[data-img]::before, img[data-img]::after{ content:none; }
   .boosters-fan-art{ max-width: clamp(100px,26vw,140px); }
   .boosters-fan-item-1{ margin-right:-1rem; }
   .boosters-fan-item-3{ margin-left:-1rem; }
+  .boosters-fan-item-1 .boosters-fan-art{ transform: scale(1.05); }
 }
 
 /* ===================== VALUES (accueil) ===================== */
@@ -699,6 +700,11 @@ img[data-img]::before, img[data-img]::after{ content:none; }
 .concept-step-content p{ color: var(--ink-soft); max-width: 44ch; }
 /* alternance gauche/droite via ordre de colonne */
 .step-img-left .concept-step-media{ order:-1; }
+
+@media (max-width: 700px){
+  .concept-step-row{ grid-template-columns: 1fr; gap: 1.2rem; }
+  .concept-step-media{ width: 100%; min-height: 0; }
+}
 
 /* ── Concept — intro nostalgie ── */
 .concept-nostalgie {
