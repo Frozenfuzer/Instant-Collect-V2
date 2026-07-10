@@ -45,7 +45,7 @@ body[data-page="souvenir-ete"], body[data-page="produit-souvenir-ete-poster"], b
 body[data-page="jour-de-fete"], body[data-page="produit-jour-de-fete-poster"], body[data-page="produit-jour-de-fete-livret"]{ --accent:#1F3A56; --accent-soft:#C3D2DE; --accent-dark:#12253A; }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; overflow-x: hidden; }
 
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
