@@ -239,7 +239,7 @@ const IMAGES = {
 
   // Concept — 4 étapes
   step1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/Groupement%20de%20photo%20sur%20table.JPG",
-  step2: "",
+  step2: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/Photo%20concept%202.jpg",
   step3: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/IMG_9295.PNG",
   step4: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/concept/IMG_9294.jpg",
 
