@@ -501,10 +501,18 @@ function renderRoute(){
       const embedBase = getTallyEmbedBase(currentCommandeParams.format);
       const url = embedBase + query + "&_r=" + Date.now();
       frame.dataset.tallySrc = url;
+      // frame.src EST le rechargement réel de l'iframe : c'est lui qui
+      // garantit qu'un changement de format (poster ↔ livret) ou d'édition
+      // remplace bien le formulaire affiché. Tally.loadEmbeds() ne fait que
+      // RÉ-INITIALISER le comportement de l'embed (dynamicHeight, resize) une
+      // fois l'iframe déjà présente dans le DOM avec le bon data-tally-src —
+      // il n'a jamais force un rechargement d'une iframe déjà initialisée par
+      // un premier passage. Compter uniquement sur loadEmbeds() ici reproduit
+      // le bug où un second clic "Je commande" (ex. poster après un premier
+      // clic livret) laissait affiché l'ancien formulaire.
+      frame.src = url;
       if (window.Tally && typeof window.Tally.loadEmbeds === "function") {
         window.Tally.loadEmbeds();          // active dynamicHeight & co
-      } else {
-        frame.src = url;                     // fallback si embed.js pas chargé
       }
       forceTallyReload = false;
 
