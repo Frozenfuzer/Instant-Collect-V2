@@ -216,9 +216,6 @@ const IMAGES = {
   editionMariage:       "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%207.png",
   editionPeres:         "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%209.png",
 
-  // Accueil — bandeau vedette
-  editionMeresHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%205.png",
-
   // Accueil — ambiance (polaroids)
   ambiance1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%202.png",
   ambiance2: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/accueil/Photo%2010.jpg",
