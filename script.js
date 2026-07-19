@@ -813,8 +813,17 @@ function initPdpTiers(){
     // dans le champ : détermine automatiquement le bon palier de prix,
     // synchronise le bouton de palier visuellement actif, et recalcule
     // le total (qty × prix unitaire du palier applicable).
+    // Plafond de quantité : lu depuis l'attribut max de l'input (99 par
+    // défaut si absent). Certaines éditions (ex. Histoire d'Amour, pensée
+    // pour 1 ou 2 exemplaires) fixent max="2" côté HTML : sans ce garde-fou
+    // ici, les boutons +/- custom pouvaient dépasser cette limite (l'attribut
+    // HTML max ne borne que les flèches natives du navigateur, pas nos
+    // propres boutons), et le prix restait alors figé sur le dernier palier
+    // existant au lieu de refléter une offre qui n'existe pas.
+    const maxQty = qtyInput && qtyInput.max ? parseInt(qtyInput.max, 10) : 99;
+
     function applyQty(qty){
-      qty = Math.max(1, parseInt(qty, 10) || 1);
+      qty = Math.min(maxQty, Math.max(1, parseInt(qty, 10) || 1));
       if (qtyInput) qtyInput.value = qty;
 
       const activeTier = tierForQty(tiers, qty);
