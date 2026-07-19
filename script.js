@@ -251,7 +251,9 @@ const IMAGES = {
 
   // Pour toute la Famille
   meresHero: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/livret%20maelle.JPG",
-  meresPoster: "",
+  meresPoster: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/PHOTO%201%20Poster%20Famille.jpg",
+  meresPosterHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/PHOTO%202%20Poster%20Famille.jpg",
+  meresPosterExtra1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/PHOTO%203%20Poster%20Famille.jpg",
   meresLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/PHOTO%201%20album%20Famille.JPG",
   meresLivretHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/PHOTO%202%20album%20Famille.JPG",
 
