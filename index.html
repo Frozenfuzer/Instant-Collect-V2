@@ -1702,7 +1702,13 @@
 
   <section class="pdp">
     <div class="pdp-gallery">
-      <div class="pdp-media-main" data-img="meresLivret" data-img-label="Le livret — Pour toute la Famille !"></div>
+      <div class="pdp-media-main" data-img="meresLivret" data-img-label="Le livret — Pour toute la Famille !" id="pdpMainImage-meresLivret"></div>
+      <button class="pdp-arrow pdp-arrow-prev" aria-label="Photo précédente">‹</button>
+      <button class="pdp-arrow pdp-arrow-next" aria-label="Photo suivante">›</button>
+      <div class="pdp-thumbs">
+        <button class="pdp-thumb is-active" data-img="meresLivret" data-thumb-target="pdpMainImage-meresLivret" aria-label="Voir la couverture"></button>
+        <button class="pdp-thumb" data-img="meresLivretHover" data-thumb-target="pdpMainImage-meresLivret" aria-label="Voir une autre vue"></button>
+      </div>
       <div class="pdp-gallery-details">
         <h2>Détails produit</h2>
         <p>Un album relié qui raconte l'histoire de la famille page après page : les naissances, les fous rires, les repas du dimanche. Chaque booster ouvert vient enrichir une nouvelle page, jusqu'à devenir un vrai livre de souvenirs à feuilleter ensemble.</p>
