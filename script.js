@@ -267,7 +267,9 @@ const IMAGES = {
   jourFeteLivret: "",
 
   // Souvenir d'été
-  etePoster: "",
+  etePoster: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20poster%20%C3%A9dition%20%C3%A9t%C3%A9%201.JPG",
+  etePosterHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20poster%20%C3%A9dition%20%C3%A9t%C3%A9%202.jpeg",
+  etePosterExtra1: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20poster%20%C3%A9dition%20%C3%89t%C3%A9%203.JPG",
   eteLivret: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9853.JPG",
   eteLivretHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9854.JPG",
   eteLivretExtra: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9743.jpg",
