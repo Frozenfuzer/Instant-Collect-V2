@@ -52,12 +52,15 @@ const EDITION_PREFILL = {
 /* --------------------------------------------------------------------------
    1ter) LIENS DE PAIEMENT — étape affichée juste après l'envoi du formulaire
    Tally (voir listener "Tally.FormSubmitted" plus bas).
-   Un lien par édition + format ("livret" ou "poster"). Laisse "" tant que le
-   lien n'existe pas encore : PAYMENT_LINK_FALLBACK prend le relais pour ne
-   jamais laisser le client sans solution.
-   Clé = "<clé-édition>-<format>", ex. "histoire-d-amour-livret".
-   Dès que Stripe (Payment Link) ou Shopify (lien produit / cart permalink)
-   est choisi : colle les URLs ici, rien d'autre à modifier.
+   Un jeu de liens par édition + format ("livret" ou "poster"), avec UN LIEN
+   STRIPE PAR PALIER DE QUANTITÉ (les paliers de prix affichés sur la fiche
+   produit ont chacun leur propre Payment Link Stripe, avec sa propre
+   quantité ajustable et son propre seuil de livraison offerte).
+   Clé de premier niveau = "<clé-édition>-<format>", ex. "souvenir-ete-poster".
+   Chaque entrée est un tableau de paliers { qty, link }, trié du plus petit
+   seuil au plus grand — qty doit correspondre EXACTEMENT aux valeurs
+   data-qty utilisées dans .pdp-tiers-grid côté HTML pour que le bon palier
+   soit toujours sélectionné.
 
    ⚠️ CONDITION INDISPENSABLE côté Tally pour que ce système reste fiable :
    les champs "édition", "format" et "quantité" doivent être des HIDDEN
@@ -75,17 +78,54 @@ const EDITION_PREFILL = {
    affichée ici reste donc garantie exacte.
    -------------------------------------------------------------------------- */
 const PAYMENT_LINKS = {
-  "pour-toute-la-famille-livret": "",
-  "pour-toute-la-famille-poster": "",
-  "histoire-d-amour-livret": "",
-  "histoire-d-amour-poster": "",
-  "souvenir-ete-livret": "",
-  "souvenir-ete-poster": "",
+  "souvenir-ete-poster": [
+    { qty: 1,  link: "https://buy.stripe.com/bJe8wR50z5t6fx54vRaAw05" },
+    { qty: 4,  link: "https://buy.stripe.com/dRm8wR64D08M84D4vRaAw02" },
+    { qty: 7,  link: "https://buy.stripe.com/7sY7sNdx5g7K1Gf3rNaAw03" },
+    { qty: 10, link: "https://buy.stripe.com/fZu4gB78H8FibgPgezaAw04" },
+  ],
+  "souvenir-ete-livret": [
+    { qty: 1, link: "https://buy.stripe.com/6oU28tct14p20Cb8M7aAw0c" },
+    { qty: 3, link: "https://buy.stripe.com/aFa00l1Onf3GbgPaUfaAw0d" },
+    { qty: 5, link: "https://buy.stripe.com/9B6dRb8cLaNqet13rNaAw0f" },
+    { qty: 7, link: "https://buy.stripe.com/5kQ7sN0Kj4p2ckT1jFaAw0e" },
+  ],
+  "pour-toute-la-famille-poster": [
+    { qty: 1,  link: "https://buy.stripe.com/5kQ8wR2Srg7KacLd2naAw06" },
+    { qty: 4,  link: "https://buy.stripe.com/bJefZjgJhaNqacLfavaAw07" },
+    { qty: 7,  link: "https://buy.stripe.com/28E9AV64Df3G84D7I3aAw08" },
+    { qty: 10, link: "https://buy.stripe.com/28E7sN0KjcVygB90fBaAw09" },
+  ],
+  "pour-toute-la-famille-livret": [
+    { qty: 1, link: "https://buy.stripe.com/28E5kFakTcVybgP2nJaAw0g" },
+    { qty: 3, link: "https://buy.stripe.com/fZu8wRgJhaNq98H4vRaAw0h" },
+    { qty: 5, link: "https://buy.stripe.com/28E7sNeB9aNq2KjfavaAw0j" },
+    { qty: 7, link: "https://buy.stripe.com/9B67sN78HdZC84DgezaAw0i" },
+  ],
+  "histoire-d-amour-livret": [],
+  "histoire-d-amour-poster": [],
 };
-// Utilisé tant qu'aucun lien spécifique n'est renseigné ci-dessus pour la
-// commande en cours. Remplace par un Payment Link générique dès qu'il existe
-// (en attendant, pointe vers l'Instagram — mieux qu'un bouton mort).
+// Utilisé tant qu'aucun palier n'est renseigné ci-dessus pour la
+// combinaison édition+format+quantité en cours. Remplace/complète
+// PAYMENT_LINKS dès que de nouveaux Payment Links existent (en attendant,
+// pointe vers l'Instagram — mieux qu'un bouton mort).
 const PAYMENT_LINK_FALLBACK = ORDER_LINK;
+
+// Résout le Payment Link applicable pour une édition+format+quantité :
+// prend, parmi les paliers déclarés, le plus grand dont le seuil (qty) est
+// atteint par la quantité commandée — même logique que tierForQty() côté
+// affichage des paliers sur la fiche produit (voir plus bas dans ce fichier),
+// pour garantir que le palier facturé sur Stripe correspond toujours au
+// palier affiché au client.
+function resolvePaymentLink(linkKey, qty){
+  const tiers = PAYMENT_LINKS[linkKey];
+  if (!tiers || !tiers.length) return "";
+  let applicable = tiers[0];
+  tiers.forEach((tier) => {
+    if (qty >= tier.qty) applicable = tier;
+  });
+  return applicable.link || "";
+}
 
 // Renseigné à chaque entrée dans #commande à partir des paramètres d'URL
 // (edition_cle, format, quantite, prix_unitaire) — relu par showPaymentStep()
@@ -106,8 +146,10 @@ function parseCommandeParams(rawHash){
 
 // Affiche l'étape paiement à la place du formulaire une fois que Tally
 // confirme l'envoi (voir listener "message" plus bas). Résout le lien de
-// paiement à partir de l'édition + du format mémorisés à l'entrée dans le
-// tunnel, avec repli sur PAYMENT_LINK_FALLBACK si rien n'est configuré.
+// paiement à partir de l'édition + du format + de la quantité mémorisés à
+// l'entrée dans le tunnel (le palier Stripe applicable est déterminé par
+// resolvePaymentLink), avec repli sur PAYMENT_LINK_FALLBACK si rien n'est
+// configuré pour ce palier.
 function showPaymentStep(){
   const formWrap = document.getElementById("commandeFormWrap");
   const paymentStep = document.getElementById("commandePaymentStep");
@@ -117,10 +159,10 @@ function showPaymentStep(){
 
   const { edition_cle, format, quantite, prix_unitaire } = currentCommandeParams;
   const linkKey = edition_cle && format ? (edition_cle + "-" + format) : "";
-  const link = (linkKey && PAYMENT_LINKS[linkKey]) || PAYMENT_LINK_FALLBACK;
+  const qty = parseInt(quantite, 10) || 1;
+  const link = (linkKey && resolvePaymentLink(linkKey, qty)) || PAYMENT_LINK_FALLBACK;
 
   if (recapEl) {
-    const qty = parseInt(quantite, 10) || 1;
     const unit = parseFloat(prix_unitaire);
     if (!isNaN(unit)) {
       const total = (unit * qty).toFixed(2).replace(".", ",");
