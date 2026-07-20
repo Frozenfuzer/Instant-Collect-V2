@@ -46,7 +46,6 @@ const EDITION_PREFILL = {
   "pour-toute-la-famille": "Pour toute la Famille !",
   "histoire-d-amour": "Histoire d'Amour",
   "souvenir-ete":   "Souvenir d'été",
-  "jour-de-fete":   "Jour de fête !",
 };
 
 
@@ -82,8 +81,6 @@ const PAYMENT_LINKS = {
   "histoire-d-amour-poster": "",
   "souvenir-ete-livret": "",
   "souvenir-ete-poster": "",
-  "jour-de-fete-livret": "",
-  "jour-de-fete-poster": "",
 };
 // Utilisé tant qu'aucun lien spécifique n'est renseigné ci-dessus pour la
 // commande en cours. Remplace par un Payment Link générique dès qu'il existe
@@ -262,10 +259,6 @@ const IMAGES = {
   valentinPoster: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9859.JPG",
   valentinPosterHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/IMG_9860.JPG",
 
-  // Jour de Fête
-  jourFetePoster: "",
-  jourFeteLivret: "",
-
   // Souvenir d'été
   etePoster: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20poster%20%C3%A9dition%20%C3%A9t%C3%A9%201.JPG",
   etePosterHover: "https://frozenfuzer.github.io/Instant-Collect-V2/assets/edition/Photo%20poster%20%C3%A9dition%20%C3%A9t%C3%A9%202.jpeg",
@@ -415,7 +408,6 @@ const ROUTES = {
   "histoire-d-amour": { title: "Édition Histoire d'Amour — Instant Collecté", header: "full" },
   "contact":        { title: "Nous contacter — Instant Collecté",                     header: "full" },
   "souvenir-ete":   { title: "Édition Souvenir d'été — Instant Collecté",            header: "full" },
-  "jour-de-fete":   { title: "Jour de Fête ! — Instant Collecté",                     header: "full" },
   "partenaires":    { title: "Nos Partenaires — Instant Collecté",                     header: "full" },
   "realisations":   { title: "Un autre projet ? — Réalisations sur-mesure — Instant Collecté", header: "full" },
   "mentions-legales": { title: "Mentions légales — Instant Collecté",                   header: "full" },
@@ -427,8 +419,6 @@ const ROUTES = {
   "produit-histoire-d-amour-poster": { title: "Le Poster — Édition Histoire d'Amour — Instant Collecté", header: "full" },
   "produit-souvenir-ete-poster": { title: "Le Poster — Édition Souvenir d'été — Instant Collecté", header: "full" },
   "produit-souvenir-ete-livret": { title: "Le Livret — Édition Souvenir d'été — Instant Collecté", header: "full" },
-  "produit-jour-de-fete-poster": { title: "Le Poster — Édition Jour de Fête — Instant Collecté", header: "full" },
-  "produit-jour-de-fete-livret": { title: "Le Livret — Édition Jour de Fête — Instant Collecté", header: "full" },
 };
 const DEFAULT_ROUTE = "accueil";
 
