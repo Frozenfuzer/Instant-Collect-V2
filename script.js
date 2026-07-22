@@ -102,8 +102,14 @@ const PAYMENT_LINKS = {
     { qty: 5, link: "https://buy.stripe.com/28E7sNeB9aNq2KjfavaAw0j" },
     { qty: 7, link: "https://buy.stripe.com/9B67sN78HdZC84DgezaAw0i" },
   ],
-  "histoire-d-amour-livret": [],
-  "histoire-d-amour-poster": [],
+  "histoire-d-amour-livret": [
+    { qty: 1, link: "https://buy.stripe.com/28EeVf64Df3GgB99QbaAw0n" },
+    { qty: 2, link: "https://buy.stripe.com/4gMeVf78H6xa2Kj3rNaAw0m" },
+  ],
+  "histoire-d-amour-poster": [
+    { qty: 1, link: "https://buy.stripe.com/14AdRbct1f3G70z9QbaAw0k" },
+    { qty: 2, link: "https://buy.stripe.com/3cIeVf50zcVy4SrfavaAw0l" },
+  ],
 };
 // Utilisé tant qu'aucun palier n'est renseigné ci-dessus pour la
 // combinaison édition+format+quantité en cours. Remplace/complète
